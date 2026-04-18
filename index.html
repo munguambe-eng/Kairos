@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" style="background:#080A0F;background-color:#080A0F;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#080A0F">
 <title>KAIROS — Brand Identity System v4</title>
+<script>
+  // Force dark background immediately — prevents white flash on Vercel/Netlify
+  document.documentElement.style.setProperty('background', '#080A0F', 'important');
+  document.documentElement.style.setProperty('background-color', '#080A0F', 'important');
+  document.body && (document.body.style.cssText += 'background:#080A0F!important;background-color:#080A0F!important;');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -27,11 +37,13 @@
   }
 
 - { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; background: #080A0F !important; background-color: #080A0F !important; }
 
 body {
-background: var(–obsidian);
+background: #080A0F !important;
+background-color: #080A0F !important;
 color: var(–white);
+color: #F0F4F8;
 font-family: ‘Outfit’, sans-serif;
 font-weight: 300;
 line-height: 1.6;
@@ -555,7 +567,7 @@ transition: transform 0.4s ease;
 </style>
 
 </head>
-<body>
+<body style="background:#080A0F;background-color:#080A0F;color:#F0F4F8;">
 
 <!-- ═══════════ HERO ═══════════ -->
 
@@ -1154,10 +1166,21 @@ transition: transform 0.4s ease;
 </div>
 
 <script>
+  // Scroll-triggered animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+  // Force dark background — defence against Vercel/browser stylesheet injection
+  function forceDark() {
+    var s = 'background:#080A0F!important;background-color:#080A0F!important;';
+    document.documentElement.setAttribute('style', (document.documentElement.getAttribute('style') || '') + s);
+    document.body.setAttribute('style', (document.body.getAttribute('style') || '') + s);
+  }
+  forceDark();
+  document.addEventListener('DOMContentLoaded', forceDark);
+  window.addEventListener('load', forceDark);
 </script>
 
 </body>

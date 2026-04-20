@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" style="background:#080A0F;background-color:#080A0F;">
 <head>
 <meta charset="UTF-8">
@@ -8,10 +7,6 @@
 <meta name="theme-color" content="#080A0F">
 <meta name="description" content="Kairos — AI & Analytics for Banking, Energy and Regulatory Intelligence in Mozambique.">
 <title>Kairos · Raw Data. Real Decisions.</title>
-<script>
-  document.documentElement.style.setProperty('background','#080A0F','important');
-  document.documentElement.style.setProperty('background-color','#080A0F','important');
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -33,402 +28,486 @@
   --fb:'Outfit',system-ui,sans-serif;
   --fm:'Space Mono','Courier New',monospace;
 }
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;background:#080A0F !important;background-color:#080A0F !important;}
+html{scroll-behavior:smooth;background:#080A0F !important;}
 body{
-  background:#080A0F !important;background-color:#080A0F !important;
-  color:#F0F4F8;font-family:var(--fb);font-size:16px;line-height:1.6;
+  background:#080A0F !important;
+  color:#F0F4F8;
+  font-family:var(--fb);
+  font-size:16px;
+  line-height:1.6;
   overflow-x:hidden;
 }
+
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:#080A0F}
 ::-webkit-scrollbar-thumb{background:#8A6B2A}
 
-/* ── NAV ── */
+/* ══ NAV ══ */
 nav{
-position:fixed;top:0;left:0;right:0;z-index:200;
-display:flex;align-items:center;justify-content:space-between;
-padding:0 56px;height:72px;
-background:rgba(8,10,15,0.92);
-border-bottom:1px solid rgba(201,168,76,0.08);
-backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;height:72px;
+  background:rgba(8,10,15,0.95);
+  border-bottom:1px solid rgba(201,168,76,0.08);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  gap:24px;
 }
 .nav-logo{
-font-family:var(–fd);font-size:20px;font-weight:300;
-color:#F0F4F8;text-decoration:none;letter-spacing:.1em;
+  font-family:var(--fd);font-size:20px;font-weight:300;
+  color:#F0F4F8;text-decoration:none;letter-spacing:.1em;
+  flex-shrink:0;
 }
 .nav-logo span{color:#C9A84C}
-.nav-links{display:flex;gap:40px;list-style:none}
+
+.nav-links{
+  display:flex;gap:40px;list-style:none;
+  align-items:center;
+}
 .nav-links a{
-font-family:var(–fm);font-size:9px;letter-spacing:.3em;
-text-transform:uppercase;color:#8A9BB0;text-decoration:none;
-transition:color .2s;
+  font-family:var(--fm);font-size:9px;letter-spacing:.3em;
+  text-transform:uppercase;color:#8A9BB0;text-decoration:none;
+  transition:color .2s;white-space:nowrap;
 }
 .nav-links a:hover{color:#C9A84C}
+
 .nav-cta{
-font-family:var(–fm);font-size:9px;letter-spacing:.2em;
-text-transform:uppercase;color:#C9A84C;
-border:1px solid #8A6B2A;padding:10px 22px;
-text-decoration:none;transition:all .25s;
+  font-family:var(--fm);font-size:9px;letter-spacing:.2em;
+  text-transform:uppercase;color:#C9A84C;
+  border:1px solid #8A6B2A;padding:10px 22px;
+  text-decoration:none;transition:all .25s;
+  white-space:nowrap;flex-shrink:0;
 }
 .nav-cta:hover{background:#C9A84C;color:#080A0F}
 
-/* ── HERO ── */
+/* Hamburger */
+.nav-toggle{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;
+  padding:4px;flex-shrink:0;
+}
+.nav-toggle span{
+  display:block;width:22px;height:1px;
+  background:#8A9BB0;transition:all .3s;
+}
+.nav-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* Mobile menu */
+.nav-mobile{
+  display:none;
+  position:fixed;top:72px;left:0;right:0;bottom:0;z-index:190;
+  background:rgba(8,10,15,0.98);
+  flex-direction:column;align-items:center;justify-content:center;
+  gap:40px;
+}
+.nav-mobile.open{display:flex}
+.nav-mobile a{
+  font-family:var(--fm);font-size:11px;letter-spacing:.4em;
+  text-transform:uppercase;color:#8A9BB0;text-decoration:none;
+  transition:color .2s;
+}
+.nav-mobile a:hover{color:#C9A84C}
+.nav-mobile .nav-cta-m{
+  color:#C9A84C;border:1px solid #8A6B2A;
+  padding:14px 36px;margin-top:16px;
+}
+
+/* ══ HERO ══ */
 .hero{
-min-height:100vh;display:flex;flex-direction:column;
-justify-content:center;padding:140px 56px 80px;
-position:relative;overflow:hidden;
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;padding:140px 56px 80px;
+  position:relative;overflow:hidden;
 }
 .hero-grid{
-position:absolute;inset:0;
-background-image:
-linear-gradient(rgba(201,168,76,.025) 1px,transparent 1px),
-linear-gradient(90deg,rgba(201,168,76,.025) 1px,transparent 1px);
-background-size:72px 72px;
-mask-image:radial-gradient(ellipse 90% 70% at 50% 40%,black 20%,transparent 100%);
--webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 40%,black 20%,transparent 100%);
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(201,168,76,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,168,76,.025) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 40%,black 20%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 40%,black 20%,transparent 100%);
 }
 .hero-glow-a{
-position:absolute;width:700px;height:500px;
-background:radial-gradient(ellipse,rgba(201,168,76,.055) 0%,transparent 65%);
-top:-80px;right:-120px;pointer-events:none;
+  position:absolute;width:700px;height:500px;
+  background:radial-gradient(ellipse,rgba(201,168,76,.055) 0%,transparent 65%);
+  top:-80px;right:-120px;pointer-events:none;
 }
 .hero-glow-b{
-position:absolute;width:500px;height:400px;
-background:radial-gradient(ellipse,rgba(42,157,143,.04) 0%,transparent 65%);
-bottom:-60px;left:-80px;pointer-events:none;
+  position:absolute;width:500px;height:400px;
+  background:radial-gradient(ellipse,rgba(42,157,143,.04) 0%,transparent 65%);
+  bottom:-60px;left:-80px;pointer-events:none;
 }
 .hero-inner{position:relative;z-index:2;max-width:1100px}
+
 .hero-eyebrow{
-font-family:var(–fm);font-size:10px;letter-spacing:.5em;
-text-transform:uppercase;color:#C9A84C;
-display:flex;align-items:center;gap:14px;margin-bottom:32px;
-opacity:0;animation:fu .8s .2s forwards;
+  font-family:var(--fm);font-size:10px;letter-spacing:.5em;
+  text-transform:uppercase;color:#C9A84C;
+  display:flex;align-items:center;gap:14px;margin-bottom:32px;
+  opacity:0;animation:fu .8s .2s forwards;
 }
-.hero-eyebrow::before{content:’’;width:32px;height:1px;background:#C9A84C}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:#C9A84C}
+
 .hero-name{
-font-family:var(–fd);
-font-size:clamp(80px,13vw,200px);
-font-weight:300;line-height:.88;letter-spacing:-.02em;
-color:#F0F4F8;
-opacity:0;animation:fu .9s .35s forwards;
+  font-family:var(--fd);
+  font-size:clamp(72px,13vw,200px);
+  font-weight:300;line-height:.88;letter-spacing:-.02em;
+  color:#F0F4F8;
+  opacity:0;animation:fu .9s .35s forwards;
 }
 .hero-name .k{color:#C9A84C}
+
 .hero-taglines{
-margin-top:44px;
-opacity:0;animation:fu .8s .55s forwards;
+  margin-top:44px;
+  opacity:0;animation:fu .8s .55s forwards;
 }
 .tl1{
-font-family:var(–fb);font-weight:600;
-font-size:clamp(20px,3.2vw,48px);
-letter-spacing:.06em;text-transform:uppercase;
-color:#F0F4F8;line-height:1;display:block;
+  font-family:var(--fb);font-weight:600;
+  font-size:clamp(18px,3.2vw,48px);
+  letter-spacing:.06em;text-transform:uppercase;
+  color:#F0F4F8;line-height:1;display:block;
 }
 .tl2{
-font-family:var(–fb);font-weight:600;
-font-size:clamp(20px,3.2vw,48px);
-letter-spacing:.06em;text-transform:uppercase;
-color:#C9A84C;line-height:1;display:block;margin-top:4px;
+  font-family:var(--fb);font-weight:600;
+  font-size:clamp(18px,3.2vw,48px);
+  letter-spacing:.06em;text-transform:uppercase;
+  color:#C9A84C;line-height:1;display:block;margin-top:4px;
 }
 .tl3{
-font-family:var(–fd);font-style:italic;font-weight:300;
-font-size:clamp(15px,1.6vw,22px);
-color:#8A9BB0;letter-spacing:.06em;
-display:block;margin-top:16px;
+  font-family:var(--fd);font-style:italic;font-weight:300;
+  font-size:clamp(14px,1.6vw,22px);
+  color:#8A9BB0;letter-spacing:.06em;
+  display:block;margin-top:16px;
 }
+
 .hero-desc{
-max-width:500px;font-size:16px;color:#8A9BB0;
-line-height:1.85;margin-top:40px;
-opacity:0;animation:fu .8s .7s forwards;
+  max-width:500px;font-size:15px;color:#8A9BB0;
+  line-height:1.85;margin-top:40px;
+  opacity:0;animation:fu .8s .7s forwards;
 }
+
 .hero-actions{
-display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;
-opacity:0;animation:fu .8s .85s forwards;
+  display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;
+  opacity:0;animation:fu .8s .85s forwards;
 }
 .btn-gold{
-font-family:var(–fm);font-size:9px;letter-spacing:.25em;
-text-transform:uppercase;font-weight:700;
-background:#C9A84C;color:#080A0F;
-padding:15px 36px;text-decoration:none;
-transition:all .25s;display:inline-block;
+  font-family:var(--fm);font-size:9px;letter-spacing:.25em;
+  text-transform:uppercase;font-weight:700;
+  background:#C9A84C;color:#080A0F;
+  padding:15px 36px;text-decoration:none;
+  transition:all .25s;display:inline-block;
 }
 .btn-gold:hover{background:#E8C97A;transform:translateY(-2px)}
 .btn-ghost{
-font-family:var(–fm);font-size:9px;letter-spacing:.25em;
-text-transform:uppercase;color:#8A9BB0;
-border:1px solid #1E2A3A;padding:15px 36px;
-text-decoration:none;transition:all .25s;display:inline-block;
+  font-family:var(--fm);font-size:9px;letter-spacing:.25em;
+  text-transform:uppercase;color:#8A9BB0;
+  border:1px solid #1E2A3A;padding:15px 36px;
+  text-decoration:none;transition:all .25s;display:inline-block;
 }
 .btn-ghost:hover{border-color:#8A9BB0;color:#F0F4F8}
+
 .hero-bottom{
-display:flex;gap:56px;margin-top:88px;padding-top:40px;
-border-top:1px solid rgba(201,168,76,.1);
-opacity:0;animation:fu .8s 1s forwards;
-flex-wrap:wrap;
+  display:flex;gap:56px;margin-top:88px;padding-top:40px;
+  border-top:1px solid rgba(201,168,76,.1);
+  opacity:0;animation:fu .8s 1s forwards;
+  flex-wrap:wrap;
 }
 .hero-stat-lbl{
-font-family:var(–fm);font-size:9px;letter-spacing:.4em;
-text-transform:uppercase;color:#8A6B2A;margin-bottom:8px;
+  font-family:var(--fm);font-size:9px;letter-spacing:.4em;
+  text-transform:uppercase;color:#8A6B2A;margin-bottom:8px;
 }
 .hero-stat-val{
-font-family:var(–fd);font-size:34px;font-weight:300;color:#F0F4F8;
+  font-family:var(--fd);font-size:clamp(22px,3vw,34px);
+  font-weight:300;color:#F0F4F8;
 }
+
 @keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── SECTION BASE ── */
+/* ══ SECTION BASE ══ */
 .sec{position:relative;padding:112px 56px;z-index:1}
 .sec-label{
-font-family:var(–fm);font-size:9px;letter-spacing:.5em;
-text-transform:uppercase;color:#C9A84C;
-display:flex;align-items:center;gap:14px;margin-bottom:20px;
+  font-family:var(--fm);font-size:9px;letter-spacing:.5em;
+  text-transform:uppercase;color:#C9A84C;
+  display:flex;align-items:center;gap:14px;margin-bottom:20px;
 }
-.sec-label::before{content:’’;width:24px;height:1px;background:#C9A84C}
+.sec-label::before{content:'';width:24px;height:1px;background:#C9A84C}
 .sec-title{
-font-family:var(–fd);font-size:clamp(36px,5vw,64px);
-font-weight:300;color:#F0F4F8;line-height:1.05;margin-bottom:20px;
+  font-family:var(--fd);font-size:clamp(32px,5vw,64px);
+  font-weight:300;color:#F0F4F8;line-height:1.05;margin-bottom:20px;
 }
-.sec-sub{font-size:16px;color:#8A9BB0;max-width:540px;line-height:1.85}
-.hr{width:calc(100% - 112px);height:1px;margin:0 56px;
-background:linear-gradient(to right,transparent,#1E2A3A,transparent)}
+.sec-sub{font-size:15px;color:#8A9BB0;max-width:540px;line-height:1.85}
 
-/* ── PROBLEM ── */
+.hr{
+  width:calc(100% - 112px);height:1px;margin:0 56px;
+  background:linear-gradient(to right,transparent,#1E2A3A,transparent);
+}
+
+/* ══ PROBLEM ══ */
 .prob-grid{
-display:grid;grid-template-columns:repeat(3,1fr);
-gap:1px;background:#1E2A3A;
-border:1px solid #1E2A3A;margin-top:64px;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:#1E2A3A;
+  border:1px solid #1E2A3A;margin-top:64px;
 }
 .prob-cell{
-background:#0B1120;padding:48px 40px;
-position:relative;overflow:hidden;
+  background:#0B1120;padding:48px 40px;
+  position:relative;overflow:hidden;
 }
 .prob-cell::after{
-content:’’;position:absolute;bottom:0;left:0;right:0;
-height:1px;background:linear-gradient(to right,#C9A84C,transparent);
-transform:scaleX(0);transform-origin:left;transition:transform .4s;
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:1px;background:linear-gradient(to right,#C9A84C,transparent);
+  transform:scaleX(0);transform-origin:left;transition:transform .4s;
 }
 .prob-cell:hover::after{transform:scaleX(.6)}
 .prob-n{
-font-family:var(–fd);font-size:80px;font-weight:300;
-color:rgba(201,168,76,.07);line-height:1;margin-bottom:12px;
+  font-family:var(--fd);font-size:80px;font-weight:300;
+  color:rgba(201,168,76,.07);line-height:1;margin-bottom:12px;
 }
 .prob-title{
-font-family:var(–fd);font-size:22px;font-weight:300;
-color:#F0F4F8;margin-bottom:14px;
+  font-family:var(--fd);font-size:22px;font-weight:300;
+  color:#F0F4F8;margin-bottom:14px;
 }
 .prob-desc{font-size:14px;color:#8A9BB0;line-height:1.85}
 
-/* ── PRODUCTS ── */
+/* ══ PRODUCTS ══ */
 .prod-header{margin-bottom:72px}
 .prod-grid{
-display:grid;grid-template-columns:repeat(3,1fr);
-gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;
 }
 .prod-card{
-background:#111827;padding:44px 36px;
-position:relative;overflow:hidden;transition:background .3s;
-text-decoration:none;display:block;
+  background:#111827;padding:44px 36px;
+  position:relative;overflow:hidden;transition:background .3s;
+  text-decoration:none;display:block;color:inherit;
 }
 .prod-card::before{
-content:’’;position:absolute;top:0;left:0;right:0;height:2px;
-background:var(–pc,#8A6B2A);
-transform:scaleX(0);transform-origin:left;transition:transform .4s;
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--pc,#8A6B2A);
+  transform:scaleX(0);transform-origin:left;transition:transform .4s;
 }
-.prod-card:hover{background:rgba(30,42,58,.4)}
+.prod-card:hover{background:rgba(30,42,58,.5)}
 .prod-card:hover::before{transform:scaleX(1)}
-.prod-card.active{background:rgba(201,168,76,.04);border-bottom:none}
+.prod-card.active{background:rgba(201,168,76,.04)}
 .prod-card.active::before{transform:scaleX(1)}
 .prod-card.teal-card{background:rgba(42,157,143,.03)}
-.prod-card.teal-card::before{background:var(–teal)}
+.prod-card.teal-card::before{background:var(--teal)}
 .prod-card.wide{grid-column:span 3}
+
 .prod-tag{
-font-family:var(–fm);font-size:8px;letter-spacing:.35em;
-text-transform:uppercase;color:var(–pc,#8A6B2A);
-margin-bottom:20px;
+  font-family:var(--fm);font-size:8px;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--pc,#8A6B2A);
+  margin-bottom:20px;
 }
-.prod-ico{
-width:44px;height:44px;margin-bottom:24px;
-}
+.prod-ico{width:44px;height:44px;margin-bottom:24px;}
 .prod-name{
-font-family:var(–fd);font-size:26px;font-weight:300;
-color:#F0F4F8;margin-bottom:6px;
+  font-family:var(--fd);font-size:26px;font-weight:300;
+  color:#F0F4F8;margin-bottom:6px;
 }
-.prod-name em{font-style:italic;color:var(–pc,#C9A84C)}
+.prod-name em{font-style:italic;color:var(--pc,#C9A84C)}
 .prod-line{
-font-family:var(–fm);font-size:9px;letter-spacing:.25em;
-text-transform:uppercase;color:var(–pc,#8A6B2A);
-margin-bottom:16px;opacity:.7;
+  font-family:var(--fm);font-size:9px;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--pc,#8A6B2A);
+  margin-bottom:16px;opacity:.7;
 }
 .prod-desc{font-size:13px;color:#8A9BB0;line-height:1.85;margin-bottom:20px}
 .prod-pills{display:flex;flex-wrap:wrap;gap:7px}
 .prod-pill{
-font-family:var(–fm);font-size:8px;letter-spacing:.15em;
-text-transform:uppercase;color:#8A9BB0;
-border:1px solid #1E2A3A;padding:4px 10px;
+  font-family:var(--fm);font-size:8px;letter-spacing:.15em;
+  text-transform:uppercase;color:#8A9BB0;
+  border:1px solid #1E2A3A;padding:4px 10px;
 }
 .prod-pill.gold{color:#C9A84C;border-color:#8A6B2A}
 .prod-pill.teal{color:#2A9D8F;border-color:#1A6B63}
 .prod-arrow{
-display:inline-flex;align-items:center;gap:8px;margin-top:20px;
-font-family:var(–fm);font-size:8px;letter-spacing:.25em;
-text-transform:uppercase;color:#C9A84C;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;margin-top:20px;
+  font-family:var(--fm);font-size:8px;letter-spacing:.25em;
+  text-transform:uppercase;color:#C9A84C;
 }
-.prod-arrow::after{content:‘→’;transition:transform .2s}
+.prod-arrow::after{content:'→';transition:transform .2s}
 .prod-card:hover .prod-arrow::after{transform:translateX(4px)}
 
-/* ── LEX FEATURE STRIP ── */
+/* ══ LEX STRIP ══ */
 .lex-strip{
-background:#0B1120;border:1px solid rgba(201,168,76,.15);
-padding:56px;margin-top:2px;
-display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;
-align-items:center;
+  background:#0B1120;border:1px solid rgba(201,168,76,.15);
+  padding:56px;margin-top:2px;
+  display:grid;grid-template-columns:1fr 1fr auto;
+  gap:48px;align-items:center;
 }
 .lex-strip-title{
-font-family:var(–fd);font-size:clamp(28px,3.5vw,44px);
-font-weight:300;color:#F0F4F8;line-height:1.1;
+  font-family:var(--fd);font-size:clamp(24px,3.5vw,44px);
+  font-weight:300;color:#F0F4F8;line-height:1.1;
 }
 .lex-strip-title em{font-style:italic;color:#C9A84C}
 .lex-strip-desc{font-size:14px;color:#8A9BB0;line-height:1.85}
-.lex-strip-cta{grid-column:3;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.lex-strip-cta{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
 
-/* ── ABOUT ── */
+/* ══ ABOUT ══ */
 .about-grid{
-display:grid;grid-template-columns:1fr 1fr;
-gap:88px;align-items:start;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:88px;align-items:start;
 }
 .about-body p{font-size:16px;color:#8A9BB0;line-height:1.9;margin-bottom:20px}
 .about-body p strong{color:#F0F4F8;font-weight:500}
 .about-body p em{color:#C9A84C;font-style:italic}
+
 .num-grid{
-display:grid;grid-template-columns:1fr 1fr;
-gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;
 }
 .num-cell{background:#111827;padding:36px}
 .num-val{
-font-family:var(–fd);font-size:44px;font-weight:300;
-color:#C9A84C;line-height:1;margin-bottom:8px;
+  font-family:var(--fd);font-size:clamp(32px,4vw,44px);
+  font-weight:300;color:#C9A84C;line-height:1;margin-bottom:8px;
 }
 .num-lbl{
-font-family:var(–fm);font-size:9px;letter-spacing:.35em;
-text-transform:uppercase;color:#8A9BB0;
+  font-family:var(--fm);font-size:9px;letter-spacing:.35em;
+  text-transform:uppercase;color:#8A9BB0;
 }
 .origin-box{
-margin-top:24px;padding:28px 32px;
-background:#0B1120;border:1px solid #1E2A3A;
+  margin-top:24px;padding:28px 32px;
+  background:#0B1120;border:1px solid #1E2A3A;
 }
 .origin-lbl{
-font-family:var(–fm);font-size:9px;letter-spacing:.4em;
-text-transform:uppercase;color:#C9A84C;margin-bottom:10px;
+  font-family:var(--fm);font-size:9px;letter-spacing:.4em;
+  text-transform:uppercase;color:#C9A84C;margin-bottom:10px;
 }
 .origin-val{
-font-family:var(–fd);font-size:20px;font-weight:300;color:#F0F4F8;
+  font-family:var(--fd);font-size:20px;font-weight:300;color:#F0F4F8;
 }
 .origin-sub{
-font-family:var(–fm);font-size:9px;color:#2D3F55;
-letter-spacing:.2em;margin-top:6px;
+  font-family:var(--fm);font-size:9px;color:#2D3F55;
+  letter-spacing:.2em;margin-top:6px;
 }
 
-/* ── APPROACH ── */
+/* ══ APPROACH ══ */
 .approach-grid{
-display:grid;grid-template-columns:repeat(3,1fr);
-gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;
-margin-top:64px;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;
+  margin-top:64px;
 }
 .approach-cell{background:#0B1120;padding:44px 36px}
 .approach-n{
-font-family:var(–fd);font-size:72px;font-weight:300;
-color:rgba(201,168,76,.07);line-height:1;margin-bottom:16px;
+  font-family:var(--fd);font-size:72px;font-weight:300;
+  color:rgba(201,168,76,.07);line-height:1;margin-bottom:16px;
 }
 .approach-title{
-font-family:var(–fd);font-size:21px;font-weight:300;
-color:#F0F4F8;margin-bottom:12px;
+  font-family:var(--fd);font-size:21px;font-weight:300;
+  color:#F0F4F8;margin-bottom:12px;
 }
 .approach-desc{font-size:14px;color:#8A9BB0;line-height:1.85}
 
-/* ── CONTACT ── */
+/* ══ CONTACT ══ */
 .contact-wrap{text-align:center;max-width:680px;margin:0 auto}
 .contact-title{
-font-family:var(–fd);font-size:clamp(44px,7vw,88px);
-font-weight:300;color:#F0F4F8;line-height:.95;margin-bottom:24px;
+  font-family:var(--fd);font-size:clamp(40px,7vw,88px);
+  font-weight:300;color:#F0F4F8;line-height:.95;margin-bottom:24px;
 }
 .contact-title em{font-style:italic;color:#C9A84C}
 .contact-sub{font-size:16px;color:#8A9BB0;line-height:1.85;margin-bottom:48px}
 .contact-email{
-display:inline-block;font-family:var(–fd);font-size:22px;
-font-weight:300;color:#C9A84C;text-decoration:none;
-border-bottom:1px solid #8A6B2A;padding-bottom:4px;
-transition:color .2s;margin-bottom:14px;
+  display:inline-block;font-family:var(--fd);font-size:22px;
+  font-weight:300;color:#C9A84C;text-decoration:none;
+  border-bottom:1px solid #8A6B2A;padding-bottom:4px;
+  transition:color .2s;margin-bottom:14px;
 }
 .contact-email:hover{color:#E8C97A}
 .contact-loc{
-font-family:var(–fm);font-size:9px;letter-spacing:.3em;
-text-transform:uppercase;color:#2D3F55;
-display:block;margin-top:12px;
+  font-family:var(--fm);font-size:9px;letter-spacing:.3em;
+  text-transform:uppercase;color:#2D3F55;
+  display:block;margin-top:12px;
 }
 .cal-box{
-margin-top:48px;padding:40px;background:#0B1120;
-border:1px solid #1E2A3A;text-align:left;
+  margin-top:48px;padding:40px;background:#0B1120;
+  border:1px solid #1E2A3A;text-align:left;
 }
 .cal-label{
-font-family:var(–fm);font-size:9px;letter-spacing:.4em;
-text-transform:uppercase;color:#C9A84C;margin-bottom:16px;
+  font-family:var(--fm);font-size:9px;letter-spacing:.4em;
+  text-transform:uppercase;color:#C9A84C;margin-bottom:16px;
 }
 .cal-desc{font-size:14px;color:#8A9BB0;line-height:1.8;margin-bottom:24px}
 .cal-slots{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
 .cal-slot{
-font-family:var(–fm);font-size:9px;letter-spacing:.2em;
-text-transform:uppercase;color:#8A9BB0;
-border:1px solid #1E2A3A;padding:8px 16px;
-cursor:pointer;transition:all .2s;
+  font-family:var(--fm);font-size:9px;letter-spacing:.2em;
+  text-transform:uppercase;color:#8A9BB0;
+  border:1px solid #1E2A3A;padding:8px 16px;
+  cursor:pointer;transition:all .2s;
 }
 .cal-slot:hover,.cal-slot.sel{border-color:#C9A84C;color:#C9A84C}
 
-/* ── FOOTER ── */
+/* ══ FOOTER ══ */
 footer{
-background:#080A0F;border-top:1px solid #1E2A3A;
-padding:36px 56px;
-display:flex;justify-content:space-between;align-items:center;
-flex-wrap:wrap;gap:16px;
+  background:#080A0F;border-top:1px solid #1E2A3A;
+  padding:36px 56px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:16px;
 }
-.ft-logo{font-family:var(–fd);font-size:17px;font-weight:300;color:#F0F4F8}
+.ft-logo{font-family:var(--fd);font-size:17px;font-weight:300;color:#F0F4F8}
 .ft-logo span{color:#C9A84C}
-.ft-links{display:flex;gap:32px}
+.ft-links{display:flex;gap:32px;flex-wrap:wrap}
 .ft-links a{
-font-family:var(–fm);font-size:9px;letter-spacing:.2em;
-text-transform:uppercase;color:#2D3F55;text-decoration:none;
-transition:color .2s;
+  font-family:var(--fm);font-size:9px;letter-spacing:.2em;
+  text-transform:uppercase;color:#2D3F55;text-decoration:none;
+  transition:color .2s;
 }
 .ft-links a:hover{color:#8A9BB0}
-.ft-copy{font-family:var(–fm);font-size:9px;letter-spacing:.2em;color:#1E2A3A}
+.ft-copy{font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:#1E2A3A}
 
-/* ── SCROLL REVEAL ── */
+/* ══ REVEAL ══ */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.on{opacity:1;transform:none}
 
-/* ── RESPONSIVE ── */
-@media(max-width:960px){
-nav{padding:0 24px}
-.nav-links{display:none}
-.sec{padding:80px 24px}
-.hero{padding:120px 24px 72px}
-.prob-grid,.prod-grid,.approach-grid{grid-template-columns:1fr}
-.prod-card.wide{grid-column:span 1}
-.about-grid{grid-template-columns:1fr;gap:48px}
-.lex-strip{grid-template-columns:1fr;gap:28px}
-.lex-strip-cta{align-items:flex-start}
-footer{flex-direction:column;padding:28px 24px;text-align:center}
-.hr{width:calc(100% - 48px);margin:0 24px}
+/* ══ RESPONSIVE ══ */
+@media(max-width:1024px){
+  .prod-grid{grid-template-columns:1fr 1fr}
+  .prod-card.wide{grid-column:span 2}
+  .lex-strip{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+  .lex-strip-cta{grid-column:span 2;flex-direction:row;align-items:center}
 }
+
+@media(max-width:960px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .nav-toggle{display:flex}
+
+  .sec{padding:80px 24px}
+  .hero{padding:120px 24px 72px}
+  .hr{width:calc(100% - 48px);margin:0 24px}
+
+  .prob-grid{grid-template-columns:1fr}
+  .approach-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:48px}
+
+  .lex-strip{
+    grid-template-columns:1fr;gap:28px;padding:40px 32px;
+  }
+  .lex-strip-cta{flex-direction:row;align-items:flex-start;gap:12px}
+
+  footer{flex-direction:column;padding:28px 24px;text-align:center;gap:24px}
+  .ft-links{justify-content:center}
+}
+
+@media(max-width:768px){
+  .prod-grid{grid-template-columns:1fr}
+  .prod-card.wide{grid-column:span 1}
+  .num-grid{grid-template-columns:1fr 1fr}
+  .hero-bottom{gap:28px}
+}
+
 @media(max-width:600px){
-.num-grid{grid-template-columns:1fr}
-.hero-bottom{gap:32px}
+  .num-grid{grid-template-columns:1fr 1fr}
+  .hero-bottom{gap:24px;padding-top:28px;margin-top:56px}
+  .hero-bottom > div{min-width:calc(50% - 12px)}
+  .cal-box{padding:28px 24px}
+  .cal-slots{flex-direction:column}
+  .lex-strip-cta{flex-direction:column}
 }
 </style>
-
 </head>
-<body style="background:#080A0F !important;background-color:#080A0F !important;color:#F0F4F8;">
+<body>
 
 <!-- NAV -->
-
 <nav>
   <a href="index.html" class="nav-logo"><span>K</span>AIROS</a>
   <ul class="nav-links">
@@ -438,10 +517,21 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Book a Demo</a>
+  <button class="nav-toggle" aria-label="Toggle menu" id="navToggle">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
+<!-- MOBILE MENU -->
+<div class="nav-mobile" id="navMobile">
+  <a href="#products" class="nav-mobile-link">Products</a>
+  <a href="#about" class="nav-mobile-link">About</a>
+  <a href="kairos_lex.html" class="nav-mobile-link">Kairos Lex</a>
+  <a href="#contact" class="nav-mobile-link">Contact</a>
+  <a href="#contact" class="nav-cta nav-cta-m">Book a Demo</a>
+</div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow-a"></div>
@@ -478,7 +568,7 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
       </div>
       <div>
         <div class="hero-stat-lbl">Founded</div>
-        <div class="hero-stat-val">Maputo, 2025</div>
+        <div class="hero-stat-val">Maputo 2025</div>
       </div>
     </div>
   </div>
@@ -487,7 +577,6 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 <div class="hr"></div>
 
 <!-- PROBLEM -->
-
 <section class="sec reveal" id="problem" style="background:#0B1120">
   <div class="sec-label">The Problem</div>
   <h2 class="sec-title">Compliance costs<br>too much time.</h2>
@@ -514,7 +603,6 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 <div class="hr"></div>
 
 <!-- PRODUCTS -->
-
 <section class="sec reveal" id="products">
   <div class="prod-header">
     <div class="sec-label">Products</div>
@@ -524,141 +612,138 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 
   <div class="prod-grid">
 
-```
-<a href="#" class="prod-card reveal" style="--pc:#8A9BB0">
-  <div class="prod-tag">01 · Infrastructure</div>
-  <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-    <rect x="3" y="3" width="38" height="38" stroke="#8A9BB0" stroke-width=".6" opacity=".3"/>
-    <circle cx="22" cy="22" r="7" stroke="#8A9BB0" stroke-width="1.2"/>
-    <line x1="22" y1="3" x2="22" y2="15" stroke="#8A9BB0" stroke-width="1"/>
-    <line x1="22" y1="29" x2="22" y2="41" stroke="#8A9BB0" stroke-width="1"/>
-    <line x1="3" y1="22" x2="15" y2="22" stroke="#8A9BB0" stroke-width="1"/>
-    <line x1="29" y1="22" x2="41" y2="22" stroke="#8A9BB0" stroke-width="1"/>
-    <circle cx="22" cy="22" r="2" fill="#8A9BB0"/>
-  </svg>
-  <div class="prod-name">Kairos <em>Core</em></div>
-  <div class="prod-line">Data Infrastructure</div>
-  <p class="prod-desc">Pipelines, ETL and direct integration with core banking systems. The foundation every other product runs on.</p>
-  <div class="prod-pills">
-    <span class="prod-pill">ETL</span><span class="prod-pill">Pipelines</span>
-    <span class="prod-pill">SQL Server</span><span class="prod-pill">Real-time</span>
-  </div>
-</a>
+    <a href="#" class="prod-card reveal" style="--pc:#8A9BB0">
+      <div class="prod-tag">01 · Infrastructure</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
+        <rect x="3" y="3" width="38" height="38" stroke="#8A9BB0" stroke-width=".6" opacity=".3"/>
+        <circle cx="22" cy="22" r="7" stroke="#8A9BB0" stroke-width="1.2"/>
+        <line x1="22" y1="3" x2="22" y2="15" stroke="#8A9BB0" stroke-width="1"/>
+        <line x1="22" y1="29" x2="22" y2="41" stroke="#8A9BB0" stroke-width="1"/>
+        <line x1="3" y1="22" x2="15" y2="22" stroke="#8A9BB0" stroke-width="1"/>
+        <line x1="29" y1="22" x2="41" y2="22" stroke="#8A9BB0" stroke-width="1"/>
+        <circle cx="22" cy="22" r="2" fill="#8A9BB0"/>
+      </svg>
+      <div class="prod-name">Kairos <em>Core</em></div>
+      <div class="prod-line">Data Infrastructure</div>
+      <p class="prod-desc">Pipelines, ETL and direct integration with core banking systems. The foundation every other product runs on.</p>
+      <div class="prod-pills">
+        <span class="prod-pill">ETL</span><span class="prod-pill">Pipelines</span>
+        <span class="prod-pill">SQL Server</span><span class="prod-pill">Real-time</span>
+      </div>
+    </a>
 
-<a href="#" class="prod-card reveal" style="--pc:#E74C3C">
-  <div class="prod-tag">02 · Credit & Risk</div>
-  <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-    <path d="M6 38 L14 22 L22 30 L30 14 L38 6" stroke="#E74C3C" stroke-width="1.4" stroke-linecap="round"/>
-    <circle cx="6" cy="38" r="2" fill="#E74C3C"/>
-    <circle cx="38" cy="6" r="2" fill="#E74C3C"/>
-    <rect x="2" y="2" width="40" height="40" stroke="#E74C3C" stroke-width=".4" opacity=".2"/>
-  </svg>
-  <div class="prod-name">Kairos <em>Risk</em></div>
-  <div class="prod-line">Risk & Credit Analytics</div>
-  <p class="prod-desc">Pre-NPL prediction, credit scoring and Basel III capital adequacy. Predict default before it happens.</p>
-  <div class="prod-pills">
-    <span class="prod-pill">Basel III</span><span class="prod-pill">IFRS 9</span>
-    <span class="prod-pill">Pre-NPL</span><span class="prod-pill">LightGBM</span>
-  </div>
-</a>
+    <a href="#" class="prod-card reveal" style="--pc:#E74C3C">
+      <div class="prod-tag">02 · Credit & Risk</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
+        <path d="M6 38 L14 22 L22 30 L30 14 L38 6" stroke="#E74C3C" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="6" cy="38" r="2" fill="#E74C3C"/>
+        <circle cx="38" cy="6" r="2" fill="#E74C3C"/>
+        <rect x="2" y="2" width="40" height="40" stroke="#E74C3C" stroke-width=".4" opacity=".2"/>
+      </svg>
+      <div class="prod-name">Kairos <em>Risk</em></div>
+      <div class="prod-line">Risk & Credit Analytics</div>
+      <p class="prod-desc">Pre-NPL prediction, credit scoring and Basel III capital adequacy. Predict default before it happens.</p>
+      <div class="prod-pills">
+        <span class="prod-pill">Basel III</span><span class="prod-pill">IFRS 9</span>
+        <span class="prod-pill">Pre-NPL</span><span class="prod-pill">LightGBM</span>
+      </div>
+    </a>
 
-<a href="kairos_lex.html" class="prod-card active reveal" style="--pc:#C9A84C">
-  <div class="prod-tag">03 · Flagship · Regulatory</div>
-  <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-    <path d="M22 3 L40 11 L40 27 C40 36 32 42 22 44 C12 42 4 36 4 27 L4 11 Z" stroke="#C9A84C" stroke-width="1.4" fill="rgba(201,168,76,.05)"/>
-    <line x1="14" y1="18" x2="30" y2="18" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/>
-    <line x1="14" y1="24" x2="30" y2="24" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/>
-    <line x1="14" y1="30" x2="24" y2="30" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/>
-    <circle cx="22" cy="12" r="1.8" fill="#C9A84C"/>
-  </svg>
-  <div class="prod-name">Kairos <em>Lex</em></div>
-  <div class="prod-line">Regulatory Reporting Engine</div>
-  <p class="prod-desc">Automated STR, CTR, IFT, EFT reports for GIFIM and BdM. goAML 5.1 XML generated daily. Zero manual intervention.</p>
-  <div class="prod-pills">
-    <span class="prod-pill gold">goAML 5.1</span><span class="prod-pill gold">GIFIM</span>
-    <span class="prod-pill gold">STR · CTR</span><span class="prod-pill gold">BdM</span>
-  </div>
-  <div class="prod-arrow">Full product page</div>
-</a>
+    <a href="kairos_lex.html" class="prod-card active reveal" style="--pc:#C9A84C">
+      <div class="prod-tag">03 · Flagship · Regulatory</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
+        <path d="M22 3 L40 11 L40 27 C40 36 32 42 22 44 C12 42 4 36 4 27 L4 11 Z" stroke="#C9A84C" stroke-width="1.4" fill="rgba(201,168,76,.05)"/>
+        <line x1="14" y1="18" x2="30" y2="18" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="14" y1="24" x2="30" y2="24" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="14" y1="30" x2="24" y2="30" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/>
+        <circle cx="22" cy="12" r="1.8" fill="#C9A84C"/>
+      </svg>
+      <div class="prod-name">Kairos <em>Lex</em></div>
+      <div class="prod-line">Regulatory Reporting Engine</div>
+      <p class="prod-desc">Automated STR, CTR, IFT, EFT reports for GIFIM and BdM. goAML 5.1 XML generated daily. Zero manual intervention.</p>
+      <div class="prod-pills">
+        <span class="prod-pill gold">goAML 5.1</span><span class="prod-pill gold">GIFIM</span>
+        <span class="prod-pill gold">STR · CTR</span><span class="prod-pill gold">BdM</span>
+      </div>
+      <div class="prod-arrow">Full product page</div>
+    </a>
 
-<a href="#" class="prod-card reveal" style="--pc:#F39C12">
-  <div class="prod-tag">04 · Monitoring</div>
-  <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-    <circle cx="22" cy="22" r="17" stroke="#F39C12" stroke-width=".6" opacity=".3"/>
-    <circle cx="22" cy="22" r="9" stroke="#F39C12" stroke-width="1.2"/>
-    <circle cx="22" cy="22" r="2" fill="#F39C12"/>
-    <line x1="22" y1="5" x2="22" y2="13" stroke="#F39C12" stroke-width="1"/>
-    <line x1="5" y1="22" x2="13" y2="22" stroke="#F39C12" stroke-width="1" opacity=".5"/>
-    <line x1="31" y1="22" x2="39" y2="22" stroke="#F39C12" stroke-width="1" opacity=".5"/>
-  </svg>
-  <div class="prod-name">Kairos <em>Vigil</em></div>
-  <div class="prod-line">Model Monitoring</div>
-  <p class="prod-desc">24/7 monitoring of production models. PSI drift detection, performance degradation alerts and automated reports.</p>
-  <div class="prod-pills">
-    <span class="prod-pill">Model Drift</span><span class="prod-pill">PSI</span>
-    <span class="prod-pill">Alerts</span><span class="prod-pill">MLOps</span>
-  </div>
-</a>
+    <a href="#" class="prod-card reveal" style="--pc:#F39C12">
+      <div class="prod-tag">04 · Monitoring</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
+        <circle cx="22" cy="22" r="17" stroke="#F39C12" stroke-width=".6" opacity=".3"/>
+        <circle cx="22" cy="22" r="9" stroke="#F39C12" stroke-width="1.2"/>
+        <circle cx="22" cy="22" r="2" fill="#F39C12"/>
+        <line x1="22" y1="5" x2="22" y2="13" stroke="#F39C12" stroke-width="1"/>
+        <line x1="5" y1="22" x2="13" y2="22" stroke="#F39C12" stroke-width="1" opacity=".5"/>
+        <line x1="31" y1="22" x2="39" y2="22" stroke="#F39C12" stroke-width="1" opacity=".5"/>
+      </svg>
+      <div class="prod-name">Kairos <em>Vigil</em></div>
+      <div class="prod-line">Model Monitoring</div>
+      <p class="prod-desc">24/7 monitoring of production models. PSI drift detection, performance degradation alerts and automated reports.</p>
+      <div class="prod-pills">
+        <span class="prod-pill">Model Drift</span><span class="prod-pill">PSI</span>
+        <span class="prod-pill">Alerts</span><span class="prod-pill">MLOps</span>
+      </div>
+    </a>
 
-<a href="#" class="prod-card reveal" style="--pc:#2A9D8F">
-  <div class="prod-tag">05 · Energy</div>
-  <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-    <path d="M22 3 C10 3 3 10 3 22 C3 34 10 41 22 41 C34 41 41 34 41 22" stroke="#2A9D8F" stroke-width="1.4" stroke-linecap="round"/>
-    <path d="M30 3 L41 3 L41 14" stroke="#2A9D8F" stroke-width="1.4" stroke-linecap="round"/>
-    <line x1="22" y1="22" x2="41" y2="3" stroke="#2A9D8F" stroke-width="1" opacity=".5"/>
-  </svg>
-  <div class="prod-name">Kairos <em>Pulse</em></div>
-  <div class="prod-line">Energy & Commodities</div>
-  <p class="prod-desc">Demand forecasting and price prediction for energy and commodities. Built for the Mozambican market.</p>
-  <div class="prod-pills">
-    <span class="prod-pill">Forecasting</span><span class="prod-pill">Gas</span>
-    <span class="prod-pill">Electricity</span><span class="prod-pill">Time Series</span>
-  </div>
-</a>
+    <a href="#" class="prod-card reveal" style="--pc:#2A9D8F">
+      <div class="prod-tag">05 · Energy</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
+        <path d="M22 3 C10 3 3 10 3 22 C3 34 10 41 22 41 C34 41 41 34 41 22" stroke="#2A9D8F" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M30 3 L41 3 L41 14" stroke="#2A9D8F" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="22" y1="22" x2="41" y2="3" stroke="#2A9D8F" stroke-width="1" opacity=".5"/>
+      </svg>
+      <div class="prod-name">Kairos <em>Pulse</em></div>
+      <div class="prod-line">Energy & Commodities</div>
+      <p class="prod-desc">Demand forecasting and price prediction for energy and commodities. Built for the Mozambican market.</p>
+      <div class="prod-pills">
+        <span class="prod-pill">Forecasting</span><span class="prod-pill">Gas</span>
+        <span class="prod-pill">Electricity</span><span class="prod-pill">Time Series</span>
+      </div>
+    </a>
 
-<a href="#" class="prod-card reveal" style="--pc:#8A6B2A">
-  <div class="prod-tag">06 · Generative AI</div>
-  <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-    <circle cx="10" cy="22" r="5" stroke="#8A6B2A" stroke-width="1.2"/>
-    <circle cx="34" cy="10" r="5" stroke="#8A6B2A" stroke-width="1.2"/>
-    <circle cx="34" cy="34" r="5" stroke="#8A6B2A" stroke-width="1.2"/>
-    <line x1="15" y1="19" x2="29" y2="13" stroke="#8A6B2A" stroke-width=".9" opacity=".6"/>
-    <line x1="15" y1="25" x2="29" y2="31" stroke="#8A6B2A" stroke-width=".9" opacity=".6"/>
-    <circle cx="10" cy="22" r="1.8" fill="#8A6B2A"/>
-  </svg>
-  <div class="prod-name">Kairos <em>Gnosis</em></div>
-  <div class="prod-line">Knowledge & GenAI</div>
-  <p class="prod-desc">LLMs, knowledge graphs and automated narrative reports. From raw numbers to boardroom-ready intelligence.</p>
-  <div class="prod-pills">
-    <span class="prod-pill">LLM</span><span class="prod-pill">RAG</span>
-    <span class="prod-pill">Knowledge Graph</span><span class="prod-pill">NLP</span>
-  </div>
-</a>
+    <a href="#" class="prod-card reveal" style="--pc:#8A6B2A">
+      <div class="prod-tag">06 · Generative AI</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
+        <circle cx="10" cy="22" r="5" stroke="#8A6B2A" stroke-width="1.2"/>
+        <circle cx="34" cy="10" r="5" stroke="#8A6B2A" stroke-width="1.2"/>
+        <circle cx="34" cy="34" r="5" stroke="#8A6B2A" stroke-width="1.2"/>
+        <line x1="15" y1="19" x2="29" y2="13" stroke="#8A6B2A" stroke-width=".9" opacity=".6"/>
+        <line x1="15" y1="25" x2="29" y2="31" stroke="#8A6B2A" stroke-width=".9" opacity=".6"/>
+        <circle cx="10" cy="22" r="1.8" fill="#8A6B2A"/>
+      </svg>
+      <div class="prod-name">Kairos <em>Gnosis</em></div>
+      <div class="prod-line">Knowledge & GenAI</div>
+      <p class="prod-desc">LLMs, knowledge graphs and automated narrative reports. From raw numbers to boardroom-ready intelligence.</p>
+      <div class="prod-pills">
+        <span class="prod-pill">LLM</span><span class="prod-pill">RAG</span>
+        <span class="prod-pill">Knowledge Graph</span><span class="prod-pill">NLP</span>
+      </div>
+    </a>
 
-<a href="#" class="prod-card teal-card wide reveal" style="--pc:#2A9D8F">
-  <div class="prod-tag">07 · KYC & Data Quality</div>
-  <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-    <circle cx="22" cy="22" r="17" stroke="#2A9D8F" stroke-width=".8" opacity=".3"/>
-    <path d="M14 22 C14 17.6 17.6 14 22 14 C26.4 14 30 17.6 30 22" stroke="#2A9D8F" stroke-width="1.4" stroke-linecap="round"/>
-    <path d="M11 22 C11 15.4 16 10 22 10" stroke="#2A9D8F" stroke-width=".9" opacity=".5" stroke-linecap="round"/>
-    <circle cx="22" cy="22" r="2" fill="#2A9D8F"/>
-    <path d="M9 28 L13 32 L21 24" stroke="#2A9D8F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  <div class="prod-name" style="font-size:32px">Kairos <em style="color:#2A9D8F">Veritas</em></div>
-  <div class="prod-line" style="color:#1A6B63">KYC · Identity Verification · Data Quality</div>
-  <p class="prod-desc" style="max-width:680px">End-to-end KYC and data quality platform. OCR document processing, identity verification, quality campaigns, deduplication and remediation workflows — fully aligned with BdM KYC directives.</p>
-  <div class="prod-pills" style="margin-top:16px">
-    <span class="prod-pill teal">KYC</span><span class="prod-pill teal">OCR</span>
-    <span class="prod-pill teal">Identity Verification</span><span class="prod-pill teal">Deduplication</span>
-    <span class="prod-pill teal">Remediation</span><span class="prod-pill teal">BdM Compliance</span>
-  </div>
-</a>
-```
+    <a href="#" class="prod-card teal-card wide reveal" style="--pc:#2A9D8F">
+      <div class="prod-tag">07 · KYC & Data Quality</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
+        <circle cx="22" cy="22" r="17" stroke="#2A9D8F" stroke-width=".8" opacity=".3"/>
+        <path d="M14 22 C14 17.6 17.6 14 22 14 C26.4 14 30 17.6 30 22" stroke="#2A9D8F" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M11 22 C11 15.4 16 10 22 10" stroke="#2A9D8F" stroke-width=".9" opacity=".5" stroke-linecap="round"/>
+        <circle cx="22" cy="22" r="2" fill="#2A9D8F"/>
+        <path d="M9 28 L13 32 L21 24" stroke="#2A9D8F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="prod-name" style="font-size:32px">Kairos <em style="color:#2A9D8F">Veritas</em></div>
+      <div class="prod-line" style="color:#1A6B63">KYC · Identity Verification · Data Quality</div>
+      <p class="prod-desc" style="max-width:680px">End-to-end KYC and data quality platform. OCR document processing, identity verification, quality campaigns, deduplication and remediation workflows — fully aligned with BdM KYC directives.</p>
+      <div class="prod-pills" style="margin-top:16px">
+        <span class="prod-pill teal">KYC</span><span class="prod-pill teal">OCR</span>
+        <span class="prod-pill teal">Identity Verification</span><span class="prod-pill teal">Deduplication</span>
+        <span class="prod-pill teal">Remediation</span><span class="prod-pill teal">BdM Compliance</span>
+      </div>
+    </a>
 
   </div>
 
-  <!-- LEX strip -->
-
+  <!-- LEX STRIP -->
   <div class="lex-strip reveal">
     <div>
       <div style="font-family:var(--fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:12px">Flagship Product</div>
@@ -678,7 +763,6 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 <div class="hr"></div>
 
 <!-- ABOUT -->
-
 <section class="sec reveal" id="about" style="background:#0B1120">
   <div class="about-grid">
     <div>
@@ -721,7 +805,6 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 <div class="hr"></div>
 
 <!-- APPROACH -->
-
 <section class="sec reveal">
   <div class="sec-label">How It Works</div>
   <h2 class="sec-title">From extraction<br>to decision.</h2>
@@ -747,7 +830,6 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 <div class="hr"></div>
 
 <!-- CONTACT -->
-
 <section class="sec reveal" id="contact" style="background:#0B1120">
   <div class="contact-wrap">
     <div class="sec-label" style="justify-content:center">Contact</div>
@@ -755,25 +837,20 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
     <p class="contact-sub">If your bank needs to automate GIFIM or BdM compliance, or you want to see what AI can do for your operations — let's talk.</p>
     <a href="mailto:info@kairos.co.mz" class="contact-email">info@kairos.co.mz</a>
     <span class="contact-loc">Maputo · Mozambique · kairos.co.mz</span>
-
-```
-<div class="cal-box reveal">
-  <div class="cal-label">Book a Demo Call</div>
-  <p class="cal-desc">30-minute session. We'll show you a live demo of Kairos Lex generating compliant goAML XML from your transaction data — no setup required.</p>
-  <div class="cal-slots">
-    <div class="cal-slot sel">30 min · Kairos Lex Demo</div>
-    <div class="cal-slot">60 min · Full Platform</div>
-    <div class="cal-slot">15 min · Quick Intro</div>
-  </div>
-  <a href="mailto:info@kairos.co.mz?subject=Demo Request — Kairos Lex&body=Hello,%0D%0A%0D%0AI'd like to schedule a demo of Kairos Lex.%0D%0A%0D%0ABank:%0D%0APreferred time:%0D%0A" class="btn-gold">Request Demo →</a>
-</div>
-```
-
+    <div class="cal-box reveal">
+      <div class="cal-label">Book a Demo Call</div>
+      <p class="cal-desc">30-minute session. We'll show you a live demo of Kairos Lex generating compliant goAML XML from your transaction data — no setup required.</p>
+      <div class="cal-slots">
+        <div class="cal-slot sel">30 min · Kairos Lex Demo</div>
+        <div class="cal-slot">60 min · Full Platform</div>
+        <div class="cal-slot">15 min · Quick Intro</div>
+      </div>
+      <a href="mailto:info@kairos.co.mz?subject=Demo Request — Kairos Lex&body=Hello,%0D%0A%0D%0AI'd like to schedule a demo of Kairos Lex.%0D%0A%0D%0ABank:%0D%0APreferred time:%0D%0A" class="btn-gold">Request Demo →</a>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-
 <footer>
   <div class="ft-logo"><span>K</span>AIROS</div>
   <div class="ft-links">
@@ -786,25 +863,32 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 </footer>
 
 <script>
-  function forceDark(){
-    var s='background:#080A0F!important;background-color:#080A0F!important;';
-    document.documentElement.setAttribute('style',(document.documentElement.getAttribute('style')||'')+s);
-    document.body.setAttribute('style',(document.body.getAttribute('style')||'')+s);
-  }
-  forceDark();
-  document.addEventListener('DOMContentLoaded',forceDark);
-  window.addEventListener('load',forceDark);
-
   // Scroll reveal
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')});
-  },{threshold:.08});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
+  }, {threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Hamburger menu
+  const toggle = document.getElementById('navToggle');
+  const mobile = document.getElementById('navMobile');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    mobile.classList.toggle('open');
+    document.body.style.overflow = mobile.classList.contains('open') ? 'hidden' : '';
+  });
+  mobile.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      mobile.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
 
   // Cal slot toggle
-  document.querySelectorAll('.cal-slot').forEach(s=>{
-    s.addEventListener('click',()=>{
-      document.querySelectorAll('.cal-slot').forEach(x=>x.classList.remove('sel'));
+  document.querySelectorAll('.cal-slot').forEach(s => {
+    s.addEventListener('click', () => {
+      document.querySelectorAll('.cal-slot').forEach(x => x.classList.remove('sel'));
       s.classList.add('sel');
     });
   });

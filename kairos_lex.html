@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" style="background:#080A0F;background-color:#080A0F;">
 <head>
 <meta charset="UTF-8">
@@ -8,10 +7,6 @@
 <meta name="theme-color" content="#080A0F">
 <meta name="description" content="Kairos Lex — Automated regulatory reporting engine for GIFIM and Banco de Moçambique. goAML 5.1 XML, STR, CTR, AML/CFT.">
 <title>Kairos Lex · Regulatory Reporting Engine</title>
-<script>
-  document.documentElement.style.setProperty('background','#080A0F','important');
-  document.documentElement.style.setProperty('background-color','#080A0F','important');
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -26,9 +21,9 @@
   --fm:'Space Mono','Courier New',monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;background:#080A0F !important;background-color:#080A0F !important;}
+html{scroll-behavior:smooth;background:#080A0F !important;}
 body{
-  background:#080A0F !important;background-color:#080A0F !important;
+  background:#080A0F !important;
   color:#F0F4F8;font-family:var(--fb);font-size:16px;line-height:1.6;
   overflow-x:hidden;
 }
@@ -36,343 +31,481 @@ body{
 ::-webkit-scrollbar-track{background:#080A0F}
 ::-webkit-scrollbar-thumb{background:#8A6B2A}
 
-/* ── NAV ── */
+/* NAV */
 nav{
-position:fixed;top:0;left:0;right:0;z-index:200;
-display:flex;align-items:center;justify-content:space-between;
-padding:0 56px;height:72px;
-background:rgba(8,10,15,.94);
-border-bottom:1px solid rgba(201,168,76,.1);
-backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;height:72px;
+  background:rgba(8,10,15,.95);
+  border-bottom:1px solid rgba(201,168,76,.1);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  gap:20px;
 }
-.nav-logo{font-family:var(–fd);font-size:20px;font-weight:300;color:#F0F4F8;text-decoration:none;letter-spacing:.1em}
+.nav-left{display:flex;align-items:center;flex-shrink:0}
+.nav-logo{font-family:var(--fd);font-size:20px;font-weight:300;color:#F0F4F8;text-decoration:none;letter-spacing:.1em}
 .nav-logo span{color:#C9A84C}
-.nav-product{font-family:var(–fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#C9A84C;padding:0 16px;border-left:1px solid #1E2A3A;margin-left:16px}
-.nav-links{display:flex;gap:36px;list-style:none}
-.nav-links a{font-family:var(–fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#8A9BB0;text-decoration:none;transition:color .2s}
+.nav-product{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#C9A84C;padding:0 16px;border-left:1px solid #1E2A3A;margin-left:16px;white-space:nowrap}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-links a{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#8A9BB0;text-decoration:none;transition:color .2s;white-space:nowrap}
 .nav-links a:hover{color:#C9A84C}
-.nav-cta{font-family:var(–fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C9A84C;border:1px solid #8A6B2A;padding:10px 22px;text-decoration:none;transition:all .25s}
+.nav-cta{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C9A84C;border:1px solid #8A6B2A;padding:10px 22px;text-decoration:none;transition:all .25s;white-space:nowrap;flex-shrink:0}
 .nav-cta:hover{background:#C9A84C;color:#080A0F}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.nav-toggle span{display:block;width:22px;height:1px;background:#8A9BB0;transition:all .3s}
+.nav-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.nav-mobile{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;z-index:190;background:rgba(8,10,15,0.98);flex-direction:column;align-items:center;justify-content:center;gap:36px}
+.nav-mobile.open{display:flex}
+.nav-mobile a{font-family:var(--fm);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#8A9BB0;text-decoration:none;transition:color .2s}
+.nav-mobile a:hover{color:#C9A84C}
+.nav-mobile .nav-cta-m{color:#C9A84C;border:1px solid #8A6B2A;padding:14px 36px;margin-top:8px}
 
-/* ── HERO ── */
-.hero{
-min-height:100vh;display:flex;flex-direction:column;
-justify-content:flex-end;padding:140px 56px 88px;
-position:relative;overflow:hidden;background:#0B1120;
-}
-.hero-bg-grid{
-position:absolute;inset:0;
-background-image:linear-gradient(rgba(201,168,76,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.02) 1px,transparent 1px);
-background-size:64px 64px;
-}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 56px 88px;position:relative;overflow:hidden;background:#0B1120}
+.hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.02) 1px,transparent 1px);background-size:64px 64px}
 .hero-glow{position:absolute;width:800px;height:600px;background:radial-gradient(ellipse,rgba(201,168,76,.06) 0%,transparent 60%);top:-100px;right:-100px;pointer-events:none}
-.hero-badge{
-position:relative;z-index:2;
-display:inline-flex;align-items:center;gap:12px;
-font-family:var(–fm);font-size:9px;letter-spacing:.4em;
-text-transform:uppercase;color:#C9A84C;margin-bottom:32px;
-opacity:0;animation:fu .7s .1s forwards;
-}
+.hero-badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:12px;font-family:var(--fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:32px;opacity:0;animation:fu .7s .1s forwards}
 .hero-badge-dot{width:7px;height:7px;background:#C9A84C;border-radius:50%}
-.hero-eyebrow{
-position:relative;z-index:2;
-font-family:var(–fm);font-size:9px;letter-spacing:.5em;
-text-transform:uppercase;color:#8A6B2A;
-margin-bottom:20px;
-opacity:0;animation:fu .7s .2s forwards;
-}
-.hero-title{
-position:relative;z-index:2;
-font-family:var(–fd);font-size:clamp(64px,11vw,160px);
-font-weight:300;line-height:.88;letter-spacing:-.02em;
-color:#F0F4F8;
-opacity:0;animation:fu .85s .35s forwards;
-}
+.hero-eyebrow{position:relative;z-index:2;font-family:var(--fm);font-size:9px;letter-spacing:.5em;text-transform:uppercase;color:#8A6B2A;margin-bottom:20px;opacity:0;animation:fu .7s .2s forwards}
+.hero-title{position:relative;z-index:2;font-family:var(--fd);font-size:clamp(60px,11vw,160px);font-weight:300;line-height:.88;letter-spacing:-.02em;color:#F0F4F8;opacity:0;animation:fu .85s .35s forwards}
 .hero-title em{font-style:italic;color:#C9A84C}
-.hero-subtitle{
-position:relative;z-index:2;
-font-family:var(–fm);font-size:clamp(10px,1.2vw,13px);
-letter-spacing:.3em;text-transform:uppercase;
-color:#8A9BB0;margin-top:24px;
-opacity:0;animation:fu .7s .55s forwards;
-}
-.hero-desc{
-position:relative;z-index:2;
-max-width:560px;font-size:17px;color:#8A9BB0;
-line-height:1.85;margin-top:36px;
-opacity:0;animation:fu .7s .7s forwards;
-}
-.hero-actions{
-position:relative;z-index:2;
-display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;
-opacity:0;animation:fu .7s .85s forwards;
-}
-.hero-kpis{
-position:relative;z-index:2;
-display:grid;grid-template-columns:repeat(4,1fr);
-gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;
-margin-top:72px;
-opacity:0;animation:fu .7s 1s forwards;
-}
+.hero-subtitle{position:relative;z-index:2;font-family:var(--fm);font-size:clamp(9px,1.2vw,13px);letter-spacing:.3em;text-transform:uppercase;color:#8A9BB0;margin-top:24px;opacity:0;animation:fu .7s .55s forwards}
+.hero-desc{position:relative;z-index:2;max-width:560px;font-size:17px;color:#8A9BB0;line-height:1.85;margin-top:36px;opacity:0;animation:fu .7s .7s forwards}
+.hero-actions{position:relative;z-index:2;display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;opacity:0;animation:fu .7s .85s forwards}
+.hero-kpis{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:72px;opacity:0;animation:fu .7s 1s forwards}
 .hero-kpi{background:#111827;padding:28px 24px}
-.hero-kpi-val{font-family:var(–fd);font-size:36px;font-weight:300;color:#C9A84C;line-height:1;margin-bottom:6px}
-.hero-kpi-lbl{font-family:var(–fm);font-size:8px;letter-spacing:.35em;text-transform:uppercase;color:#8A9BB0}
+.hero-kpi-val{font-family:var(--fd);font-size:clamp(24px,3vw,36px);font-weight:300;color:#C9A84C;line-height:1;margin-bottom:6px}
+.hero-kpi-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.35em;text-transform:uppercase;color:#8A9BB0}
 @keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-.btn-gold{font-family:var(–fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;font-weight:700;background:#C9A84C;color:#080A0F;padding:15px 36px;text-decoration:none;transition:all .25s;display:inline-block}
+.btn-gold{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;font-weight:700;background:#C9A84C;color:#080A0F;padding:15px 36px;text-decoration:none;transition:all .25s;display:inline-block}
 .btn-gold:hover{background:#E8C97A;transform:translateY(-2px)}
-.btn-ghost{font-family:var(–fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#8A9BB0;border:1px solid #1E2A3A;padding:15px 36px;text-decoration:none;transition:all .25s;display:inline-block}
+.btn-ghost{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#8A9BB0;border:1px solid #1E2A3A;padding:15px 36px;text-decoration:none;transition:all .25s;display:inline-block}
 .btn-ghost:hover{border-color:#8A9BB0;color:#F0F4F8}
 
-/* ── SECTIONS ── */
+/* SECTIONS */
 .sec{position:relative;padding:112px 56px;z-index:1}
-.sec-label{font-family:var(–fm);font-size:9px;letter-spacing:.5em;text-transform:uppercase;color:#C9A84C;display:flex;align-items:center;gap:14px;margin-bottom:20px}
-.sec-label::before{content:’’;width:24px;height:1px;background:#C9A84C}
-.sec-title{font-family:var(–fd);font-size:clamp(36px,5vw,64px);font-weight:300;color:#F0F4F8;line-height:1.05;margin-bottom:20px}
+.sec-label{font-family:var(--fm);font-size:9px;letter-spacing:.5em;text-transform:uppercase;color:#C9A84C;display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.sec-label::before{content:'';width:24px;height:1px;background:#C9A84C}
+.sec-title{font-family:var(--fd);font-size:clamp(32px,5vw,64px);font-weight:300;color:#F0F4F8;line-height:1.05;margin-bottom:20px}
 .sec-sub{font-size:16px;color:#8A9BB0;max-width:540px;line-height:1.85}
 .hr{width:calc(100% - 112px);height:1px;margin:0 56px;background:linear-gradient(to right,transparent,#1E2A3A,transparent)}
 
-/* ── XML DEMO ── */
-.xml-block{
-background:#111827;border:1px solid #1E2A3A;padding:40px;
-position:relative;overflow:hidden;
-font-family:var(–fm);font-size:12px;line-height:2.2;
-}
-.xml-block::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,#C9A84C,transparent)}
-.xml-bar{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid #1E2A3A}
+/* REPORT TYPE SPLIT */
+.type-split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
+.type-card{background:#0B1120;padding:52px 44px;position:relative;overflow:hidden}
+.type-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--tc,#C9A84C)}
+.type-tag{font-family:var(--fm);font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:var(--tc,#C9A84C);margin-bottom:16px}
+.type-title{font-family:var(--fd);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:#F0F4F8;line-height:1;margin-bottom:8px}
+.type-subtitle{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--tc,#8A6B2A);margin-bottom:28px;opacity:.7}
+.type-body{font-size:14px;color:#8A9BB0;line-height:1.9;margin-bottom:28px}
+.type-thresholds{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+.type-thresh-row{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#111827;border:1px solid var(--tc,#8A6B2A);padding:14px 20px}
+.type-thresh-code{font-family:var(--fm);font-size:8px;letter-spacing:.35em;text-transform:uppercase;color:var(--tc,#8A6B2A);flex-shrink:0;min-width:36px}
+.type-thresh-val{font-family:var(--fd);font-size:clamp(18px,2.5vw,28px);font-weight:300;color:var(--tc,#C9A84C);line-height:1}
+.type-thresh-sub{font-family:var(--fm);font-size:8px;color:#2D3F55;letter-spacing:.15em;text-transform:uppercase;text-align:right}
+.type-cascade{background:#111827;border:1px solid #1E2A3A;padding:20px 24px;margin-bottom:24px}
+.type-cascade-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:var(--tc,#8A6B2A);margin-bottom:14px}
+.cascade-row{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid #1E2A3A}
+.cascade-row:last-child{border-bottom:none}
+.cascade-period{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#F0F4F8;flex-shrink:0;min-width:68px;padding-top:2px}
+.cascade-arrow{color:var(--tc,#8A6B2A);font-size:10px;flex-shrink:0;padding-top:4px}
+.cascade-desc{font-size:12px;color:#8A9BB0;line-height:1.6}
+.type-mechanics{display:flex;flex-direction:column;gap:10px}
+.type-mechanic{font-size:13px;color:#8A9BB0;padding-left:18px;position:relative;line-height:1.6}
+.type-mechanic::before{content:'→';position:absolute;left:0;color:var(--tc,#8A6B2A);font-size:11px}
+
+/* OPERATING MODES */
+.modes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
+.mode-card{background:#111827;padding:48px 36px;position:relative;overflow:hidden}
+.mode-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--mc,#8A6B2A)}
+.mode-num{font-family:var(--fd);font-size:72px;font-weight:300;color:rgba(201,168,76,.06);line-height:1;margin-bottom:16px}
+.mode-tag{font-family:var(--fm);font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:var(--mc,#C9A84C);margin-bottom:16px}
+.mode-title{font-family:var(--fd);font-size:clamp(18px,2vw,24px);font-weight:300;color:#F0F4F8;margin-bottom:8px}
+.mode-sub{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--mc,#8A6B2A);margin-bottom:20px;opacity:.7}
+.mode-desc{font-size:14px;color:#8A9BB0;line-height:1.85;margin-bottom:24px}
+.mode-flow{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.mode-step{display:flex;align-items:flex-start;gap:10px;font-family:var(--fm);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#8A9BB0;line-height:1.5}
+.mode-step-dot{width:6px;height:6px;border-radius:50%;background:var(--mc,#8A6B2A);flex-shrink:0;margin-top:4px}
+.mode-features{display:flex;flex-direction:column;gap:8px}
+.mode-feature{font-size:13px;color:#8A9BB0;padding-left:18px;position:relative;line-height:1.6}
+.mode-feature::before{content:'✓';position:absolute;left:0;color:var(--mc,#2ECC71);font-size:11px}
+
+/* XML DEMO */
+.xml-block{background:#111827;border:1px solid #1E2A3A;padding:40px;position:relative;overflow-x:auto;font-family:var(--fm);font-size:12px;line-height:2.2}
+.xml-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,#C9A84C,transparent)}
+.xml-bar{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid #1E2A3A;flex-wrap:wrap}
 .xml-dot{width:10px;height:10px;border-radius:50%}
 .xml-dot-r{background:#E74C3C}
 .xml-dot-y{background:#F39C12}
 .xml-dot-g{background:#2ECC71}
-.xml-file{font-family:var(–fm);font-size:10px;color:#8A9BB0;letter-spacing:.2em;margin-left:auto}
-.xk{color:#C9A84C}
-.xs{color:#2A9D8F}
-.xn{color:#F0F4F8}
-.xc{color:rgba(138,155,176,.45)}
-.xa{color:#E8C97A}
+.xml-file{font-family:var(--fm);font-size:10px;color:#8A9BB0;letter-spacing:.2em;margin-left:auto}
+.xk{color:#C9A84C}.xs{color:#2A9D8F}.xn{color:#F0F4F8}.xc{color:rgba(138,155,176,.45)}.xa{color:#E8C97A}
 
-/* ── HOW IT WORKS ── */
+/* HOW IT WORKS */
 .flow-grid{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:0;align-items:center;margin-top:64px}
 .flow-cell{background:#111827;border:1px solid #1E2A3A;padding:40px 32px;position:relative}
-.flow-cell::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:#8A6B2A}
+.flow-cell::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#8A6B2A}
 .flow-arrow{display:flex;align-items:center;justify-content:center;color:#8A6B2A;font-size:18px}
-.flow-num{font-family:var(–fd);font-size:56px;font-weight:300;color:rgba(201,168,76,.08);line-height:1;margin-bottom:12px}
-.flow-title{font-family:var(–fd);font-size:20px;font-weight:300;color:#F0F4F8;margin-bottom:10px}
+.flow-num{font-family:var(--fd);font-size:56px;font-weight:300;color:rgba(201,168,76,.08);line-height:1;margin-bottom:12px}
+.flow-title{font-family:var(--fd);font-size:20px;font-weight:300;color:#F0F4F8;margin-bottom:10px}
 .flow-desc{font-size:13px;color:#8A9BB0;line-height:1.8}
 
-/* ── REPORT TYPES ── */
+/* REPORTS GRID */
 .reports-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
 .report-card{background:#0B1120;padding:48px 40px;position:relative;overflow:hidden}
-.report-card::before{content:’’;position:absolute;top:0;left:0;bottom:0;width:2px;background:var(–rc,#8A6B2A)}
-.report-type{font-family:var(–fm);font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(–rc,#C9A84C);margin-bottom:8px}
-.report-name{font-family:var(–fd);font-size:28px;font-weight:300;color:#F0F4F8;margin-bottom:16px}
-.report-full{font-family:var(–fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#8A9BB0;margin-bottom:20px}
+.report-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:2px;background:var(--rc,#8A6B2A)}
+.report-type{font-family:var(--fm);font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(--rc,#C9A84C);margin-bottom:8px}
+.report-name{font-family:var(--fd);font-size:28px;font-weight:300;color:#F0F4F8;margin-bottom:16px}
+.report-full{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#8A9BB0;margin-bottom:20px}
 .report-desc{font-size:14px;color:#8A9BB0;line-height:1.85;margin-bottom:24px}
 .report-items{display:flex;flex-direction:column;gap:10px}
 .report-item{font-size:13px;color:#8A9BB0;padding-left:18px;position:relative;line-height:1.6}
-.report-item::before{content:‘→’;position:absolute;left:0;color:var(–rc,#8A6B2A);font-size:11px}
-.report-badge{
-display:inline-block;font-family:var(–fm);font-size:8px;
-letter-spacing:.25em;text-transform:uppercase;
-padding:4px 12px;border:1px solid var(–rc,#8A6B2A);
-color:var(–rc,#C9A84C);margin-bottom:20px;
-}
+.report-item::before{content:'→';position:absolute;left:0;color:var(--rc,#8A6B2A);font-size:11px}
+.report-badge{display:inline-block;font-family:var(--fm);font-size:8px;letter-spacing:.25em;text-transform:uppercase;padding:4px 12px;border:1px solid var(--rc,#8A6B2A);color:var(--rc,#C9A84C);margin-bottom:20px}
 
-/* ── RULES ── */
-.rules-section{background:#0B1120}
+/* STR RULES */
 .rules-header{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:end;margin-bottom:64px}
-.rules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#1E2A3A;border:1px solid #1E2A3A}
-.rule-row{
-background:#111827;padding:28px 32px;
-display:grid;grid-template-columns:80px 1fr 100px 80px;
-gap:24px;align-items:center;
-transition:background .2s;
-}
+.rules-grid{display:grid;grid-template-columns:1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A}
+.rule-row{background:#111827;padding:28px 32px;display:grid;grid-template-columns:80px 1fr 100px 80px;gap:24px;align-items:center;transition:background .2s}
 .rule-row:hover{background:rgba(30,42,58,.5)}
-.rule-num{font-family:var(–fm);font-size:9px;letter-spacing:.3em;color:#8A6B2A}
+.rule-num{font-family:var(--fm);font-size:9px;letter-spacing:.3em;color:#8A6B2A}
 .rule-name{font-size:14px;color:#F0F4F8}
 .rule-sub{font-size:12px;color:#8A9BB0;margin-top:2px}
-.rule-pts{
-font-family:var(–fm);font-size:10px;letter-spacing:.1em;
-color:#C9A84C;text-align:right;
-}
+.rule-pts{font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:#C9A84C;text-align:right}
 .rule-bar-wrap{width:72px;height:4px;background:#1E2A3A;border-radius:2px}
 .rule-bar{height:4px;background:#C9A84C;border-radius:2px}
-.score-example{
-background:#111827;border:1px solid #1E2A3A;
-padding:32px;margin-top:2px;
-display:flex;align-items:center;gap:40px;flex-wrap:wrap;
-}
-.score-val{font-family:var(–fd);font-size:72px;font-weight:300;color:#C9A84C;line-height:1}
-.score-label{font-family:var(–fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#8A6B2A;margin-bottom:8px}
+.score-example{background:#111827;border:1px solid #1E2A3A;padding:32px;margin-top:2px;display:flex;align-items:center;gap:40px;flex-wrap:wrap}
+.score-val{font-family:var(--fd);font-size:72px;font-weight:300;color:#C9A84C;line-height:1}
+.score-label{font-family:var(--fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#8A6B2A;margin-bottom:8px}
 .score-track{flex:1;min-width:200px}
 .score-bar-outer{height:6px;background:#1E2A3A;border-radius:3px;margin-bottom:12px}
 .score-bar-inner{height:6px;background:linear-gradient(to right,#2ECC71,#F39C12,#E74C3C);border-radius:3px;width:70%}
 .score-levels{display:flex;justify-content:space-between}
-.score-level{font-family:var(–fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#2D3F55}
+.score-level{font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#2D3F55}
 
-/* ── BDM ── */
+/* BDM */
 .bdm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
 .bdm-card{background:#111827;padding:44px 36px;position:relative;overflow:hidden}
-.bdm-card::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(–bc,#8A6B2A),transparent)}
-.bdm-type{font-family:var(–fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(–bc,#C9A84C);margin-bottom:20px}
-.bdm-metric{font-family:var(–fd);font-size:52px;font-weight:300;color:#F0F4F8;line-height:1;margin-bottom:8px}
+.bdm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--bc,#8A6B2A),transparent)}
+.bdm-type{font-family:var(--fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--bc,#C9A84C);margin-bottom:20px}
+.bdm-metric{font-family:var(--fd);font-size:clamp(36px,4vw,52px);font-weight:300;color:#F0F4F8;line-height:1;margin-bottom:8px}
 .bdm-metric span{font-size:24px;color:#C9A84C;vertical-align:super}
-.bdm-name{font-family:var(–fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#8A9BB0;margin-bottom:20px}
+.bdm-name{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#8A9BB0;margin-bottom:20px}
 .bdm-desc{font-size:14px;color:#8A9BB0;line-height:1.8}
-.bdm-status{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-family:var(–fm);font-size:8px;letter-spacing:.25em;text-transform:uppercase}
+.bdm-status{display:inline-flex;align-items:center;gap:8px;margin-top:20px}
 .bdm-dot{width:6px;height:6px;border-radius:50%}
-.bdm-dot-g{background:#2ECC71}
-.bdm-dot-r{background:#E74C3C}
-.bdm-dot-y{background:#F39C12}
+.bdm-dot-g{background:#2ECC71}.bdm-dot-r{background:#E74C3C}.bdm-dot-y{background:#F39C12}
+.bdm-status-txt{font-family:var(--fm);font-size:8px;letter-spacing:.25em;text-transform:uppercase}
 
-/* ── SCHEMA ── */
-.schema-section{background:#111827}
-.schema-wrap{
-display:grid;grid-template-columns:1fr 1fr;
-gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;
-margin-top:64px;
-}
-.schema-col{background:#0B1120;padding:48px 40px}
-.schema-col-title{font-family:var(–fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:24px}
-.schema-tree{font-family:var(–fm);font-size:11px;line-height:2.4;color:#8A9BB0}
-.schema-tree .req{color:#F0F4F8}
-.schema-tree .opt{color:#2D3F55}
-.schema-tree .type{color:#C9A84C;font-size:9px}
-.schema-tree .choice{color:#2A9D8F}
-.indent-1{padding-left:20px}
-.indent-2{padding-left:40px}
-.indent-3{padding-left:60px}
+/* SCHEMA */
+.schema-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
+.schema-col{background:#0B1120;padding:48px 40px;overflow-x:auto}
+.schema-col-title{font-family:var(--fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:24px}
+.schema-tree{font-family:var(--fm);font-size:11px;line-height:2.4;color:#8A9BB0;white-space:nowrap}
+.schema-tree .req{color:#F0F4F8}.schema-tree .opt{color:#2D3F55}.schema-tree .type{color:#C9A84C;font-size:9px}.schema-tree .choice{color:#2A9D8F}
+.indent-1{padding-left:20px}.indent-2{padding-left:40px}.indent-3{padding-left:60px}
 .schema-legend{display:flex;gap:24px;margin-top:20px;padding-top:16px;border-top:1px solid #1E2A3A;flex-wrap:wrap}
-.schema-leg{font-family:var(–fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase}
+.schema-leg{font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase}
 .schema-leg .dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:6px}
 
-/* ── TECH ── */
+/* TECH */
 .tech-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
 .tech-cell{background:#0B1120;padding:36px 32px}
-.tech-lbl{font-family:var(–fm);font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:#8A6B2A;margin-bottom:16px}
+.tech-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:#8A6B2A;margin-bottom:16px}
 .tech-items{display:flex;flex-direction:column;gap:10px}
 .tech-item{font-size:14px;color:#8A9BB0;padding-left:16px;position:relative}
-.tech-item::before{content:’—’;position:absolute;left:0;color:#1E2A3A;font-family:var(–fm);font-size:10px}
+.tech-item::before{content:'—';position:absolute;left:0;color:#1E2A3A;font-family:var(--fm);font-size:10px}
 .tech-item strong{color:#F0F4F8;font-weight:400}
 
-/* ── CONTACT ── */
+/* CONTACT */
 .contact-wrap{text-align:center;max-width:680px;margin:0 auto}
-.contact-title{font-family:var(–fd);font-size:clamp(44px,7vw,88px);font-weight:300;color:#F0F4F8;line-height:.95;margin-bottom:24px}
+.contact-title{font-family:var(--fd);font-size:clamp(40px,7vw,88px);font-weight:300;color:#F0F4F8;line-height:.95;margin-bottom:24px}
 .contact-title em{font-style:italic;color:#C9A84C}
 .contact-sub{font-size:16px;color:#8A9BB0;line-height:1.85;margin-bottom:48px}
-.contact-email{display:inline-block;font-family:var(–fd);font-size:22px;font-weight:300;color:#C9A84C;text-decoration:none;border-bottom:1px solid #8A6B2A;padding-bottom:4px;transition:color .2s;margin-bottom:14px}
+.contact-email{display:inline-block;font-family:var(--fd);font-size:22px;font-weight:300;color:#C9A84C;text-decoration:none;border-bottom:1px solid #8A6B2A;padding-bottom:4px;transition:color .2s;margin-bottom:14px}
 .contact-email:hover{color:#E8C97A}
-.contact-loc{font-family:var(–fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#2D3F55;display:block;margin-top:12px}
+.contact-loc{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#2D3F55;display:block;margin-top:12px}
 .demo-box{margin-top:48px;padding:40px;background:#0B1120;border:1px solid rgba(201,168,76,.15);text-align:left;position:relative}
-.demo-box::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,#C9A84C,transparent)}
-.demo-lbl{font-family:var(–fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:16px}
+.demo-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,#C9A84C,transparent)}
+.demo-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:16px}
 .demo-what{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0 28px}
 .demo-item{font-size:13px;color:#8A9BB0;padding-left:18px;position:relative;line-height:1.7}
-.demo-item::before{content:‘✓’;position:absolute;left:0;color:#2ECC71;font-size:11px}
+.demo-item::before{content:'✓';position:absolute;left:0;color:#2ECC71;font-size:11px}
 
-/* ── FOOTER ── */
+/* FOOTER */
 footer{background:#080A0F;border-top:1px solid #1E2A3A;padding:36px 56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.ft-logo{font-family:var(–fd);font-size:17px;font-weight:300;color:#F0F4F8}
+.ft-logo{font-family:var(--fd);font-size:17px;font-weight:300;color:#F0F4F8}
 .ft-logo span{color:#C9A84C}
-.ft-product{font-family:var(–fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#C9A84C;padding-left:14px;border-left:1px solid #1E2A3A;margin-left:14px}
-.ft-links{display:flex;gap:28px}
-.ft-links a{font-family:var(–fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#2D3F55;text-decoration:none;transition:color .2s}
+.ft-product{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#C9A84C;padding-left:14px;border-left:1px solid #1E2A3A;margin-left:14px}
+.ft-links{display:flex;gap:28px;flex-wrap:wrap}
+.ft-links a{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#2D3F55;text-decoration:none;transition:color .2s}
 .ft-links a:hover{color:#8A9BB0}
-.ft-copy{font-family:var(–fm);font-size:9px;letter-spacing:.15em;color:#1E2A3A}
+.ft-copy{font-family:var(--fm);font-size:9px;letter-spacing:.15em;color:#1E2A3A}
 
-/* ── REVEAL ── */
+/* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.on{opacity:1;transform:none}
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
+@media(max-width:1200px){
+  .modes-grid{grid-template-columns:1fr}
+}
+@media(max-width:1024px){
+  .type-split{grid-template-columns:1fr}
+  .flow-grid{grid-template-columns:1fr 1fr;gap:1px;background:#1E2A3A}
+  .flow-arrow{display:none}
+  .bdm-grid{grid-template-columns:1fr 1fr}
+  .rules-header{grid-template-columns:1fr;gap:24px}
+  .schema-wrap{grid-template-columns:1fr}
+}
 @media(max-width:960px){
-nav{padding:0 24px}
-.nav-links{display:none}
-.nav-product{display:none}
-.sec{padding:80px 24px}
-.hero{padding:120px 24px 72px}
-.flow-grid{grid-template-columns:1fr}
-.flow-arrow{display:none}
-.reports-grid,.bdm-grid,.schema-wrap,.tech-grid{grid-template-columns:1fr}
-.rules-header{grid-template-columns:1fr;gap:24px}
-.rules-grid{grid-template-columns:1fr}
-.rule-row{grid-template-columns:60px 1fr 80px;gap:16px}
-.rule-bar-wrap{display:none}
-.hero-kpis{grid-template-columns:1fr 1fr}
-.demo-what{grid-template-columns:1fr}
-footer{flex-direction:column;padding:28px 24px;text-align:center}
-.hr{width:calc(100% - 48px);margin:0 24px}
+  nav{padding:0 24px}
+  .nav-links,.nav-cta,.nav-product{display:none}
+  .nav-toggle{display:flex}
+  .sec{padding:80px 24px}
+  .hero{padding:120px 24px 72px}
+  .hr{width:calc(100% - 48px);margin:0 24px}
+  .hero-kpis{grid-template-columns:1fr 1fr}
+  .reports-grid{grid-template-columns:1fr}
+  .flow-grid{grid-template-columns:1fr}
+  .flow-arrow{display:none}
+  .tech-grid{grid-template-columns:1fr 1fr}
+  .bdm-grid{grid-template-columns:1fr}
+  .demo-what{grid-template-columns:1fr}
+  footer{flex-direction:column;padding:28px 24px;text-align:center}
+  .ft-links{justify-content:center}
+}
+@media(max-width:768px){
+  .rule-row{grid-template-columns:60px 1fr 70px;gap:12px}
+  .rule-bar-wrap{display:none}
+  .score-example{flex-direction:column;align-items:flex-start;gap:24px}
+  .tech-grid{grid-template-columns:1fr}
+  .type-thresh-row{flex-direction:column;align-items:flex-start;gap:6px}
+}
+@media(max-width:600px){
+  .hero-kpis{grid-template-columns:1fr 1fr}
 }
 </style>
-
 </head>
-<body style="background:#080A0F !important;background-color:#080A0F !important;color:#F0F4F8;">
+<body>
 
 <!-- NAV -->
-
 <nav>
-  <div style="display:flex;align-items:center">
+  <div class="nav-left">
     <a href="index.html" class="nav-logo"><span>K</span>AIROS</a>
     <span class="nav-product">Lex</span>
   </div>
   <ul class="nav-links">
+    <li><a href="#report-types">Report Types</a></li>
+    <li><a href="#modes">How It Works</a></li>
     <li><a href="#reports">Reports</a></li>
     <li><a href="#rules">STR Rules</a></li>
-    <li><a href="#bdm">BdM</a></li>
     <li><a href="#schema">Schema</a></li>
     <li><a href="index.html">All Products</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Book a Demo</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
+<!-- MOBILE MENU -->
+<div class="nav-mobile" id="navMobile">
+  <a href="#report-types">Report Types</a>
+  <a href="#modes">How It Works</a>
+  <a href="#reports">Reports</a>
+  <a href="#rules">STR Rules</a>
+  <a href="#schema">Schema</a>
+  <a href="index.html">← All Products</a>
+  <a href="#contact" class="nav-cta nav-cta-m">Book a Demo</a>
+</div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg-grid"></div>
   <div class="hero-glow"></div>
-
   <div class="hero-badge"><span class="hero-badge-dot"></span>Flagship Product · Regulatory Intelligence</div>
   <div class="hero-eyebrow">Kairos · Product 03</div>
   <h1 class="hero-title">Kairos<br><em>Lex</em></h1>
   <div class="hero-subtitle">Regulatory Reporting Engine · GIFIM · Banco de Moçambique</div>
   <p class="hero-desc">
-    Automated generation of goAML 5.1 XML reports — STR, CTR, IFT, EFT — directly from your core
-    banking system. Runs daily. Zero manual intervention. Submission-ready.
+    Automated generation of goAML 5.1 XML — STR, CTR, IFT, EFT — directly from your core
+    banking system. Detects both single-transaction thresholds and cumulative structuring patterns.
+    Runs daily. Zero manual intervention. Submission-ready.
   </p>
   <div class="hero-actions">
     <a href="#contact" class="btn-gold">Book a Demo</a>
-    <a href="#reports" class="btn-ghost">Explore Features</a>
+    <a href="#report-types" class="btn-ghost">Explore Features</a>
   </div>
   <div class="hero-kpis">
-    <div class="hero-kpi">
-      <div class="hero-kpi-val">5.1</div>
-      <div class="hero-kpi-lbl">goAML Schema</div>
+    <div class="hero-kpi"><div class="hero-kpi-val">5.1</div><div class="hero-kpi-lbl">goAML Schema</div></div>
+    <div class="hero-kpi"><div class="hero-kpi-val">7</div><div class="hero-kpi-lbl">STR Rules</div></div>
+    <div class="hero-kpi"><div class="hero-kpi-val">3</div><div class="hero-kpi-lbl">Operating Modes</div></div>
+    <div class="hero-kpi"><div class="hero-kpi-val">Daily</div><div class="hero-kpi-lbl">Auto-run</div></div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- REPORT TYPE SPLIT -->
+<section class="sec reveal" id="report-types">
+  <div class="sec-label">Report Typology</div>
+  <h2 class="sec-title">Two types of<br>obligation.</h2>
+  <p class="sec-sub">Every report Kairos Lex generates falls into one of two categories — each with distinct detection logic, thresholds, and reporting periods.</p>
+
+  <div class="type-split">
+
+    <div class="type-card reveal" style="--tc:#C9A84C">
+      <div class="type-tag">Type 01 · Integer Reports</div>
+      <div class="type-title">Single Transaction<br>Threshold</div>
+      <div class="type-subtitle">Relatórios por Transacção Individual</div>
+      <p class="type-body">A single transaction that meets or exceeds the defined threshold triggers an immediate reporting obligation. Detection runs daily. Each qualifying transaction generates its own goAML 5.1 record — no aggregation.</p>
+
+      <div class="type-thresholds">
+        <div class="type-thresh-row">
+          <div class="type-thresh-code">CTR</div>
+          <div class="type-thresh-val">250,000 <span style="font-size:13px;font-family:var(--fm);letter-spacing:.1em;color:#8A6B2A">MZN</span></div>
+          <div class="type-thresh-sub">per transaction<br>cash in / cash out</div>
+        </div>
+        <div class="type-thresh-row">
+          <div class="type-thresh-code">IFT</div>
+          <div class="type-thresh-val">750,000 <span style="font-size:13px;font-family:var(--fm);letter-spacing:.1em;color:#8A6B2A">MZN</span></div>
+          <div class="type-thresh-sub">per transfer<br>international flows</div>
+        </div>
+        <div class="type-thresh-row">
+          <div class="type-thresh-code">EFT</div>
+          <div class="type-thresh-val">750,000 <span style="font-size:13px;font-family:var(--fm);letter-spacing:.1em;color:#8A6B2A">MZN</span></div>
+          <div class="type-thresh-sub">per transfer<br>electronic domestic</div>
+        </div>
+      </div>
+
+      <div class="type-mechanics">
+        <div class="type-mechanic">Each transaction assessed independently against its threshold</div>
+        <div class="type-mechanic">Detection runs every morning on the previous day's data</div>
+        <div class="type-mechanic">goAML XML generated per qualifying transaction, same day</div>
+        <div class="type-mechanic">Submission deadline auto-calculated — 5 business days</div>
+      </div>
     </div>
-    <div class="hero-kpi">
-      <div class="hero-kpi-val">7</div>
-      <div class="hero-kpi-lbl">STR Rules</div>
+
+    <div class="type-card reveal" style="--tc:#2A9D8F">
+      <div class="type-tag">Type 02 · Structured Reports · Smurfing</div>
+      <div class="type-title">Cumulative<br>Threshold</div>
+      <div class="type-subtitle">Relatórios por Acumulação Periódica</div>
+      <p class="type-body">Multiple smaller transactions that individually fall below the threshold but cumulatively reach it over a defined period. Classic structuring — intentional splitting to evade detection. Kairos Lex tracks cumulative totals across daily, weekly, and monthly windows simultaneously.</p>
+
+      <div class="type-cascade">
+        <div class="type-cascade-lbl">Cascade Rule — No Double Reporting</div>
+        <div class="cascade-row">
+          <div class="cascade-period">Daily</div>
+          <div class="cascade-arrow">→</div>
+          <div class="cascade-desc">Transactions that reached the threshold within the day are reported. They are flagged and excluded from all subsequent accumulation windows.</div>
+        </div>
+        <div class="cascade-row">
+          <div class="cascade-period">Weekly</div>
+          <div class="cascade-arrow">→</div>
+          <div class="cascade-desc">Only transactions not yet reported in the daily window accumulate toward the weekly total. Already-reported transactions are excluded.</div>
+        </div>
+        <div class="cascade-row">
+          <div class="cascade-period">Monthly</div>
+          <div class="cascade-arrow">→</div>
+          <div class="cascade-desc">Only transactions not yet reported in either daily or weekly windows accumulate toward the monthly total. Zero overlap guaranteed.</div>
+        </div>
+      </div>
+
+      <div class="type-mechanics">
+        <div class="type-mechanic">Separate accumulation counters per window — daily, weekly, monthly</div>
+        <div class="type-mechanic">Each transaction carries a report status flag — prevents double reporting</div>
+        <div class="type-mechanic">Pattern analysis flags clients with repeated sub-threshold behaviour</div>
+        <div class="type-mechanic">STR triggered automatically if structuring pattern is confirmed</div>
+      </div>
     </div>
-    <div class="hero-kpi">
-      <div class="hero-kpi-val">0</div>
-      <div class="hero-kpi-lbl">Manual steps</div>
+
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- OPERATING MODES -->
+<section class="sec reveal" id="modes" style="background:#0B1120">
+  <div class="sec-label">Operating Modes</div>
+  <h2 class="sec-title">Three ways<br>to run Lex.</h2>
+  <p class="sec-sub">Kairos Lex adapts to the compliance team's maturity and the bank's infrastructure. Choose the mode that fits — or run them together.</p>
+
+  <div class="modes-grid">
+
+    <div class="mode-card reveal" style="--mc:#8A9BB0">
+      <div class="mode-num">01</div>
+      <div class="mode-tag">Offline · Scheduled</div>
+      <div class="mode-title">Extract → Generate → Store</div>
+      <div class="mode-sub">No portal needed · Compliance reviews before upload</div>
+      <p class="mode-desc">The fully automated pipeline. Lex connects to the core banking system, runs all detection logic, generates goAML 5.1 XML and an Excel compliance workbook, and saves both to the compliance shared drive. The compliance officer reviews and uploads manually to goAML.</p>
+      <div class="mode-flow">
+        <div class="mode-step"><span class="mode-step-dot"></span>Connect to SQL Server core banking</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Run CTR, IFT, EFT, STR detection</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Generate goAML 5.1 XML + Excel workbook</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Save to compliance shared drive folder</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Log run summary and exception count</div>
+      </div>
+      <div class="mode-features">
+        <div class="mode-feature">Compliance officer reviews XML before manual upload to goAML</div>
+        <div class="mode-feature">Full audit trail of every run and every file generated</div>
+        <div class="mode-feature">Scheduled daily — zero IT involvement after setup</div>
+      </div>
     </div>
-    <div class="hero-kpi">
-      <div class="hero-kpi-val">Daily</div>
-      <div class="hero-kpi-lbl">Auto-run</div>
+
+    <div class="mode-card reveal" style="--mc:#C9A84C">
+      <div class="mode-num">02</div>
+      <div class="mode-tag">Automated · End-to-End</div>
+      <div class="mode-title">Extract → Generate → Validate → Fix → Submit</div>
+      <div class="mode-sub">Full automation · Direct GIFIM submission</div>
+      <p class="mode-desc">The complete straight-through pipeline. After generating the XML, Lex validates it against the goAML 5.1 XSD schema in code — catching and auto-fixing structural errors — then submits directly to GIFIM via the goAML API. Zero manual steps.</p>
+      <div class="mode-flow">
+        <div class="mode-step"><span class="mode-step-dot"></span>Extract and detect (same as Mode 01)</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Generate goAML 5.1 XML</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Validate against XSD — log all errors</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Auto-fix known structural issues</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Submit to GIFIM goAML · Store confirmation</div>
+      </div>
+      <div class="mode-features">
+        <div class="mode-feature">XSD validation before submission — zero schema rejections</div>
+        <div class="mode-feature">Auto-corrects 12+ known GIFIM validation failure patterns</div>
+        <div class="mode-feature">Submission receipt and GIFIM confirmation stored per report</div>
+      </div>
     </div>
+
+    <div class="mode-card reveal" style="--mc:#2A9D8F">
+      <div class="mode-num">03</div>
+      <div class="mode-tag">Web Portal · Compliance Officer</div>
+      <div class="mode-title">Excel Upload → XML Generation Portal</div>
+      <div class="mode-sub">Exceptions · Manual cases · Overrides</div>
+      <p class="mode-desc">A secure web portal for the compliance team to handle exceptions, manual STR cases, and regulatory overrides — without touching the automated pipeline. The officer uploads the Excel workbook; the portal validates it, generates goAML 5.1 XML, and makes it available to download or submit directly to GIFIM.</p>
+      <div class="mode-flow">
+        <div class="mode-step"><span class="mode-step-dot"></span>Compliance officer logs into secure portal</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Uploads completed Excel compliance workbook</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Portal validates data — flags errors per row</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Generates goAML 5.1 XML in the browser</div>
+        <div class="mode-step"><span class="mode-step-dot"></span>Download XML or submit directly to GIFIM</div>
+      </div>
+      <div class="mode-features">
+        <div class="mode-feature">Designed for compliance officers — no technical knowledge required</div>
+        <div class="mode-feature">Validation errors shown in plain language, row by row</div>
+        <div class="mode-feature">Handles STR exceptions and manually reviewed cases</div>
+        <div class="mode-feature">Full session log — who uploaded, what, when</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <div class="hr"></div>
 
 <!-- XML DEMO -->
-
 <section class="sec reveal">
   <div class="sec-label">goAML 5.1 Output</div>
   <h2 class="sec-title">Submission-ready<br>XML. Every day.</h2>
   <p class="sec-sub" style="margin-bottom:48px">Kairos Lex generates valid goAML 5.1 XML that passes GIFIM schema validation on first submission. No post-processing. No manual fixes.</p>
-
   <div class="xml-block reveal">
     <div class="xml-bar">
       <div class="xml-dot xml-dot-r"></div>
@@ -387,22 +520,21 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
     <div class="indent-1"><span class="xk">&lt;rentity_branch&gt;</span><span class="xs">Standard Bank Sede</span><span class="xk">&lt;/rentity_branch&gt;</span></div>
     <div class="indent-1"><span class="xk">&lt;submission_code&gt;</span><span class="xs">E</span><span class="xk">&lt;/submission_code&gt;</span></div>
     <div class="indent-1"><span class="xk">&lt;report_code&gt;</span><span class="xs">DCTR</span><span class="xk">&lt;/report_code&gt;</span></div>
-    <div class="indent-1"><span class="xk">&lt;report_date&gt;</span><span class="xn">2025-04-17T00:00:00</span><span class="xk">&lt;/report_date&gt;</span><span class="xc"> &lt;!-- sql_date --&gt;</span></div>
+    <div class="indent-1"><span class="xk">&lt;report_date&gt;</span><span class="xn">2025-04-17T00:00:00</span><span class="xk">&lt;/report_date&gt;</span></div>
     <div class="indent-1"><span class="xk">&lt;currency_code_local&gt;</span><span class="xs">MZN</span><span class="xk">&lt;/currency_code_local&gt;</span></div>
-    <div class="indent-1"><span class="xk">&lt;reporting_user_code&gt;</span><span class="xs">ComplianceUser01</span><span class="xk">&lt;/reporting_user_code&gt;</span></div>
     <div class="indent-1"><span class="xk">&lt;transaction&gt;</span></div>
     <div class="indent-2"><span class="xk">&lt;transactionnumber&gt;</span><span class="xn">SBM202504170001</span><span class="xk">&lt;/transactionnumber&gt;</span></div>
     <div class="indent-2"><span class="xk">&lt;transaction_description&gt;</span><span class="xs">Cash Deposit CTR</span><span class="xk">&lt;/transaction_description&gt;</span></div>
     <div class="indent-2"><span class="xk">&lt;date_transaction&gt;</span><span class="xn">2025-04-16T00:00:00</span><span class="xk">&lt;/date_transaction&gt;</span></div>
     <div class="indent-2"><span class="xk">&lt;transaction_type_code&gt;</span><span class="xs">TTM1</span><span class="xk">&lt;/transaction_type_code&gt;</span></div>
     <div class="indent-2"><span class="xk">&lt;transmode_code&gt;</span><span class="xs">TMM2</span><span class="xk">&lt;/transmode_code&gt;</span></div>
-    <div class="indent-2"><span class="xk">&lt;amount_local&gt;</span><span class="xa">12500000.00</span><span class="xk">&lt;/amount_local&gt;</span><span class="xc"> &lt;!-- sql_decimal, no commas --&gt;</span></div>
-    <div class="indent-2"><span class="xk">&lt;t_from&gt;</span><span class="xc"> &lt;!-- external depositor --&gt;</span></div>
+    <div class="indent-2"><span class="xk">&lt;amount_local&gt;</span><span class="xa">250000.00</span><span class="xk">&lt;/amount_local&gt;</span><span class="xc"> &lt;!-- single tx ≥ 250,000 MZN triggers CTR --&gt;</span></div>
+    <div class="indent-2"><span class="xk">&lt;t_from&gt;</span></div>
     <div class="indent-3"><span class="xk">&lt;from_funds_code&gt;</span><span class="xs">FTM15</span><span class="xk">&lt;/from_funds_code&gt;</span></div>
     <div class="indent-3"><span class="xk">&lt;from_person&gt;</span><span class="xc">...</span><span class="xk">&lt;/from_person&gt;</span></div>
     <div class="indent-3"><span class="xk">&lt;from_country&gt;</span><span class="xs">MZ</span><span class="xk">&lt;/from_country&gt;</span></div>
     <div class="indent-2"><span class="xk">&lt;/t_from&gt;</span></div>
-    <div class="indent-2"><span class="xk">&lt;t_to_my_client&gt;</span><span class="xc"> &lt;!-- bank account --&gt;</span></div>
+    <div class="indent-2"><span class="xk">&lt;t_to_my_client&gt;</span></div>
     <div class="indent-3"><span class="xk">&lt;to_funds_code&gt;</span><span class="xs">FTM15</span><span class="xk">&lt;/to_funds_code&gt;</span></div>
     <div class="indent-3"><span class="xk">&lt;to_account&gt;</span><span class="xc">...</span><span class="xk">&lt;/to_account&gt;</span></div>
     <div class="indent-3"><span class="xk">&lt;to_country&gt;</span><span class="xs">MZ</span><span class="xk">&lt;/to_country&gt;</span></div>
@@ -415,97 +547,94 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 <div class="hr"></div>
 
 <!-- HOW IT WORKS -->
-
 <section class="sec reveal" style="background:#0B1120">
-  <div class="sec-label">Process</div>
+  <div class="sec-label">Pipeline</div>
   <h2 class="sec-title">Three steps.<br>No manual work.</h2>
   <div class="flow-grid">
     <div class="flow-cell reveal">
       <div class="flow-num">01</div>
       <div class="flow-title">Extract</div>
-      <p class="flow-desc">Connects directly to your SQL Server core banking system. Reads today's transactions via your existing query. No data exports, no files to move.</p>
+      <p class="flow-desc">Connects directly to your SQL Server core banking. Reads yesterday's transactions. No manual exports, no files to move, no daily IT intervention required.</p>
     </div>
     <div class="flow-arrow">→</div>
     <div class="flow-cell reveal">
       <div class="flow-num">02</div>
       <div class="flow-title">Detect & Score</div>
-      <p class="flow-desc">Applies GIFIM rules across all transactions. Each flagged record receives a composite risk score, a list of triggered rules, and submission deadline.</p>
+      <p class="flow-desc">Applies CTR (250k), IFT and EFT (750k) thresholds. Tracks cumulative totals for structuring across daily, weekly, monthly windows. Cascade deduplication ensures no transaction is reported twice.</p>
     </div>
     <div class="flow-arrow">→</div>
     <div class="flow-cell reveal">
       <div class="flow-num">03</div>
-      <div class="flow-title">Generate & Save</div>
-      <p class="flow-desc">Produces goAML 5.1 XML, Excel workbook and audit trail. Saves locally and to the compliance shared drive. Logs every transaction processed.</p>
+      <div class="flow-title">Generate & Deliver</div>
+      <p class="flow-desc">Produces goAML 5.1 XML, Excel compliance workbook, and audit log. Saves to shared drive. In Mode 02, validates schema and submits to GIFIM directly. In Mode 03, compliance uploads Excel via the portal.</p>
     </div>
   </div>
 </section>
 
 <div class="hr"></div>
 
-<!-- REPORT TYPES -->
-
+<!-- REPORTS DETAIL -->
 <section class="sec reveal" id="reports">
-  <div class="sec-label">Report Types</div>
+  <div class="sec-label">Report Detail</div>
   <h2 class="sec-title">Every report<br>GIFIM requires.</h2>
   <div class="reports-grid">
 
-```
-<div class="report-card reveal" style="--rc:#C9A84C">
-  <div class="report-badge">Automated Daily</div>
-  <div class="report-type">STR</div>
-  <div class="report-name">Suspicious<br>Transaction Report</div>
-  <div class="report-full">Relatório de Transacção Suspeita</div>
-  <p class="report-desc">Transactions that trigger one or more of Kairos Lex's seven FATF-aligned detection rules. Each report includes the risk score, triggered rules, and a structured reason field compliant with GIFIM requirements.</p>
-  <div class="report-items">
-    <div class="report-item">7 detection rules applied per transaction</div>
-    <div class="report-item">Composite risk score 0–100</div>
-    <div class="report-item">Reason field populated automatically</div>
-    <div class="report-item">Compliance officer review workflow</div>
-  </div>
-</div>
+    <div class="report-card reveal" style="--rc:#C9A84C">
+      <div class="report-badge">STR · Any amount</div>
+      <div class="report-type">STR</div>
+      <div class="report-name">Suspicious<br>Transaction Report</div>
+      <div class="report-full">Relatório de Transacção Suspeita</div>
+      <p class="report-desc">Transactions that trigger one or more of Kairos Lex's seven FATF-aligned detection rules. No minimum threshold — suspicion is the trigger. Also generated automatically when a structuring pattern is confirmed.</p>
+      <div class="report-items">
+        <div class="report-item">7 detection rules applied to every transaction</div>
+        <div class="report-item">Composite risk score 0–100 per flagged record</div>
+        <div class="report-item">Reason field auto-populated per triggered rule</div>
+        <div class="report-item">Compliance officer review workflow before submission</div>
+        <div class="report-item">Also generated for confirmed smurfing patterns</div>
+      </div>
+    </div>
 
-<div class="report-card reveal" style="--rc:#C9A84C">
-  <div class="report-badge">Automated Daily</div>
-  <div class="report-type">CTR</div>
-  <div class="report-name">Currency<br>Transaction Report</div>
-  <div class="report-full">Relatório de Transacção em Numerário</div>
-  <p class="report-desc">All transactions at or above the GIFIM threshold. Kairos Lex detects, classifies (CTR-C, CTR-I, CTR-E), calculates the 5-business-day submission deadline, and generates the XML automatically.</p>
-  <div class="report-items">
-    <div class="report-item">Configurable threshold (default 10M MZN)</div>
-    <div class="report-item">Type classification: Cash, International, Electronic</div>
-    <div class="report-item">Submission deadline auto-calculated</div>
-    <div class="report-item">goAML 5.1 XML generated on the same day</div>
-  </div>
-</div>
+    <div class="report-card reveal" style="--rc:#C9A84C">
+      <div class="report-badge">CTR · 250,000 MZN</div>
+      <div class="report-type">CTR</div>
+      <div class="report-name">Cash Transaction<br>Report</div>
+      <div class="report-full">Relatório de Transacção em Numerário</div>
+      <p class="report-desc">Cash operations at or above 250,000 MZN per transaction, or whose cumulative total within a reporting period crosses that threshold through structured sub-threshold deposits or withdrawals.</p>
+      <div class="report-items">
+        <div class="report-item">Integer: single cash transaction ≥ 250,000 MZN</div>
+        <div class="report-item">Structured: cumulative cash across daily / weekly / monthly window</div>
+        <div class="report-item">Type classification: CTR-C (cash), CTR-I (international), CTR-E (electronic)</div>
+        <div class="report-item">Submission deadline auto-calculated — 5 business days</div>
+      </div>
+    </div>
 
-<div class="report-card reveal" style="--rc:#8A9BB0">
-  <div class="report-badge">Automated Daily</div>
-  <div class="report-type">IFT</div>
-  <div class="report-name">International<br>Fund Transfer</div>
-  <div class="report-full">Transferência Internacional de Fundos</div>
-  <p class="report-desc">Outgoing and incoming international transfers, including SWIFT and card-based transactions. Handles both us-on-them and them-on-us flows, with full counterparty entity mapping.</p>
-  <div class="report-items">
-    <div class="report-item">SWIFT message parsing and mapping</div>
-    <div class="report-item">Correspondent bank entity resolution</div>
-    <div class="report-item">ITT (incoming) and OTT (outgoing) flows</div>
-    <div class="report-item">Country risk classification</div>
-  </div>
-</div>
+    <div class="report-card reveal" style="--rc:#8A9BB0">
+      <div class="report-badge">IFT · 750,000 MZN</div>
+      <div class="report-type">IFT</div>
+      <div class="report-name">International<br>Fund Transfer</div>
+      <div class="report-full">Transferência Internacional de Fundos</div>
+      <p class="report-desc">Outgoing and incoming international transfers — SWIFT and card-based — at or above 750,000 MZN per transfer, or accumulating to that level across reporting periods through structured sub-threshold movements.</p>
+      <div class="report-items">
+        <div class="report-item">Integer: single international transfer ≥ 750,000 MZN</div>
+        <div class="report-item">Structured: cumulative IFT across daily / weekly / monthly window</div>
+        <div class="report-item">ITT (incoming) and OTT (outgoing) flows fully mapped</div>
+        <div class="report-item">Correspondent bank entity and country risk classification</div>
+      </div>
+    </div>
 
-<div class="report-card reveal" style="--rc:#8A9BB0">
-  <div class="report-badge">Automated Daily</div>
-  <div class="report-type">EFT</div>
-  <div class="report-name">Electronic<br>Fund Transfer</div>
-  <div class="report-full">Transferência Electrónica de Fundos</div>
-  <p class="report-desc">Domestic electronic transfers, debit card transactions, credit card activity and interbank payments. Covers us-on-us and us-on-them flows with full account and signatory mapping.</p>
-  <div class="report-items">
-    <div class="report-item">Us-on-us (both accounts in-bank)</div>
-    <div class="report-item">Us-on-them (external beneficiary)</div>
-    <div class="report-item">Debit and credit card transactions</div>
-    <div class="report-item">Full signatory and entity resolution</div>
-  </div>
-</div>
-```
+    <div class="report-card reveal" style="--rc:#8A9BB0">
+      <div class="report-badge">EFT · 750,000 MZN</div>
+      <div class="report-type">EFT</div>
+      <div class="report-name">Electronic<br>Fund Transfer</div>
+      <div class="report-full">Transferência Electrónica de Fundos</div>
+      <p class="report-desc">Domestic electronic transfers, debit and credit card transactions, and interbank payments at or above 750,000 MZN per transaction, or accumulating to that threshold through structured movements.</p>
+      <div class="report-items">
+        <div class="report-item">Integer: single electronic transfer ≥ 750,000 MZN</div>
+        <div class="report-item">Structured: cumulative EFT across daily / weekly / monthly window</div>
+        <div class="report-item">Us-on-us (both accounts in-bank) and us-on-them (external)</div>
+        <div class="report-item">Full signatory, account, and entity resolution</div>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -513,77 +642,55 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 <div class="hr"></div>
 
 <!-- STR RULES -->
-
 <section class="sec reveal" id="rules" style="background:#0B1120">
   <div class="rules-header">
     <div>
       <div class="sec-label">STR Detection</div>
       <h2 class="sec-title">Seven rules.<br>One score.</h2>
     </div>
-    <p class="sec-sub">Every transaction is evaluated against all seven rules simultaneously. The composite score drives urgency and prioritisation for the compliance team.</p>
+    <p class="sec-sub">Every transaction is evaluated against all seven rules simultaneously. The composite score drives urgency and prioritisation. No minimum value — any suspicious transaction of any size qualifies for STR.</p>
   </div>
 
   <div class="rules-grid">
     <div class="rule-row reveal">
       <div class="rule-num">Rule 01</div>
-      <div>
-        <div class="rule-name">Structuring (Smurfing)</div>
-        <div class="rule-sub">Amounts just below the CTR threshold — classic structuring pattern</div>
-      </div>
+      <div><div class="rule-name">Structuring (Smurfing)</div><div class="rule-sub">Amounts just below CTR / IFT / EFT thresholds — cumulative patterns detected across reporting periods</div></div>
       <div class="rule-pts">+40 pts</div>
       <div class="rule-bar-wrap"><div class="rule-bar" style="width:80%"></div></div>
     </div>
     <div class="rule-row reveal">
       <div class="rule-num">Rule 02</div>
-      <div>
-        <div class="rule-name">High-Risk Country (FATF)</div>
-        <div class="rule-sub">Transaction involving FATF blacklist or grey-list jurisdiction</div>
-      </div>
+      <div><div class="rule-name">High-Risk Country (FATF)</div><div class="rule-sub">Transaction involving FATF blacklist or grey-list jurisdiction</div></div>
       <div class="rule-pts">+35 pts</div>
       <div class="rule-bar-wrap"><div class="rule-bar" style="width:70%"></div></div>
     </div>
     <div class="rule-row reveal">
       <div class="rule-num">Rule 03</div>
-      <div>
-        <div class="rule-name">Enhanced Monitoring Country</div>
-        <div class="rule-sub">Countries with AML/CFT deficiencies under enhanced monitoring</div>
-      </div>
+      <div><div class="rule-name">Enhanced Monitoring Country</div><div class="rule-sub">Countries with AML/CFT deficiencies under enhanced FATF monitoring</div></div>
       <div class="rule-pts">+25 pts</div>
       <div class="rule-bar-wrap"><div class="rule-bar" style="width:50%"></div></div>
     </div>
     <div class="rule-row reveal">
       <div class="rule-num">Rule 04</div>
-      <div>
-        <div class="rule-name">Large Cash Without Justification</div>
-        <div class="rule-sub">Cash deposit or withdrawal above threshold with no supporting notes</div>
-      </div>
+      <div><div class="rule-name">Large Cash Without Justification</div><div class="rule-sub">Cash deposit or withdrawal above threshold with no supporting narrative in the system</div></div>
       <div class="rule-pts">+30 pts</div>
       <div class="rule-bar-wrap"><div class="rule-bar" style="width:60%"></div></div>
     </div>
     <div class="rule-row reveal">
       <div class="rule-num">Rule 05</div>
-      <div>
-        <div class="rule-name">Round Number Amounts</div>
-        <div class="rule-sub">Large transactions with perfectly round figures — a known indicator</div>
-      </div>
+      <div><div class="rule-name">Round Number Amounts</div><div class="rule-sub">Large transactions with perfectly round figures — a recognised indicator of pre-determined transfers</div></div>
       <div class="rule-pts">+20 pts</div>
       <div class="rule-bar-wrap"><div class="rule-bar" style="width:40%"></div></div>
     </div>
     <div class="rule-row reveal">
       <div class="rule-num">Rule 06</div>
-      <div>
-        <div class="rule-name">Suspicious International Transfer</div>
-        <div class="rule-sub">SWIFT transactions to flagged corridors above minimum threshold</div>
-      </div>
+      <div><div class="rule-name">Suspicious International Transfer</div><div class="rule-sub">SWIFT transactions to flagged corridors above minimum threshold</div></div>
       <div class="rule-pts">+30 pts</div>
       <div class="rule-bar-wrap"><div class="rule-bar" style="width:60%"></div></div>
     </div>
     <div class="rule-row reveal">
       <div class="rule-num">Rule 07</div>
-      <div>
-        <div class="rule-name">Statistical Anomaly (z &gt; 3)</div>
-        <div class="rule-sub">Amount more than 3 standard deviations above the client's own history</div>
-      </div>
+      <div><div class="rule-name">Statistical Anomaly (z &gt; 3)</div><div class="rule-sub">Amount more than 3 standard deviations above the client's own historical average</div></div>
       <div class="rule-pts">+25 pts</div>
       <div class="rule-bar-wrap"><div class="rule-bar" style="width:50%"></div></div>
     </div>
@@ -615,7 +722,6 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 <div class="hr"></div>
 
 <!-- BDM -->
-
 <section class="sec reveal" id="bdm">
   <div class="sec-label">BdM Prudential Reports</div>
   <h2 class="sec-title">Basel III.<br>On schedule.</h2>
@@ -626,21 +732,21 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
       <div class="bdm-metric">12<span>%</span></div>
       <div class="bdm-name">CAR · Basel III Minimum</div>
       <p class="bdm-desc">Risk-weighted assets calculated per loan type. Tier 1 and Tier 2 capital tracked. Buffer above regulatory minimum reported monthly.</p>
-      <div class="bdm-status"><span class="bdm-dot bdm-dot-g"></span><span style="font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#2ECC71">Compliant</span></div>
+      <div class="bdm-status"><span class="bdm-dot bdm-dot-g"></span><span class="bdm-status-txt" style="color:#2ECC71">Compliant</span></div>
     </div>
     <div class="bdm-card reveal" style="--bc:#2A9D8F">
       <div class="bdm-type">Liquidity</div>
       <div class="bdm-metric">100<span>%</span></div>
       <div class="bdm-name">LCR · Minimum Coverage</div>
       <p class="bdm-desc">High-Quality Liquid Assets vs. 30-day net outflows. HQLA coverage ratio tracked daily. Alert triggered when LCR approaches threshold.</p>
-      <div class="bdm-status"><span class="bdm-dot bdm-dot-y"></span><span style="font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#F39C12">Watch</span></div>
+      <div class="bdm-status"><span class="bdm-dot bdm-dot-y"></span><span class="bdm-status-txt" style="color:#F39C12">Watch</span></div>
     </div>
     <div class="bdm-card reveal" style="--bc:#E74C3C">
       <div class="bdm-type">Asset Quality</div>
       <div class="bdm-metric">5<span>%</span></div>
       <div class="bdm-name">NPL · Warning Threshold</div>
       <p class="bdm-desc">Non-Performing Loans as a share of total portfolio. DPD ≥ 90 days classification. Provision coverage ratio and sector breakdown included.</p>
-      <div class="bdm-status"><span class="bdm-dot bdm-dot-r"></span><span style="font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#E74C3C">Alert</span></div>
+      <div class="bdm-status"><span class="bdm-dot bdm-dot-r"></span><span class="bdm-status-txt" style="color:#E74C3C">Alert</span></div>
     </div>
   </div>
 </section>
@@ -648,7 +754,6 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 <div class="hr"></div>
 
 <!-- SCHEMA -->
-
 <section class="sec reveal" id="schema" style="background:#111827">
   <div class="sec-label">goAML 5.1 Schema</div>
   <h2 class="sec-title">Full schema<br>compliance.</h2>
@@ -683,7 +788,7 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
     </div>
     <div class="schema-col reveal">
       <div class="schema-col-title">Key Fixes Enforced by Kairos Lex</div>
-      <div class="schema-tree" style="font-size:12px;line-height:2">
+      <div class="schema-tree" style="font-size:12px;line-height:2;white-space:normal">
         <div style="color:#F0F4F8">✓ <span style="color:#8A9BB0">rentity_id</span> as int, not string</div>
         <div style="color:#F0F4F8">✓ <span style="color:#8A9BB0">amount_local</span> decimal, no comma separators</div>
         <div style="color:#F0F4F8">✓ <span style="color:#8A9BB0">date_transaction</span> as YYYY-MM-DDTHH:MM:SS</div>
@@ -703,8 +808,7 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 
 <div class="hr"></div>
 
-<!-- TECH STACK -->
-
+<!-- TECH -->
 <section class="sec reveal">
   <div class="sec-label">Technical Stack</div>
   <h2 class="sec-title">Built for<br>production.</h2>
@@ -724,7 +828,7 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
         <div class="tech-item"><strong>lxml</strong> — goAML 5.1 XML builder</div>
         <div class="tech-item"><strong>XSD validation</strong> — schema compliance</div>
         <div class="tech-item"><strong>ISO-8859-1</strong> encoding for GIFIM</div>
-        <div class="tech-item"><strong>Chunked output</strong> — 2700 tx per file</div>
+        <div class="tech-item"><strong>Chunked output</strong> — 2,700 tx per file</div>
       </div>
     </div>
     <div class="tech-cell reveal">
@@ -732,8 +836,8 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
       <div class="tech-items">
         <div class="tech-item"><strong>XML</strong> — goAML 5.1, GIFIM-ready</div>
         <div class="tech-item"><strong>Excel</strong> — 7-sheet compliance workbook</div>
-        <div class="tech-item"><strong>JSON</strong> — API integration feed</div>
-        <div class="tech-item"><strong>Shared drive</strong> — auto-save to compliance folder</div>
+        <div class="tech-item"><strong>Web portal</strong> — Excel → XML for exceptions</div>
+        <div class="tech-item"><strong>Shared drive</strong> — auto-save per run</div>
       </div>
     </div>
   </div>
@@ -742,43 +846,40 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 <div class="hr"></div>
 
 <!-- CONTACT -->
-
 <section class="sec reveal" id="contact" style="background:#0B1120">
   <div class="contact-wrap">
     <div class="sec-label" style="justify-content:center">Book a Demo</div>
     <h2 class="contact-title">See <em>Lex</em><br>in action.</h2>
-    <p class="contact-sub">In 30 minutes, we'll connect to a test dataset, run the full CTR and STR pipeline, and show you the goAML 5.1 XML that would have been submitted to GIFIM today.</p>
+    <p class="contact-sub">In 30 minutes, we connect to a test dataset, run the full pipeline — integer and structured detection — and show you the goAML 5.1 XML that would have been submitted to GIFIM today.</p>
     <a href="mailto:info@kairos.co.mz?subject=Kairos Lex Demo Request&body=Hello,%0D%0A%0D%0AI'd like to book a demo of Kairos Lex.%0D%0A%0D%0ABank:%0D%0AContact name:%0D%0APreferred time:%0D%0A" class="contact-email">info@kairos.co.mz</a>
     <span class="contact-loc">Maputo · Mozambique · kairos.co.mz</span>
-
-```
-<div class="demo-box reveal">
-  <div class="demo-lbl">What You'll See in the Demo</div>
-  <div class="demo-what">
-    <div class="demo-item">Live CTR detection on real transaction data</div>
-    <div class="demo-item">STR scoring across 7 FATF rules</div>
-    <div class="demo-item">goAML 5.1 XML generated in real time</div>
-    <div class="demo-item">BdM prudential metrics dashboard</div>
-    <div class="demo-item">Exceptions log and audit trail</div>
-    <div class="demo-item">Excel compliance workbook output</div>
-  </div>
-  <a href="mailto:info@kairos.co.mz?subject=Kairos Lex Demo Request&body=Hello,%0D%0A%0D%0AI'd like to book a 30-minute demo of Kairos Lex.%0D%0A%0D%0ABank:%0D%0AContact name:%0D%0APreferred time:%0D%0A" class="btn-gold">Request 30-min Demo →</a>
-</div>
-```
-
+    <div class="demo-box reveal">
+      <div class="demo-lbl">What You'll See in the Demo</div>
+      <div class="demo-what">
+        <div class="demo-item">CTR detection — integer (250k) and structured</div>
+        <div class="demo-item">Smurfing pattern detection across periods</div>
+        <div class="demo-item">IFT and EFT reporting (750k MZN)</div>
+        <div class="demo-item">STR scoring across 7 FATF rules</div>
+        <div class="demo-item">goAML 5.1 XML generated in real time</div>
+        <div class="demo-item">Cascade deduplication — no double reporting</div>
+        <div class="demo-item">Excel compliance workbook (7 sheets)</div>
+        <div class="demo-item">Web portal — Excel upload to XML conversion</div>
+      </div>
+      <a href="mailto:info@kairos.co.mz?subject=Kairos Lex Demo Request&body=Hello,%0D%0A%0D%0AI'd like to book a 30-minute demo of Kairos Lex.%0D%0A%0D%0ABank:%0D%0AContact name:%0D%0APreferred time:%0D%0A" class="btn-gold">Request 30-min Demo →</a>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-
 <footer>
-  <div>
+  <div style="display:flex;align-items:center">
     <span class="ft-logo"><span>K</span>AIROS</span>
     <span class="ft-product">Lex</span>
   </div>
   <div class="ft-links">
     <a href="index.html">← All Products</a>
-    <a href="#reports">Reports</a>
+    <a href="#report-types">Report Types</a>
+    <a href="#modes">How It Works</a>
     <a href="#rules">STR Rules</a>
     <a href="#contact">Contact</a>
   </div>
@@ -786,19 +887,25 @@ footer{flex-direction:column;padding:28px 24px;text-align:center}
 </footer>
 
 <script>
-  function forceDark(){
-    var s='background:#080A0F!important;background-color:#080A0F!important;';
-    document.documentElement.setAttribute('style',(document.documentElement.getAttribute('style')||'')+s);
-    document.body.setAttribute('style',(document.body.getAttribute('style')||'')+s);
-  }
-  forceDark();
-  document.addEventListener('DOMContentLoaded',forceDark);
-  window.addEventListener('load',forceDark);
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
+  }, {threshold:.07});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')});
-  },{threshold:.07});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const toggle = document.getElementById('navToggle');
+  const mobile = document.getElementById('navMobile');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    mobile.classList.toggle('open');
+    document.body.style.overflow = mobile.classList.contains('open') ? 'hidden' : '';
+  });
+  mobile.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      mobile.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
 </script>
 
 </body>

@@ -1,543 +1,209 @@
 <!DOCTYPE html>
-<html lang="en" style="background:#080A0F;background-color:#080A0F;">
+<html lang="en" style="background:#080A0F;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#080A0F">
-<meta name="description" content="Kairos — AI & Analytics for Banking, Energy and Regulatory Intelligence in Mozambique.">
-<title>Kairos · Raw Data. Real Decisions.</title>
+<meta name="description" content="Kairos - AI, analytics and machine learning for banks in Mozambique. From data infrastructure to regulatory reporting.">
+<title>Kairos - Raw Data. Real Decisions.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --obsidian:#080A0F;
-  --navy:#0B1120;
-  --midnight:#111827;
-  --slate:#1E2A3A;
-  --steel:#2D3F55;
-  --silver:#8A9BB0;
-  --white:#F0F4F8;
-  --gold:#C9A84C;
-  --gold-l:#E8C97A;
-  --gold-d:#8A6B2A;
-  --teal:#2A9D8F;
-  --teal-d:#1A6B63;
+  --obsidian:#080A0F;--navy:#0B1120;--midnight:#111827;
+  --slate:#1E2A3A;--steel:#2D3F55;--silver:#8A9BB0;--white:#F0F4F8;
+  --gold:#C9A84C;--gold-l:#E8C97A;--gold-d:#8A6B2A;
+  --teal:#2A9D8F;--teal-d:#1A6B63;
   --fd:'Cormorant Garamond',Georgia,serif;
   --fb:'Outfit',system-ui,sans-serif;
   --fm:'Space Mono','Courier New',monospace;
 }
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;background:#080A0F !important;}
-body{
-  background:#080A0F !important;
-  color:#F0F4F8;
-  font-family:var(--fb);
-  font-size:16px;
-  line-height:1.6;
-  overflow-x:hidden;
-}
-
+body{background:#080A0F !important;color:#F0F4F8;font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:#080A0F}
 ::-webkit-scrollbar-thumb{background:#8A6B2A}
-
-/* ══ NAV ══ */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 56px;height:72px;
-  background:rgba(8,10,15,0.95);
-  border-bottom:1px solid rgba(201,168,76,0.08);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  gap:24px;
-}
-.nav-logo{
-  font-family:var(--fd);font-size:20px;font-weight:300;
-  color:#F0F4F8;text-decoration:none;letter-spacing:.1em;
-  flex-shrink:0;
-}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:72px;background:rgba(8,10,15,.95);border-bottom:1px solid rgba(201,168,76,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);gap:20px}
+.nav-logo{font-family:var(--fd);font-size:20px;font-weight:300;color:#F0F4F8;text-decoration:none;letter-spacing:.1em;flex-shrink:0}
 .nav-logo span{color:#C9A84C}
-
-.nav-links{
-  display:flex;gap:40px;list-style:none;
-  align-items:center;
-}
-.nav-links a{
-  font-family:var(--fm);font-size:9px;letter-spacing:.3em;
-  text-transform:uppercase;color:#8A9BB0;text-decoration:none;
-  transition:color .2s;white-space:nowrap;
-}
+.nav-links{display:flex;gap:40px;list-style:none;align-items:center}
+.nav-links a{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#8A9BB0;text-decoration:none;transition:color .2s;white-space:nowrap}
 .nav-links a:hover{color:#C9A84C}
-
-.nav-cta{
-  font-family:var(--fm);font-size:9px;letter-spacing:.2em;
-  text-transform:uppercase;color:#C9A84C;
-  border:1px solid #8A6B2A;padding:10px 22px;
-  text-decoration:none;transition:all .25s;
-  white-space:nowrap;flex-shrink:0;
-}
+.nav-cta{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C9A84C;border:1px solid #8A6B2A;padding:10px 22px;text-decoration:none;transition:all .25s;white-space:nowrap;flex-shrink:0}
 .nav-cta:hover{background:#C9A84C;color:#080A0F}
-
-/* Hamburger */
-.nav-toggle{
-  display:none;flex-direction:column;gap:5px;
-  background:none;border:none;cursor:pointer;
-  padding:4px;flex-shrink:0;
-}
-.nav-toggle span{
-  display:block;width:22px;height:1px;
-  background:#8A9BB0;transition:all .3s;
-}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.nav-toggle span{display:block;width:22px;height:1px;background:#8A9BB0;transition:all .3s}
 .nav-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
 .nav-toggle.open span:nth-child(2){opacity:0}
 .nav-toggle.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-
-/* Mobile menu */
-.nav-mobile{
-  display:none;
-  position:fixed;top:72px;left:0;right:0;bottom:0;z-index:190;
-  background:rgba(8,10,15,0.98);
-  flex-direction:column;align-items:center;justify-content:center;
-  gap:40px;
-}
+.nav-mobile{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;z-index:190;background:rgba(8,10,15,.98);flex-direction:column;align-items:center;justify-content:center;gap:40px}
 .nav-mobile.open{display:flex}
-.nav-mobile a{
-  font-family:var(--fm);font-size:11px;letter-spacing:.4em;
-  text-transform:uppercase;color:#8A9BB0;text-decoration:none;
-  transition:color .2s;
-}
+.nav-mobile a{font-family:var(--fm);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#8A9BB0;text-decoration:none;transition:color .2s}
 .nav-mobile a:hover{color:#C9A84C}
-.nav-mobile .nav-cta-m{
-  color:#C9A84C;border:1px solid #8A6B2A;
-  padding:14px 36px;margin-top:16px;
-}
-
-/* ══ HERO ══ */
-.hero{
-  min-height:100vh;display:flex;flex-direction:column;
-  justify-content:center;padding:140px 56px 80px;
-  position:relative;overflow:hidden;
-}
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(201,168,76,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(201,168,76,.025) 1px,transparent 1px);
-  background-size:72px 72px;
-  mask-image:radial-gradient(ellipse 90% 70% at 50% 40%,black 20%,transparent 100%);
-  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 40%,black 20%,transparent 100%);
-}
-.hero-glow-a{
-  position:absolute;width:700px;height:500px;
-  background:radial-gradient(ellipse,rgba(201,168,76,.055) 0%,transparent 65%);
-  top:-80px;right:-120px;pointer-events:none;
-}
-.hero-glow-b{
-  position:absolute;width:500px;height:400px;
-  background:radial-gradient(ellipse,rgba(42,157,143,.04) 0%,transparent 65%);
-  bottom:-60px;left:-80px;pointer-events:none;
-}
-.hero-inner{position:relative;z-index:2;max-width:1100px}
-
-.hero-eyebrow{
-  font-family:var(--fm);font-size:10px;letter-spacing:.5em;
-  text-transform:uppercase;color:#C9A84C;
-  display:flex;align-items:center;gap:14px;margin-bottom:32px;
-  opacity:0;animation:fu .8s .2s forwards;
-}
-.hero-eyebrow::before{content:'';width:32px;height:1px;background:#C9A84C}
-
-.hero-name{
-  font-family:var(--fd);
-  font-size:clamp(72px,13vw,200px);
-  font-weight:300;line-height:.88;letter-spacing:-.02em;
-  color:#F0F4F8;
-  opacity:0;animation:fu .9s .35s forwards;
-}
-.hero-name .k{color:#C9A84C}
-
-.hero-taglines{
-  margin-top:44px;
-  opacity:0;animation:fu .8s .55s forwards;
-}
-.tl1{
-  font-family:var(--fb);font-weight:600;
-  font-size:clamp(18px,3.2vw,48px);
-  letter-spacing:.06em;text-transform:uppercase;
-  color:#F0F4F8;line-height:1;display:block;
-}
-.tl2{
-  font-family:var(--fb);font-weight:600;
-  font-size:clamp(18px,3.2vw,48px);
-  letter-spacing:.06em;text-transform:uppercase;
-  color:#C9A84C;line-height:1;display:block;margin-top:4px;
-}
-.tl3{
-  font-family:var(--fd);font-style:italic;font-weight:300;
-  font-size:clamp(14px,1.6vw,22px);
-  color:#8A9BB0;letter-spacing:.06em;
-  display:block;margin-top:16px;
-}
-
-.hero-desc{
-  max-width:500px;font-size:15px;color:#8A9BB0;
-  line-height:1.85;margin-top:40px;
-  opacity:0;animation:fu .8s .7s forwards;
-}
-
-.hero-actions{
-  display:flex;gap:14px;flex-wrap:wrap;margin-top:48px;
-  opacity:0;animation:fu .8s .85s forwards;
-}
-.btn-gold{
-  font-family:var(--fm);font-size:9px;letter-spacing:.25em;
-  text-transform:uppercase;font-weight:700;
-  background:#C9A84C;color:#080A0F;
-  padding:15px 36px;text-decoration:none;
-  transition:all .25s;display:inline-block;
-}
-.btn-gold:hover{background:#E8C97A;transform:translateY(-2px)}
-.btn-ghost{
-  font-family:var(--fm);font-size:9px;letter-spacing:.25em;
-  text-transform:uppercase;color:#8A9BB0;
-  border:1px solid #1E2A3A;padding:15px 36px;
-  text-decoration:none;transition:all .25s;display:inline-block;
-}
-.btn-ghost:hover{border-color:#8A9BB0;color:#F0F4F8}
-
-.hero-bottom{
-  display:flex;gap:56px;margin-top:88px;padding-top:40px;
-  border-top:1px solid rgba(201,168,76,.1);
-  opacity:0;animation:fu .8s 1s forwards;
-  flex-wrap:wrap;
-}
-.hero-stat-lbl{
-  font-family:var(--fm);font-size:9px;letter-spacing:.4em;
-  text-transform:uppercase;color:#8A6B2A;margin-bottom:8px;
-}
-.hero-stat-val{
-  font-family:var(--fd);font-size:clamp(22px,3vw,34px);
-  font-weight:300;color:#F0F4F8;
-}
-
-@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
-/* ══ SECTION BASE ══ */
-.sec{position:relative;padding:112px 56px;z-index:1}
-.sec-label{
-  font-family:var(--fm);font-size:9px;letter-spacing:.5em;
-  text-transform:uppercase;color:#C9A84C;
-  display:flex;align-items:center;gap:14px;margin-bottom:20px;
-}
+.nav-mobile .m-cta{color:#C9A84C;border:1px solid #8A6B2A;padding:14px 36px;margin-top:8px}
+.hr{width:calc(100% - 112px);height:1px;margin:0 56px;background:linear-gradient(to right,transparent,#1E2A3A,transparent)}
+.sec{padding:112px 56px;position:relative;z-index:1}
+.sec-label{font-family:var(--fm);font-size:9px;letter-spacing:.5em;text-transform:uppercase;color:#C9A84C;display:flex;align-items:center;gap:14px;margin-bottom:20px}
 .sec-label::before{content:'';width:24px;height:1px;background:#C9A84C}
-.sec-title{
-  font-family:var(--fd);font-size:clamp(32px,5vw,64px);
-  font-weight:300;color:#F0F4F8;line-height:1.05;margin-bottom:20px;
-}
-.sec-sub{font-size:15px;color:#8A9BB0;max-width:540px;line-height:1.85}
-
-.hr{
-  width:calc(100% - 112px);height:1px;margin:0 56px;
-  background:linear-gradient(to right,transparent,#1E2A3A,transparent);
-}
-
-/* ══ PROBLEM ══ */
-.prob-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:#1E2A3A;
-  border:1px solid #1E2A3A;margin-top:64px;
-}
-.prob-cell{
-  background:#0B1120;padding:48px 40px;
-  position:relative;overflow:hidden;
-}
-.prob-cell::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;
-  height:1px;background:linear-gradient(to right,#C9A84C,transparent);
-  transform:scaleX(0);transform-origin:left;transition:transform .4s;
-}
-.prob-cell:hover::after{transform:scaleX(.6)}
-.prob-n{
-  font-family:var(--fd);font-size:80px;font-weight:300;
-  color:rgba(201,168,76,.07);line-height:1;margin-bottom:12px;
-}
-.prob-title{
-  font-family:var(--fd);font-size:22px;font-weight:300;
-  color:#F0F4F8;margin-bottom:14px;
-}
-.prob-desc{font-size:14px;color:#8A9BB0;line-height:1.85}
-
-/* ══ PRODUCTS ══ */
-.prod-header{margin-bottom:72px}
-.prod-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;
-}
-.prod-card{
-  background:#111827;padding:44px 36px;
-  position:relative;overflow:hidden;transition:background .3s;
-  text-decoration:none;display:block;color:inherit;
-}
-.prod-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--pc,#8A6B2A);
-  transform:scaleX(0);transform-origin:left;transition:transform .4s;
-}
+.sec-title{font-family:var(--fd);font-size:clamp(32px,5vw,64px);font-weight:300;color:#F0F4F8;line-height:1.05;margin-bottom:20px}
+.sec-sub{font-size:16px;color:#8A9BB0;line-height:1.85;max-width:560px}
+.btn-gold{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;font-weight:700;background:#C9A84C;color:#080A0F;padding:15px 36px;text-decoration:none;transition:all .25s;display:inline-block}
+.btn-gold:hover{background:#E8C97A;transform:translateY(-2px)}
+.btn-ghost{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#8A9BB0;border:1px solid #1E2A3A;padding:15px 36px;text-decoration:none;transition:all .25s;display:inline-block}
+.btn-ghost:hover{border-color:#8A9BB0;color:#F0F4F8}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 56px 80px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.025) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 80% 70% at 60% 40%,black 10%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 60% 40%,black 10%,transparent 100%)}
+.hero-glow{position:absolute;width:800px;height:600px;background:radial-gradient(ellipse,rgba(201,168,76,.05) 0%,transparent 65%);top:-100px;right:-80px;pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:1100px}
+.hero-eyebrow{font-family:var(--fm);font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:#C9A84C;display:flex;align-items:center;gap:14px;margin-bottom:36px;opacity:0;animation:fu .8s .15s forwards}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:#C9A84C}
+.hero-name{font-family:var(--fd);font-size:clamp(72px,14vw,210px);font-weight:300;line-height:.85;letter-spacing:-.02em;opacity:0;animation:fu .9s .3s forwards}
+.hero-name .k{color:#C9A84C}
+.hero-taglines{margin-top:48px;opacity:0;animation:fu .8s .5s forwards}
+.tl1{font-family:var(--fb);font-weight:600;font-size:clamp(20px,3.4vw,52px);letter-spacing:.06em;text-transform:uppercase;color:#F0F4F8;line-height:1;display:block}
+.tl2{font-family:var(--fb);font-weight:600;font-size:clamp(20px,3.4vw,52px);letter-spacing:.06em;text-transform:uppercase;color:#C9A84C;line-height:1;display:block;margin-top:4px}
+.tl3{font-family:var(--fd);font-style:italic;font-weight:300;font-size:clamp(15px,1.8vw,24px);color:#8A9BB0;letter-spacing:.06em;display:block;margin-top:18px}
+.hero-desc{max-width:520px;font-size:16px;color:#8A9BB0;line-height:1.9;margin-top:44px;opacity:0;animation:fu .8s .68s forwards}
+.hero-desc strong{color:#F0F4F8;font-weight:500}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:52px;opacity:0;animation:fu .8s .84s forwards}
+.hero-anchors{display:flex;gap:0;margin-top:80px;border-top:1px solid rgba(201,168,76,.12);padding-top:40px;opacity:0;animation:fu .8s 1s forwards;flex-wrap:wrap}
+.hero-anchor{padding-right:48px;margin-right:48px;border-right:1px solid #1E2A3A}
+.hero-anchor:last-child{border-right:none;padding-right:0;margin-right:0}
+.anchor-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:#8A6B2A;margin-bottom:8px}
+.anchor-val{font-family:var(--fd);font-size:clamp(14px,1.6vw,19px);font-weight:300;color:#F0F4F8}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.journey-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:64px}
+.journey-flow{display:flex;flex-direction:column;gap:1px}
+.journey-step{display:grid;grid-template-columns:44px 1fr;background:#1E2A3A}
+.journey-step-num{background:#0B1120;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:#8A6B2A;border-right:1px solid #1E2A3A;min-height:52px}
+.journey-step-body{background:#111827;padding:16px 24px;display:flex;align-items:center;gap:16px;transition:background .25s}
+.journey-step-body:hover{background:rgba(30,42,58,.6)}
+.journey-step-name{font-family:var(--fd);font-size:18px;font-weight:300;color:#F0F4F8;flex:1}
+.journey-step-prod{font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--jp,#8A6B2A);border:1px solid var(--jp,#8A6B2A);padding:3px 10px;flex-shrink:0}
+.journey-arrow{text-align:center;padding:6px 0;font-family:var(--fm);font-size:10px;color:#1E2A3A}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1E2A3A;border:1px solid #1E2A3A}
+.prod-card{background:#111827;padding:44px 36px;position:relative;overflow:hidden;transition:background .3s;text-decoration:none;display:block;color:inherit}
+.prod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--pc,#8A6B2A);transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .prod-card:hover{background:rgba(30,42,58,.5)}
 .prod-card:hover::before{transform:scaleX(1)}
-.prod-card.active{background:rgba(201,168,76,.04)}
-.prod-card.active::before{transform:scaleX(1)}
-.prod-card.teal-card{background:rgba(42,157,143,.03)}
-.prod-card.teal-card::before{background:var(--teal)}
-.prod-card.wide{grid-column:span 3}
-
-.prod-tag{
-  font-family:var(--fm);font-size:8px;letter-spacing:.35em;
-  text-transform:uppercase;color:var(--pc,#8A6B2A);
-  margin-bottom:20px;
-}
-.prod-ico{width:44px;height:44px;margin-bottom:24px;}
-.prod-name{
-  font-family:var(--fd);font-size:26px;font-weight:300;
-  color:#F0F4F8;margin-bottom:6px;
-}
+.prod-card.lit{background:rgba(201,168,76,.04)}
+.prod-card.lit::before{transform:scaleX(1)}
+.prod-card.vteal{background:rgba(42,157,143,.03)}
+.prod-card.vteal::before{background:var(--teal)}
+.prod-step{font-family:var(--fm);font-size:8px;letter-spacing:.35em;text-transform:uppercase;color:var(--pc,#8A6B2A);margin-bottom:20px}
+.prod-ico{width:44px;height:44px;margin-bottom:24px}
+.prod-name{font-family:var(--fd);font-size:26px;font-weight:300;color:#F0F4F8;margin-bottom:6px}
 .prod-name em{font-style:italic;color:var(--pc,#C9A84C)}
-.prod-line{
-  font-family:var(--fm);font-size:9px;letter-spacing:.25em;
-  text-transform:uppercase;color:var(--pc,#8A6B2A);
-  margin-bottom:16px;opacity:.7;
-}
+.prod-line{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--pc,#8A6B2A);margin-bottom:16px;opacity:.7}
 .prod-desc{font-size:13px;color:#8A9BB0;line-height:1.85;margin-bottom:20px}
-.prod-pills{display:flex;flex-wrap:wrap;gap:7px}
-.prod-pill{
-  font-family:var(--fm);font-size:8px;letter-spacing:.15em;
-  text-transform:uppercase;color:#8A9BB0;
-  border:1px solid #1E2A3A;padding:4px 10px;
-}
-.prod-pill.gold{color:#C9A84C;border-color:#8A6B2A}
-.prod-pill.teal{color:#2A9D8F;border-color:#1A6B63}
-.prod-arrow{
-  display:inline-flex;align-items:center;gap:8px;margin-top:20px;
-  font-family:var(--fm);font-size:8px;letter-spacing:.25em;
-  text-transform:uppercase;color:#C9A84C;
-}
-.prod-arrow::after{content:'→';transition:transform .2s}
-.prod-card:hover .prod-arrow::after{transform:translateX(4px)}
-
-/* ══ LEX STRIP ══ */
-.lex-strip{
-  background:#0B1120;border:1px solid rgba(201,168,76,.15);
-  padding:56px;margin-top:2px;
-  display:grid;grid-template-columns:1fr 1fr auto;
-  gap:48px;align-items:center;
-}
-.lex-strip-title{
-  font-family:var(--fd);font-size:clamp(24px,3.5vw,44px);
-  font-weight:300;color:#F0F4F8;line-height:1.1;
-}
+.prod-tags{display:flex;flex-wrap:wrap;gap:7px}
+.prod-tag{font-family:var(--fm);font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:#8A9BB0;border:1px solid #1E2A3A;padding:4px 10px}
+.prod-tag.gold{color:#C9A84C;border-color:#8A6B2A}
+.prod-tag.teal{color:#2A9D8F;border-color:#1A6B63}
+.lex-strip{background:#0B1120;border:1px solid rgba(201,168,76,.15);border-top:none;padding:48px 52px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.lex-strip-title{font-family:var(--fd);font-size:clamp(22px,3vw,36px);font-weight:300;color:#F0F4F8;line-height:1.1}
 .lex-strip-title em{font-style:italic;color:#C9A84C}
-.lex-strip-desc{font-size:14px;color:#8A9BB0;line-height:1.85}
-.lex-strip-cta{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
-
-/* ══ ABOUT ══ */
-.about-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:88px;align-items:start;
-}
+.lex-strip-desc{font-size:14px;color:#8A9BB0;line-height:1.85;max-width:400px}
+.lex-strip-cta{display:flex;flex-direction:column;gap:12px;flex-shrink:0}
+.ml-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
+.ml-card{background:#111827;padding:56px 48px;position:relative;overflow:hidden}
+.ml-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--mc,#C9A84C)}
+.ml-tag{font-family:var(--fm);font-size:8px;letter-spacing:.45em;text-transform:uppercase;color:var(--mc,#C9A84C);margin-bottom:20px}
+.ml-title{font-family:var(--fd);font-size:clamp(26px,3.5vw,40px);font-weight:300;color:#F0F4F8;line-height:1.1;margin-bottom:16px}
+.ml-desc{font-size:14px;color:#8A9BB0;line-height:1.9;margin-bottom:28px}
+.ml-items{display:flex;flex-direction:column;gap:10px}
+.ml-item{font-size:13px;color:#8A9BB0;padding-left:18px;position:relative;line-height:1.6}
+.ml-item::before{content:'→';position:absolute;left:0;color:var(--mc,#8A6B2A);font-size:11px}
+.ml-approach{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;border-top:none;margin-top:2px}
+.ml-approach-cell{background:#111827;padding:32px 28px}
+.ml-approach-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:#8A6B2A;margin-bottom:14px}
+.ml-approach-desc{font-size:13px;color:#8A9BB0;line-height:1.8}
+.reg-split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
+.reg-card{background:#0B1120;padding:56px 48px;position:relative;overflow:hidden}
+.reg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--rc,#C9A84C)}
+.reg-tag{font-family:var(--fm);font-size:8px;letter-spacing:.45em;text-transform:uppercase;color:var(--rc,#C9A84C);margin-bottom:16px}
+.reg-title{font-family:var(--fd);font-size:clamp(26px,3.5vw,44px);font-weight:300;color:#F0F4F8;line-height:1.05;margin-bottom:8px}
+.reg-subtitle{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#2D3F55;margin-bottom:24px}
+.reg-desc{font-size:14px;color:#8A9BB0;line-height:1.9;margin-bottom:28px}
+.reg-items{display:flex;flex-direction:column;gap:10px}
+.reg-item{font-size:13px;color:#8A9BB0;padding-left:18px;position:relative;line-height:1.6}
+.reg-item::before{content:'→';position:absolute;left:0;color:var(--rc,#8A6B2A);font-size:11px}
+.flow-wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
+.flow-cell{background:#111827;padding:48px 36px;position:relative}
+.flow-cell::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,#8A6B2A,transparent)}
+.flow-num{font-family:var(--fd);font-size:80px;font-weight:300;color:rgba(201,168,76,.07);line-height:1;margin-bottom:16px}
+.flow-title{font-family:var(--fd);font-size:22px;font-weight:300;color:#F0F4F8;margin-bottom:12px}
+.flow-desc{font-size:14px;color:#8A9BB0;line-height:1.85}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:start}
 .about-body p{font-size:16px;color:#8A9BB0;line-height:1.9;margin-bottom:20px}
 .about-body p strong{color:#F0F4F8;font-weight:500}
 .about-body p em{color:#C9A84C;font-style:italic}
-
-.num-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;
-}
-.num-cell{background:#111827;padding:36px}
-.num-val{
-  font-family:var(--fd);font-size:clamp(32px,4vw,44px);
-  font-weight:300;color:#C9A84C;line-height:1;margin-bottom:8px;
-}
-.num-lbl{
-  font-family:var(--fm);font-size:9px;letter-spacing:.35em;
-  text-transform:uppercase;color:#8A9BB0;
-}
-.origin-box{
-  margin-top:24px;padding:28px 32px;
-  background:#0B1120;border:1px solid #1E2A3A;
-}
-.origin-lbl{
-  font-family:var(--fm);font-size:9px;letter-spacing:.4em;
-  text-transform:uppercase;color:#C9A84C;margin-bottom:10px;
-}
-.origin-val{
-  font-family:var(--fd);font-size:20px;font-weight:300;color:#F0F4F8;
-}
-.origin-sub{
-  font-family:var(--fm);font-size:9px;color:#2D3F55;
-  letter-spacing:.2em;margin-top:6px;
-}
-
-/* ══ APPROACH ══ */
-.approach-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;
-  margin-top:64px;
-}
-.approach-cell{background:#0B1120;padding:44px 36px}
-.approach-n{
-  font-family:var(--fd);font-size:72px;font-weight:300;
-  color:rgba(201,168,76,.07);line-height:1;margin-bottom:16px;
-}
-.approach-title{
-  font-family:var(--fd);font-size:21px;font-weight:300;
-  color:#F0F4F8;margin-bottom:12px;
-}
-.approach-desc{font-size:14px;color:#8A9BB0;line-height:1.85}
-
-/* ══ CONTACT ══ */
-.contact-wrap{text-align:center;max-width:680px;margin:0 auto}
-.contact-title{
-  font-family:var(--fd);font-size:clamp(40px,7vw,88px);
-  font-weight:300;color:#F0F4F8;line-height:.95;margin-bottom:24px;
-}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A}
+.about-stat{background:#111827;padding:40px 32px}
+.about-stat-val{font-family:var(--fd);font-size:clamp(36px,4vw,52px);font-weight:300;color:#C9A84C;line-height:1;margin-bottom:10px}
+.about-stat-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#8A9BB0}
+.origin-box{margin-top:2px;padding:32px;background:#111827;border:1px solid #1E2A3A}
+.origin-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:10px}
+.origin-val{font-family:var(--fd);font-size:22px;font-weight:300;color:#F0F4F8}
+.origin-sub{font-family:var(--fm);font-size:9px;color:#2D3F55;letter-spacing:.2em;margin-top:6px}
+.contact-wrap{text-align:center;max-width:640px;margin:0 auto}
+.contact-title{font-family:var(--fd);font-size:clamp(44px,8vw,96px);font-weight:300;color:#F0F4F8;line-height:.9;margin-bottom:28px}
 .contact-title em{font-style:italic;color:#C9A84C}
-.contact-sub{font-size:16px;color:#8A9BB0;line-height:1.85;margin-bottom:48px}
-.contact-email{
-  display:inline-block;font-family:var(--fd);font-size:22px;
-  font-weight:300;color:#C9A84C;text-decoration:none;
-  border-bottom:1px solid #8A6B2A;padding-bottom:4px;
-  transition:color .2s;margin-bottom:14px;
-}
+.contact-sub{font-size:16px;color:#8A9BB0;line-height:1.9;margin-bottom:52px}
+.contact-email{display:block;font-family:var(--fd);font-size:clamp(18px,2.5vw,28px);font-weight:300;color:#C9A84C;text-decoration:none;border-bottom:1px solid #8A6B2A;padding-bottom:6px;transition:color .2s;width:fit-content;margin:0 auto 16px}
 .contact-email:hover{color:#E8C97A}
-.contact-loc{
-  font-family:var(--fm);font-size:9px;letter-spacing:.3em;
-  text-transform:uppercase;color:#2D3F55;
-  display:block;margin-top:12px;
-}
-.cal-box{
-  margin-top:48px;padding:40px;background:#0B1120;
-  border:1px solid #1E2A3A;text-align:left;
-}
-.cal-label{
-  font-family:var(--fm);font-size:9px;letter-spacing:.4em;
-  text-transform:uppercase;color:#C9A84C;margin-bottom:16px;
-}
-.cal-desc{font-size:14px;color:#8A9BB0;line-height:1.8;margin-bottom:24px}
-.cal-slots{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.cal-slot{
-  font-family:var(--fm);font-size:9px;letter-spacing:.2em;
-  text-transform:uppercase;color:#8A9BB0;
-  border:1px solid #1E2A3A;padding:8px 16px;
-  cursor:pointer;transition:all .2s;
-}
-.cal-slot:hover,.cal-slot.sel{border-color:#C9A84C;color:#C9A84C}
-
-/* ══ FOOTER ══ */
-footer{
-  background:#080A0F;border-top:1px solid #1E2A3A;
-  padding:36px 56px;
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:16px;
-}
-.ft-logo{font-family:var(--fd);font-size:17px;font-weight:300;color:#F0F4F8}
+.contact-loc{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#2D3F55;display:block;margin-top:14px}
+.demo-box{margin-top:56px;padding:44px;background:#0B1120;border:1px solid rgba(201,168,76,.15);text-align:left;position:relative}
+.demo-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,#C9A84C,transparent)}
+.demo-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:20px}
+.demo-items{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
+.demo-item{font-size:13px;color:#8A9BB0;padding-left:18px;position:relative;line-height:1.7}
+.demo-item::before{content:'✓';position:absolute;left:0;color:#2ECC71;font-size:11px}
+footer{background:#080A0F;border-top:1px solid #1E2A3A;padding:40px 56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.ft-logo{font-family:var(--fd);font-size:18px;font-weight:300;color:#F0F4F8;letter-spacing:.1em}
 .ft-logo span{color:#C9A84C}
 .ft-links{display:flex;gap:32px;flex-wrap:wrap}
-.ft-links a{
-  font-family:var(--fm);font-size:9px;letter-spacing:.2em;
-  text-transform:uppercase;color:#2D3F55;text-decoration:none;
-  transition:color .2s;
-}
+.ft-links a{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#2D3F55;text-decoration:none;transition:color .2s}
 .ft-links a:hover{color:#8A9BB0}
-.ft-copy{font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:#1E2A3A}
-
-/* ══ REVEAL ══ */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.ft-copy{font-family:var(--fm);font-size:9px;letter-spacing:.15em;color:#1E2A3A}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
 .reveal.on{opacity:1;transform:none}
-
-/* ══ RESPONSIVE ══ */
-@media(max-width:1024px){
-  .prod-grid{grid-template-columns:1fr 1fr}
-  .prod-card.wide{grid-column:span 2}
-  .lex-strip{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
-  .lex-strip-cta{grid-column:span 2;flex-direction:row;align-items:center}
-}
-
-@media(max-width:960px){
-  nav{padding:0 24px}
-  .nav-links{display:none}
-  .nav-cta{display:none}
-  .nav-toggle{display:flex}
-
-  .sec{padding:80px 24px}
-  .hero{padding:120px 24px 72px}
-  .hr{width:calc(100% - 48px);margin:0 24px}
-
-  .prob-grid{grid-template-columns:1fr}
-  .approach-grid{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr;gap:48px}
-
-  .lex-strip{
-    grid-template-columns:1fr;gap:28px;padding:40px 32px;
-  }
-  .lex-strip-cta{flex-direction:row;align-items:flex-start;gap:12px}
-
-  footer{flex-direction:column;padding:28px 24px;text-align:center;gap:24px}
-  .ft-links{justify-content:center}
-}
-
-@media(max-width:768px){
-  .prod-grid{grid-template-columns:1fr}
-  .prod-card.wide{grid-column:span 1}
-  .num-grid{grid-template-columns:1fr 1fr}
-  .hero-bottom{gap:28px}
-}
-
-@media(max-width:600px){
-  .num-grid{grid-template-columns:1fr 1fr}
-  .hero-bottom{gap:24px;padding-top:28px;margin-top:56px}
-  .hero-bottom > div{min-width:calc(50% - 12px)}
-  .cal-box{padding:28px 24px}
-  .cal-slots{flex-direction:column}
-  .lex-strip-cta{flex-direction:column}
-}
+@media(max-width:1024px){.journey-intro{grid-template-columns:1fr;gap:48px}.prod-grid{grid-template-columns:1fr 1fr}.ml-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr;gap:48px}.ml-approach{grid-template-columns:1fr}}
+@media(max-width:960px){nav{padding:0 24px}.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.sec{padding:80px 24px}.hero{padding:120px 24px 72px}.hr{width:calc(100% - 48px);margin:0 24px}.prod-grid{grid-template-columns:1fr}.reg-split{grid-template-columns:1fr}.flow-wrap{grid-template-columns:1fr}.demo-items{grid-template-columns:1fr}.lex-strip{flex-direction:column}.lex-strip-cta{flex-direction:row}footer{flex-direction:column;padding:32px 24px;text-align:center}.ft-links{justify-content:center}}
+@media(max-width:600px){.about-stats{grid-template-columns:1fr 1fr}.hero-anchors{flex-wrap:wrap;gap:20px}.hero-anchor{padding-right:20px;margin-right:20px}}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo"><span>K</span>AIROS</a>
   <ul class="nav-links">
     <li><a href="#products">Products</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="#ml">Machine Learning</a></li>
+    <li><a href="#regulators">Regulators</a></li>
     <li><a href="kairos_lex.html">Kairos Lex</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Book a Demo</a>
-  <button class="nav-toggle" aria-label="Toggle menu" id="navToggle">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
-
-<!-- MOBILE MENU -->
 <div class="nav-mobile" id="navMobile">
-  <a href="#products" class="nav-mobile-link">Products</a>
-  <a href="#about" class="nav-mobile-link">About</a>
-  <a href="kairos_lex.html" class="nav-mobile-link">Kairos Lex</a>
-  <a href="#contact" class="nav-mobile-link">Contact</a>
-  <a href="#contact" class="nav-cta nav-cta-m">Book a Demo</a>
+  <a href="#products">Products</a>
+  <a href="#ml">Machine Learning</a>
+  <a href="#regulators">Regulators</a>
+  <a href="kairos_lex.html">Kairos Lex</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="m-cta">Book a Demo</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
-  <div class="hero-glow-a"></div>
-  <div class="hero-glow-b"></div>
+  <div class="hero-glow"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">AI · Analytics · Mozambique</div>
+    <div class="hero-eyebrow">AI &middot; Analytics &middot; Machine Learning &middot; Mozambique</div>
     <h1 class="hero-name"><span class="k">K</span>AIROS</h1>
     <div class="hero-taglines">
       <span class="tl1">Raw Data.</span>
@@ -545,57 +211,20 @@ footer{
       <span class="tl3">Clarity from complexity.</span>
     </div>
     <p class="hero-desc">
-      AI and analytics platform for banking, energy and regulatory intelligence in Mozambique.
-      We automate compliance, predict risk, and turn raw data into decisions — in full conformity
-      with GIFIM, BdM and Basel III.
+      Kairos is the AI and analytics platform built for <strong>banks in Mozambique</strong>.
+      We build the data infrastructure that makes intelligence possible, the machine learning
+      models that turn data into foresight, and the compliance tools that turn regulatory
+      obligations into automated outputs.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-gold">Book a Demo</a>
-      <a href="#products" class="btn-ghost">Explore Products</a>
+      <a href="#products" class="btn-ghost">Our Products</a>
     </div>
-    <div class="hero-bottom">
-      <div>
-        <div class="hero-stat-lbl">Products</div>
-        <div class="hero-stat-val">7</div>
-      </div>
-      <div>
-        <div class="hero-stat-lbl">Schema</div>
-        <div class="hero-stat-val">goAML 5.1</div>
-      </div>
-      <div>
-        <div class="hero-stat-lbl">Regulators</div>
-        <div class="hero-stat-val">GIFIM · BdM</div>
-      </div>
-      <div>
-        <div class="hero-stat-lbl">Founded</div>
-        <div class="hero-stat-val">Maputo 2025</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="hr"></div>
-
-<!-- PROBLEM -->
-<section class="sec reveal" id="problem" style="background:#0B1120">
-  <div class="sec-label">The Problem</div>
-  <h2 class="sec-title">Compliance costs<br>too much time.</h2>
-  <p class="sec-sub">Every bank in Mozambique faces the same three problems. Kairos solves all three.</p>
-  <div class="prob-grid">
-    <div class="prob-cell reveal">
-      <div class="prob-n">01</div>
-      <div class="prob-title">Manual Reporting</div>
-      <p class="prob-desc">STR, CTR, and BdM reports are produced manually — hours of work, every day, with high risk of error and missed deadlines.</p>
-    </div>
-    <div class="prob-cell reveal">
-      <div class="prob-n">02</div>
-      <div class="prob-title">Invisible Risk</div>
-      <p class="prob-desc">Credit risk builds before models catch it. Loans migrate to NPL with little warning. Basel III ratios are calculated too late to act.</p>
-    </div>
-    <div class="prob-cell reveal">
-      <div class="prob-n">03</div>
-      <div class="prob-title">Dirty Data</div>
-      <p class="prob-desc">KYC records are incomplete, duplicated, or outdated. Identity verification is slow. Data quality campaigns are manual and reactive.</p>
+    <div class="hero-anchors">
+      <div class="hero-anchor"><div class="anchor-lbl">Market</div><div class="anchor-val">Banking &middot; Mozambique</div></div>
+      <div class="hero-anchor"><div class="anchor-lbl">Regulators</div><div class="anchor-val">Central Bank &middot; GIFIM</div></div>
+      <div class="hero-anchor"><div class="anchor-lbl">Products</div><div class="anchor-val">7</div></div>
+      <div class="hero-anchor"><div class="anchor-lbl">Founded</div><div class="anchor-val">Maputo, 2025</div></div>
     </div>
   </div>
 </section>
@@ -604,225 +233,231 @@ footer{
 
 <!-- PRODUCTS -->
 <section class="sec reveal" id="products">
-  <div class="prod-header">
-    <div class="sec-label">Products</div>
-    <h2 class="sec-title">Seven products.<br>One ecosystem.</h2>
-    <p class="sec-sub">Each product solves a specific problem in Mozambican banking and energy. Together they form an integrated intelligence platform.</p>
+  <div class="journey-intro">
+    <div>
+      <div class="sec-label">Products</div>
+      <h2 class="sec-title">From raw data<br>to the regulator.</h2>
+      <p class="sec-sub" style="margin-top:4px">Seven products, one connected journey. We start by building the data foundation your bank needs, then add intelligence layer by layer &mdash; until the final output is a compliant report filed with the regulator, automatically.</p>
+    </div>
+    <div>
+      <div class="journey-flow">
+        <div class="journey-step" style="--jp:#8A9BB0"><div class="journey-step-num">01</div><div class="journey-step-body"><div class="journey-step-name">Data Infrastructure</div><div class="journey-step-prod" style="--jp:#8A9BB0">Kairos Core</div></div></div>
+        <div class="journey-arrow">&darr;</div>
+        <div class="journey-step" style="--jp:#E74C3C"><div class="journey-step-num">02</div><div class="journey-step-body"><div class="journey-step-name">Credit &amp; Risk Models</div><div class="journey-step-prod" style="--jp:#E74C3C">Kairos Risk</div></div></div>
+        <div class="journey-arrow">&darr;</div>
+        <div class="journey-step" style="--jp:#F39C12"><div class="journey-step-num">03</div><div class="journey-step-body"><div class="journey-step-name">Model Monitoring</div><div class="journey-step-prod" style="--jp:#F39C12">Kairos Vigil</div></div></div>
+        <div class="journey-arrow">&darr;</div>
+        <div class="journey-step" style="--jp:#8A6B2A"><div class="journey-step-num">04</div><div class="journey-step-body"><div class="journey-step-name">Knowledge &amp; Intelligence</div><div class="journey-step-prod" style="--jp:#8A6B2A">Kairos Gnosis</div></div></div>
+        <div class="journey-arrow">&darr;</div>
+        <div class="journey-step" style="--jp:#2A9D8F"><div class="journey-step-num">05</div><div class="journey-step-body"><div class="journey-step-name">KYC &amp; Data Quality</div><div class="journey-step-prod" style="--jp:#2A9D8F">Kairos Veritas</div></div></div>
+        <div class="journey-arrow">&darr;</div>
+        <div class="journey-step" style="--jp:#C9A84C"><div class="journey-step-num">06</div><div class="journey-step-body"><div class="journey-step-name">Regulatory Reporting</div><div class="journey-step-prod" style="--jp:#C9A84C">Kairos Lex</div></div></div>
+      </div>
+    </div>
   </div>
 
   <div class="prod-grid">
-
     <a href="#" class="prod-card reveal" style="--pc:#8A9BB0">
-      <div class="prod-tag">01 · Infrastructure</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-        <rect x="3" y="3" width="38" height="38" stroke="#8A9BB0" stroke-width=".6" opacity=".3"/>
-        <circle cx="22" cy="22" r="7" stroke="#8A9BB0" stroke-width="1.2"/>
-        <line x1="22" y1="3" x2="22" y2="15" stroke="#8A9BB0" stroke-width="1"/>
-        <line x1="22" y1="29" x2="22" y2="41" stroke="#8A9BB0" stroke-width="1"/>
-        <line x1="3" y1="22" x2="15" y2="22" stroke="#8A9BB0" stroke-width="1"/>
-        <line x1="29" y1="22" x2="41" y2="22" stroke="#8A9BB0" stroke-width="1"/>
-        <circle cx="22" cy="22" r="2" fill="#8A9BB0"/>
-      </svg>
-      <div class="prod-name">Kairos <em>Core</em></div>
-      <div class="prod-line">Data Infrastructure</div>
-      <p class="prod-desc">Pipelines, ETL and direct integration with core banking systems. The foundation every other product runs on.</p>
-      <div class="prod-pills">
-        <span class="prod-pill">ETL</span><span class="prod-pill">Pipelines</span>
-        <span class="prod-pill">SQL Server</span><span class="prod-pill">Real-time</span>
-      </div>
+      <div class="prod-step">01 &middot; Data Infrastructure</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><rect x="3" y="3" width="38" height="38" stroke="#8A9BB0" stroke-width=".6" opacity=".3"/><circle cx="22" cy="22" r="7" stroke="#8A9BB0" stroke-width="1.2"/><line x1="22" y1="3" x2="22" y2="15" stroke="#8A9BB0" stroke-width="1"/><line x1="22" y1="29" x2="22" y2="41" stroke="#8A9BB0" stroke-width="1"/><line x1="3" y1="22" x2="15" y2="22" stroke="#8A9BB0" stroke-width="1"/><line x1="29" y1="22" x2="41" y2="22" stroke="#8A9BB0" stroke-width="1"/><circle cx="22" cy="22" r="2" fill="#8A9BB0"/></svg>
+      <div class="prod-name">Kairos <em style="color:#8A9BB0">Core</em></div>
+      <div class="prod-line">Data Warehouse &amp; Pipelines</div>
+      <p class="prod-desc">We build the data warehouse your bank needs &mdash; organised, reliable, and connected directly to your core banking system. The foundation everything else runs on. Without clean, structured data, no analysis is trustworthy and no report is reliable.</p>
+      <div class="prod-tags"><span class="prod-tag">Data Warehouse</span><span class="prod-tag">Pipelines</span><span class="prod-tag">T24 &middot; Finacle</span><span class="prod-tag">ETL</span></div>
     </a>
-
     <a href="#" class="prod-card reveal" style="--pc:#E74C3C">
-      <div class="prod-tag">02 · Credit & Risk</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-        <path d="M6 38 L14 22 L22 30 L30 14 L38 6" stroke="#E74C3C" stroke-width="1.4" stroke-linecap="round"/>
-        <circle cx="6" cy="38" r="2" fill="#E74C3C"/>
-        <circle cx="38" cy="6" r="2" fill="#E74C3C"/>
-        <rect x="2" y="2" width="40" height="40" stroke="#E74C3C" stroke-width=".4" opacity=".2"/>
-      </svg>
-      <div class="prod-name">Kairos <em>Risk</em></div>
-      <div class="prod-line">Risk & Credit Analytics</div>
-      <p class="prod-desc">Pre-NPL prediction, credit scoring and Basel III capital adequacy. Predict default before it happens.</p>
-      <div class="prod-pills">
-        <span class="prod-pill">Basel III</span><span class="prod-pill">IFRS 9</span>
-        <span class="prod-pill">Pre-NPL</span><span class="prod-pill">LightGBM</span>
-      </div>
+      <div class="prod-step">02 &middot; Credit &amp; Risk</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><path d="M6 38 L14 22 L22 30 L30 14 L38 6" stroke="#E74C3C" stroke-width="1.4" stroke-linecap="round"/><circle cx="6" cy="38" r="2" fill="#E74C3C"/><circle cx="38" cy="6" r="2" fill="#E74C3C"/><rect x="2" y="2" width="40" height="40" stroke="#E74C3C" stroke-width=".4" opacity=".2"/></svg>
+      <div class="prod-name">Kairos <em style="color:#E74C3C">Risk</em></div>
+      <div class="prod-line">Credit Scoring &amp; Risk Analytics</div>
+      <p class="prod-desc">Machine learning models that predict credit deterioration, score new borrowers, and calculate capital adequacy &mdash; calibrated to the Mozambican credit environment. Know what your portfolio will look like before it does.</p>
+      <div class="prod-tags"><span class="prod-tag">Credit Scoring</span><span class="prod-tag">Pre-NPL</span><span class="prod-tag">Basel III</span><span class="prod-tag">IFRS 9</span></div>
     </a>
-
-    <a href="kairos_lex.html" class="prod-card active reveal" style="--pc:#C9A84C">
-      <div class="prod-tag">03 · Flagship · Regulatory</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-        <path d="M22 3 L40 11 L40 27 C40 36 32 42 22 44 C12 42 4 36 4 27 L4 11 Z" stroke="#C9A84C" stroke-width="1.4" fill="rgba(201,168,76,.05)"/>
-        <line x1="14" y1="18" x2="30" y2="18" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/>
-        <line x1="14" y1="24" x2="30" y2="24" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/>
-        <line x1="14" y1="30" x2="24" y2="30" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/>
-        <circle cx="22" cy="12" r="1.8" fill="#C9A84C"/>
-      </svg>
-      <div class="prod-name">Kairos <em>Lex</em></div>
-      <div class="prod-line">Regulatory Reporting Engine</div>
-      <p class="prod-desc">Automated STR, CTR, IFT, EFT reports for GIFIM and BdM. goAML 5.1 XML generated daily. Zero manual intervention.</p>
-      <div class="prod-pills">
-        <span class="prod-pill gold">goAML 5.1</span><span class="prod-pill gold">GIFIM</span>
-        <span class="prod-pill gold">STR · CTR</span><span class="prod-pill gold">BdM</span>
-      </div>
-      <div class="prod-arrow">Full product page</div>
-    </a>
-
     <a href="#" class="prod-card reveal" style="--pc:#F39C12">
-      <div class="prod-tag">04 · Monitoring</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-        <circle cx="22" cy="22" r="17" stroke="#F39C12" stroke-width=".6" opacity=".3"/>
-        <circle cx="22" cy="22" r="9" stroke="#F39C12" stroke-width="1.2"/>
-        <circle cx="22" cy="22" r="2" fill="#F39C12"/>
-        <line x1="22" y1="5" x2="22" y2="13" stroke="#F39C12" stroke-width="1"/>
-        <line x1="5" y1="22" x2="13" y2="22" stroke="#F39C12" stroke-width="1" opacity=".5"/>
-        <line x1="31" y1="22" x2="39" y2="22" stroke="#F39C12" stroke-width="1" opacity=".5"/>
-      </svg>
-      <div class="prod-name">Kairos <em>Vigil</em></div>
-      <div class="prod-line">Model Monitoring</div>
-      <p class="prod-desc">24/7 monitoring of production models. PSI drift detection, performance degradation alerts and automated reports.</p>
-      <div class="prod-pills">
-        <span class="prod-pill">Model Drift</span><span class="prod-pill">PSI</span>
-        <span class="prod-pill">Alerts</span><span class="prod-pill">MLOps</span>
-      </div>
+      <div class="prod-step">03 &middot; Monitoring</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="17" stroke="#F39C12" stroke-width=".6" opacity=".3"/><circle cx="22" cy="22" r="9" stroke="#F39C12" stroke-width="1.2"/><circle cx="22" cy="22" r="2" fill="#F39C12"/><line x1="22" y1="5" x2="22" y2="13" stroke="#F39C12" stroke-width="1"/><line x1="5" y1="22" x2="13" y2="22" stroke="#F39C12" stroke-width="1" opacity=".5"/><line x1="31" y1="22" x2="39" y2="22" stroke="#F39C12" stroke-width="1" opacity=".5"/></svg>
+      <div class="prod-name">Kairos <em style="color:#F39C12">Vigil</em></div>
+      <div class="prod-line">Model Performance Monitoring</div>
+      <p class="prod-desc">Machine learning models degrade over time as conditions change. Vigil watches every model in production, detects when accuracy starts to drift from reality, and alerts your team before bad predictions reach a real decision.</p>
+      <div class="prod-tags"><span class="prod-tag">Model Drift</span><span class="prod-tag">Performance</span><span class="prod-tag">Alerts</span><span class="prod-tag">24/7</span></div>
     </a>
-
-    <a href="#" class="prod-card reveal" style="--pc:#2A9D8F">
-      <div class="prod-tag">05 · Energy</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-        <path d="M22 3 C10 3 3 10 3 22 C3 34 10 41 22 41 C34 41 41 34 41 22" stroke="#2A9D8F" stroke-width="1.4" stroke-linecap="round"/>
-        <path d="M30 3 L41 3 L41 14" stroke="#2A9D8F" stroke-width="1.4" stroke-linecap="round"/>
-        <line x1="22" y1="22" x2="41" y2="3" stroke="#2A9D8F" stroke-width="1" opacity=".5"/>
-      </svg>
-      <div class="prod-name">Kairos <em>Pulse</em></div>
-      <div class="prod-line">Energy & Commodities</div>
-      <p class="prod-desc">Demand forecasting and price prediction for energy and commodities. Built for the Mozambican market.</p>
-      <div class="prod-pills">
-        <span class="prod-pill">Forecasting</span><span class="prod-pill">Gas</span>
-        <span class="prod-pill">Electricity</span><span class="prod-pill">Time Series</span>
-      </div>
-    </a>
-
     <a href="#" class="prod-card reveal" style="--pc:#8A6B2A">
-      <div class="prod-tag">06 · Generative AI</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-        <circle cx="10" cy="22" r="5" stroke="#8A6B2A" stroke-width="1.2"/>
-        <circle cx="34" cy="10" r="5" stroke="#8A6B2A" stroke-width="1.2"/>
-        <circle cx="34" cy="34" r="5" stroke="#8A6B2A" stroke-width="1.2"/>
-        <line x1="15" y1="19" x2="29" y2="13" stroke="#8A6B2A" stroke-width=".9" opacity=".6"/>
-        <line x1="15" y1="25" x2="29" y2="31" stroke="#8A6B2A" stroke-width=".9" opacity=".6"/>
-        <circle cx="10" cy="22" r="1.8" fill="#8A6B2A"/>
-      </svg>
-      <div class="prod-name">Kairos <em>Gnosis</em></div>
-      <div class="prod-line">Knowledge & GenAI</div>
-      <p class="prod-desc">LLMs, knowledge graphs and automated narrative reports. From raw numbers to boardroom-ready intelligence.</p>
-      <div class="prod-pills">
-        <span class="prod-pill">LLM</span><span class="prod-pill">RAG</span>
-        <span class="prod-pill">Knowledge Graph</span><span class="prod-pill">NLP</span>
-      </div>
+      <div class="prod-step">04 &middot; Knowledge &amp; AI</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><circle cx="10" cy="22" r="5" stroke="#8A6B2A" stroke-width="1.2"/><circle cx="34" cy="10" r="5" stroke="#8A6B2A" stroke-width="1.2"/><circle cx="34" cy="34" r="5" stroke="#8A6B2A" stroke-width="1.2"/><line x1="15" y1="19" x2="29" y2="13" stroke="#8A6B2A" stroke-width=".9" opacity=".6"/><line x1="15" y1="25" x2="29" y2="31" stroke="#8A6B2A" stroke-width=".9" opacity=".6"/><circle cx="10" cy="22" r="1.8" fill="#8A6B2A"/></svg>
+      <div class="prod-name">Kairos <em style="color:#C9A84C">Gnosis</em></div>
+      <div class="prod-line">Knowledge Graphs &amp; Generative AI</div>
+      <p class="prod-desc">Connects your data into a knowledge graph and uses generative AI to produce narrative summaries, decision briefs, and board-ready reports &mdash; in plain language, automatically, from the numbers your systems already hold.</p>
+      <div class="prod-tags"><span class="prod-tag">Knowledge Graph</span><span class="prod-tag">AI Narratives</span><span class="prod-tag">Reports</span></div>
     </a>
-
-    <a href="#" class="prod-card teal-card wide reveal" style="--pc:#2A9D8F">
-      <div class="prod-tag">07 · KYC & Data Quality</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none">
-        <circle cx="22" cy="22" r="17" stroke="#2A9D8F" stroke-width=".8" opacity=".3"/>
-        <path d="M14 22 C14 17.6 17.6 14 22 14 C26.4 14 30 17.6 30 22" stroke="#2A9D8F" stroke-width="1.4" stroke-linecap="round"/>
-        <path d="M11 22 C11 15.4 16 10 22 10" stroke="#2A9D8F" stroke-width=".9" opacity=".5" stroke-linecap="round"/>
-        <circle cx="22" cy="22" r="2" fill="#2A9D8F"/>
-        <path d="M9 28 L13 32 L21 24" stroke="#2A9D8F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="prod-name" style="font-size:32px">Kairos <em style="color:#2A9D8F">Veritas</em></div>
-      <div class="prod-line" style="color:#1A6B63">KYC · Identity Verification · Data Quality</div>
-      <p class="prod-desc" style="max-width:680px">End-to-end KYC and data quality platform. OCR document processing, identity verification, quality campaigns, deduplication and remediation workflows — fully aligned with BdM KYC directives.</p>
-      <div class="prod-pills" style="margin-top:16px">
-        <span class="prod-pill teal">KYC</span><span class="prod-pill teal">OCR</span>
-        <span class="prod-pill teal">Identity Verification</span><span class="prod-pill teal">Deduplication</span>
-        <span class="prod-pill teal">Remediation</span><span class="prod-pill teal">BdM Compliance</span>
-      </div>
+    <a href="#" class="prod-card vteal reveal" style="--pc:#2A9D8F">
+      <div class="prod-step">05 &middot; KYC &amp; Data Quality</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="17" stroke="#2A9D8F" stroke-width=".8" opacity=".3"/><path d="M14 22 C14 17.6 17.6 14 22 14 C26.4 14 30 17.6 30 22" stroke="#2A9D8F" stroke-width="1.4" stroke-linecap="round"/><path d="M11 22 C11 15.4 16 10 22 10" stroke="#2A9D8F" stroke-width=".9" opacity=".5" stroke-linecap="round"/><circle cx="22" cy="22" r="2" fill="#2A9D8F"/><path d="M9 28 L13 32 L21 24" stroke="#2A9D8F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="prod-name">Kairos <em style="color:#2A9D8F">Veritas</em></div>
+      <div class="prod-line">KYC &middot; Identity Verification &middot; Data Quality</div>
+      <p class="prod-desc">End-to-end KYC and data quality platform. Document scanning, identity verification, deduplication, and quality campaigns &mdash; fully aligned with Central Bank KYC directives. Clean data in. Verified customers out.</p>
+      <div class="prod-tags"><span class="prod-tag teal">KYC</span><span class="prod-tag teal">OCR</span><span class="prod-tag teal">Identity</span><span class="prod-tag teal">Deduplication</span></div>
     </a>
-
+    <a href="kairos_lex.html" class="prod-card lit reveal" style="--pc:#C9A84C">
+      <div class="prod-step">06 &middot; Flagship &middot; Regulatory</div>
+      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><path d="M22 3 L40 11 L40 27 C40 36 32 42 22 44 C12 42 4 36 4 27 L4 11 Z" stroke="#C9A84C" stroke-width="1.4" fill="rgba(201,168,76,.05)"/><line x1="14" y1="18" x2="30" y2="18" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/><line x1="14" y1="24" x2="30" y2="24" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/><line x1="14" y1="30" x2="24" y2="30" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/><circle cx="22" cy="12" r="1.8" fill="#C9A84C"/></svg>
+      <div class="prod-name">Kairos <em>Lex</em></div>
+      <div class="prod-line">Regulatory Reporting Engine &middot; GIFIM &middot; Central Bank</div>
+      <p class="prod-desc">The final step. Lex takes everything the platform produces and turns it into compliant regulatory reports &mdash; STR, CTR, IFT, EFT for GIFIM and prudential reports for the Central Bank. Automatically. Every day. No manual work.</p>
+      <div class="prod-tags"><span class="prod-tag gold">GIFIM</span><span class="prod-tag gold">STR &middot; CTR</span><span class="prod-tag gold">IFT &middot; EFT</span><span class="prod-tag gold">Central Bank</span></div>
+    </a>
   </div>
 
-  <!-- LEX STRIP -->
-  <div class="lex-strip reveal">
+  <div class="lex-strip">
     <div>
-      <div style="font-family:var(--fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:12px">Flagship Product</div>
-      <div class="lex-strip-title">Kairos <em>Lex</em><br>automates compliance.</div>
+      <div style="font-family:var(--fm);font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:12px">Flagship Product</div>
+      <div class="lex-strip-title">Kairos <em>Lex</em> automates<br>every GIFIM report.</div>
     </div>
-    <div class="lex-strip-desc">
-      Kairos Lex generates goAML 5.1 XML files for GIFIM — STR, CTR, IFT, EFT — directly from the core banking system. Daily. Automatic. Submission-ready.
-    </div>
+    <div class="lex-strip-desc">STR, CTR, IFT and EFT &mdash; generated from your core banking data every day, with no manual work. Including detection of customers structuring transactions to stay below reporting thresholds.</div>
     <div class="lex-strip-cta">
-      <a href="kairos_lex.html" class="btn-gold">See Kairos Lex</a>
+      <a href="kairos_lex.html" class="btn-gold">See Kairos Lex &rarr;</a>
       <a href="#contact" class="btn-ghost">Book a Demo</a>
     </div>
   </div>
+</section>
 
+<div class="hr"></div>
+
+<!-- MACHINE LEARNING -->
+<section class="sec reveal" id="ml" style="background:#0B1120">
+  <div class="sec-label">Machine Learning</div>
+  <h2 class="sec-title">We build the models<br>your bank needs.</h2>
+  <p class="sec-sub">Beyond our products, Kairos specialises in building bespoke machine learning models for banks. Every model is built on your data, calibrated to your portfolio, and validated before it goes anywhere near a decision.</p>
+  <div class="ml-grid">
+    <div class="ml-card reveal" style="--mc:#C9A84C">
+      <div class="ml-tag">Credit &amp; Risk Models</div>
+      <div class="ml-title">Predicting risk<br>before it arrives</div>
+      <p class="ml-desc">We build credit scoring models, probability-of-default models, and early-warning systems using your historical lending data. The result is a model that knows your borrowers &mdash; not a generic scorecard built for a different market.</p>
+      <div class="ml-items">
+        <div class="ml-item" style="padding-left:18px;position:relative">Credit scoring for retail and corporate borrowers</div>
+        <div class="ml-item" style="padding-left:18px;position:relative">Probability of default and loss-given-default models</div>
+        <div class="ml-item" style="padding-left:18px;position:relative">Early warning systems &mdash; identifying deteriorating accounts weeks in advance</div>
+        <div class="ml-item" style="padding-left:18px;position:relative">Loan provisioning models aligned with international accounting standards</div>
+        <div class="ml-item" style="padding-left:18px;position:relative">Portfolio stress testing under macroeconomic scenarios</div>
+      </div>
+    </div>
+    <div class="ml-card reveal" style="--mc:#2A9D8F">
+      <div class="ml-tag">Detection &amp; Classification Models</div>
+      <div class="ml-title">Finding what<br>rules cannot</div>
+      <p class="ml-desc">Some patterns are too subtle for a rulebook and too complex for a spreadsheet. We build models that detect anomalies, classify behaviour, and surface the cases that need a human decision &mdash; while filtering the noise that does not.</p>
+      <div class="ml-items">
+        <div class="ml-item" style="padding-left:18px;position:relative">Transaction anomaly detection &mdash; behaviour outside a customer's normal pattern</div>
+        <div class="ml-item" style="padding-left:18px;position:relative">Customer segmentation by risk profile or product behaviour</div>
+        <div class="ml-item" style="padding-left:18px;position:relative">Fraud detection trained on your own transaction history</div>
+        <div class="ml-item" style="padding-left:18px;position:relative">Document classification for incoming KYC material</div>
+        <div class="ml-item" style="padding-left:18px;position:relative">Network analysis &mdash; identifying connected entities and relationship risk</div>
+      </div>
+    </div>
+  </div>
+  <div class="ml-approach">
+    <div class="ml-approach-cell reveal">
+      <div class="ml-approach-lbl">Built on your data</div>
+      <div class="ml-approach-desc">Every model is trained on your bank's own historical data &mdash; not imported from a different market or a generic dataset. The model learns your portfolio, your customers, and your specific risk environment.</div>
+    </div>
+    <div class="ml-approach-cell reveal">
+      <div class="ml-approach-lbl">Validated before deployment</div>
+      <div class="ml-approach-desc">No model goes into production without rigorous out-of-sample testing, performance benchmarking, and documentation your risk committee can review and sign off on. We do not ship black boxes.</div>
+    </div>
+    <div class="ml-approach-cell reveal">
+      <div class="ml-approach-lbl">Monitored in production</div>
+      <div class="ml-approach-desc">Kairos Vigil watches every model we deploy. When accuracy drifts &mdash; because the market shifts or customer behaviour changes &mdash; your team is alerted before the model starts producing unreliable outputs.</div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- REGULATORS -->
+<section class="sec reveal" id="regulators">
+  <div class="sec-label">Regulatory Framework</div>
+  <h2 class="sec-title">Two regulators.<br>Every report covered.</h2>
+  <p class="sec-sub">Kairos is built around the two authorities that govern compliance for every bank in Mozambique. We know their requirements, their formats, and their deadlines.</p>
+  <div class="reg-split">
+    <div class="reg-card reveal" style="--rc:#C9A84C">
+      <div class="reg-tag">Prudential Supervision &middot; Compliance Reporting</div>
+      <div class="reg-title">Central Bank of<br>Mozambique</div>
+      <div class="reg-subtitle">Banco de Mo&ccedil;ambique &middot; BdM</div>
+      <p class="reg-desc">The Central Bank sets the framework every commercial bank must operate within &mdash; capital requirements, liquidity standards, loan classification, and periodic prudential reporting. Kairos generates all required reports directly from your data, on schedule, every time.</p>
+      <div class="reg-items">
+        <div class="reg-item">Capital adequacy ratio under Basel III &mdash; reported monthly</div>
+        <div class="reg-item">Liquidity coverage ratio &mdash; monitored daily, reported on demand</div>
+        <div class="reg-item">Non-performing loan ratio and provision coverage analysis</div>
+        <div class="reg-item">Loan stage classification under international accounting standards</div>
+        <div class="reg-item">KYC compliance &mdash; identity verification aligned with Central Bank directives</div>
+      </div>
+    </div>
+    <div class="reg-card reveal" style="--rc:#2A9D8F">
+      <div class="reg-tag">AML/CFT Reporting &middot; Financial Intelligence</div>
+      <div class="reg-title">GIFIM</div>
+      <div class="reg-subtitle">Gabinete de Informa&ccedil;&atilde;o Financeira de Mo&ccedil;ambique</div>
+      <p class="reg-desc">GIFIM is Mozambique's Financial Intelligence Unit, responsible for receiving financial intelligence from all banks to combat money laundering and terrorist financing. Every bank must file four types of reports. Kairos Lex generates all four automatically &mdash; including structured transaction detection.</p>
+      <div class="reg-items">
+        <div class="reg-item">Suspicious Transaction Reports &mdash; any amount, flagged by seven detection rules</div>
+        <div class="reg-item">Cash Transaction Reports &mdash; single transactions from 250,000 MZN</div>
+        <div class="reg-item">International Fund Transfers &mdash; from 750,000 MZN per transfer</div>
+        <div class="reg-item">Electronic Fund Transfers &mdash; from 750,000 MZN per transfer</div>
+        <div class="reg-item">Cumulative structuring detection &mdash; across daily, weekly, and monthly windows</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- HOW IT WORKS -->
+<section class="sec reveal" style="background:#0B1120">
+  <div class="sec-label">How It Works</div>
+  <h2 class="sec-title">From your system<br>to the regulator.</h2>
+  <p class="sec-sub">Kairos connects to your existing environment and handles the full journey &mdash; from reading raw data to delivering finished, compliant outputs.</p>
+  <div class="flow-wrap">
+    <div class="flow-cell reveal">
+      <div class="flow-num">01</div>
+      <div class="flow-title">We connect to your system</div>
+      <p class="flow-desc">Kairos connects directly to your core banking platform &mdash; whether that is Temenos T24, Finacle, or any other system your institution runs on. No changes to your operations, no files to send manually, no extra work for your IT team.</p>
+    </div>
+    <div class="flow-cell reveal">
+      <div class="flow-num">02</div>
+      <div class="flow-title">We process and analyse</div>
+      <p class="flow-desc">Every day, Kairos reads the previous day's data, runs the relevant models, applies regulatory rules, and surfaces anything that requires attention. Your team sees results and clear next actions &mdash; not raw numbers to interpret.</p>
+    </div>
+    <div class="flow-cell reveal">
+      <div class="flow-num">03</div>
+      <div class="flow-title">We deliver what's required</div>
+      <p class="flow-desc">GIFIM reports ready to submit. Central Bank reports formatted and on schedule. Risk alerts in your dashboard. KYC gaps identified and prioritised. Everything your institution needs to operate with confidence.</p>
+    </div>
+  </div>
 </section>
 
 <div class="hr"></div>
 
 <!-- ABOUT -->
-<section class="sec reveal" id="about" style="background:#0B1120">
+<section class="sec reveal" id="about">
   <div class="about-grid">
     <div>
       <div class="sec-label">About Kairos</div>
       <h2 class="sec-title">Built here.<br>For here.</h2>
       <div class="about-body" style="margin-top:32px">
-        <p><strong>Kairos</strong> is a Mozambican AI and analytics company, founded by professionals with direct experience in banking and risk management in Mozambique.</p>
-        <p>The name comes from the Greek <em>καιρός</em> — the decisive moment, the right instant to act. That is what we deliver: the right intelligence, at the right moment, to make the right decision.</p>
-        <p>We do not build generic tools. We build solutions that understand the Mozambican regulatory environment, the requirements of GIFIM and the Banco de Moçambique, and the operational reality of local banking.</p>
+        <p><strong>Kairos</strong> is a Mozambican AI and analytics company, founded by professionals with direct experience in banking, risk management, and data in Mozambique.</p>
+        <p>The name comes from the Greek <em>kair&oacute;s</em> &mdash; the decisive moment. Not just any moment, but the right one. That is what we deliver: the right intelligence, at the right moment, to make the right call.</p>
+        <p>We do not build generic tools and adapt them for Mozambique. We build specifically for the institutions and regulators that operate here &mdash; with a deep understanding of what the Central Bank requires, how GIFIM works, and what banks in this market actually need from their data.</p>
       </div>
     </div>
     <div>
-      <div class="num-grid">
-        <div class="num-cell reveal">
-          <div class="num-val">19+</div>
-          <div class="num-lbl">Banks in Mozambique</div>
-        </div>
-        <div class="num-cell reveal">
-          <div class="num-val">100%</div>
-          <div class="num-lbl">Mandatory compliance</div>
-        </div>
-        <div class="num-cell reveal">
-          <div class="num-val">5.1</div>
-          <div class="num-lbl">goAML Schema</div>
-        </div>
-        <div class="num-cell reveal">
-          <div class="num-val">0</div>
-          <div class="num-lbl">Manual CTR steps</div>
-        </div>
+      <div class="about-stats">
+        <div class="about-stat reveal"><div class="about-stat-val">19+</div><div class="about-stat-lbl">Banks in Mozambique</div></div>
+        <div class="about-stat reveal"><div class="about-stat-val">2</div><div class="about-stat-lbl">Regulators served</div></div>
+        <div class="about-stat reveal"><div class="about-stat-val">7</div><div class="about-stat-lbl">Products in the platform</div></div>
+        <div class="about-stat reveal"><div class="about-stat-val">0</div><div class="about-stat-lbl">Manual steps to file a CTR</div></div>
       </div>
       <div class="origin-box reveal">
         <div class="origin-lbl">Registered in</div>
         <div class="origin-val">Maputo, Mozambique</div>
-        <div class="origin-sub">kairos.co.mz · 2025</div>
+        <div class="origin-sub">kairos.co.mz &middot; 2025</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<div class="hr"></div>
-
-<!-- APPROACH -->
-<section class="sec reveal">
-  <div class="sec-label">How It Works</div>
-  <h2 class="sec-title">From extraction<br>to decision.</h2>
-  <div class="approach-grid">
-    <div class="approach-cell reveal">
-      <div class="approach-n">01</div>
-      <div class="approach-title">Extract & Connect</div>
-      <p class="approach-desc">We connect directly to your core banking system via SQL Server or API. No manual exports, no daily IT intervention.</p>
-    </div>
-    <div class="approach-cell reveal">
-      <div class="approach-n">02</div>
-      <div class="approach-title">Process & Analyse</div>
-      <p class="approach-desc">We apply regulatory rules, ML models and business logic calibrated for the Mozambican context. Results in minutes.</p>
-    </div>
-    <div class="approach-cell reveal">
-      <div class="approach-n">03</div>
-      <div class="approach-title">Output & Comply</div>
-      <p class="approach-desc">goAML 5.1 XML ready to submit to GIFIM. Executive dashboards. BdM reports formatted and on schedule. Fully auditable.</p>
     </div>
   </div>
 </section>
@@ -832,67 +467,44 @@ footer{
 <!-- CONTACT -->
 <section class="sec reveal" id="contact" style="background:#0B1120">
   <div class="contact-wrap">
-    <div class="sec-label" style="justify-content:center">Contact</div>
+    <div class="sec-label" style="justify-content:center">Let's Talk</div>
     <h2 class="contact-title">Let's<br><em>work</em><br>together.</h2>
-    <p class="contact-sub">If your bank needs to automate GIFIM or BdM compliance, or you want to see what AI can do for your operations — let's talk.</p>
+    <p class="contact-sub">Whether you need to automate compliance reporting, build a credit scoring model, or make your customer data trustworthy &mdash; we would like to understand your situation and show you what Kairos can do.</p>
     <a href="mailto:info@kairos.co.mz" class="contact-email">info@kairos.co.mz</a>
-    <span class="contact-loc">Maputo · Mozambique · kairos.co.mz</span>
-    <div class="cal-box reveal">
-      <div class="cal-label">Book a Demo Call</div>
-      <p class="cal-desc">30-minute session. We'll show you a live demo of Kairos Lex generating compliant goAML XML from your transaction data — no setup required.</p>
-      <div class="cal-slots">
-        <div class="cal-slot sel">30 min · Kairos Lex Demo</div>
-        <div class="cal-slot">60 min · Full Platform</div>
-        <div class="cal-slot">15 min · Quick Intro</div>
+    <span class="contact-loc">Maputo &middot; Mozambique &middot; kairos.co.mz</span>
+    <div class="demo-box reveal">
+      <div class="demo-lbl">What happens in a 30-minute demo</div>
+      <div class="demo-items">
+        <div class="demo-item">We show Kairos Lex generating a live GIFIM report from real banking data</div>
+        <div class="demo-item">We walk through how your core banking system would connect</div>
+        <div class="demo-item">We demonstrate the compliance dashboard your team would use daily</div>
+        <div class="demo-item">You ask questions specific to your institution &mdash; we answer directly</div>
       </div>
-      <a href="mailto:info@kairos.co.mz?subject=Demo Request — Kairos Lex&body=Hello,%0D%0A%0D%0AI'd like to schedule a demo of Kairos Lex.%0D%0A%0D%0ABank:%0D%0APreferred time:%0D%0A" class="btn-gold">Request Demo →</a>
+      <a href="mailto:info@kairos.co.mz?subject=Demo Request%20%E2%80%94%20Kairos&body=Hello,%0D%0A%0D%0AI'd like to schedule a demo of Kairos.%0D%0A%0D%0AInstitution:%0D%0AName:%0D%0APreferred time:%0D%0A" class="btn-gold">Request a Demo &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="ft-logo"><span>K</span>AIROS</div>
   <div class="ft-links">
     <a href="#products">Products</a>
+    <a href="#ml">Machine Learning</a>
+    <a href="#regulators">Regulators</a>
     <a href="kairos_lex.html">Kairos Lex</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </div>
-  <div class="ft-copy">© 2025 Kairos Lda · Maputo, Mozambique · kairos.co.mz</div>
+  <div class="ft-copy">&copy; 2025 Kairos Lda &middot; Maputo, Mozambique &middot; kairos.co.mz</div>
 </footer>
 
 <script>
-  // Scroll reveal
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
-  }, {threshold:.08});
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Hamburger menu
-  const toggle = document.getElementById('navToggle');
-  const mobile = document.getElementById('navMobile');
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('open');
-    mobile.classList.toggle('open');
-    document.body.style.overflow = mobile.classList.contains('open') ? 'hidden' : '';
-  });
-  mobile.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      toggle.classList.remove('open');
-      mobile.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-
-  // Cal slot toggle
-  document.querySelectorAll('.cal-slot').forEach(s => {
-    s.addEventListener('click', () => {
-      document.querySelectorAll('.cal-slot').forEach(x => x.classList.remove('sel'));
-      s.classList.add('sel');
-    });
-  });
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const toggle=document.getElementById('navToggle');
+  const mobile=document.getElementById('navMobile');
+  toggle.addEventListener('click',()=>{toggle.classList.toggle('open');mobile.classList.toggle('open');document.body.style.overflow=mobile.classList.contains('open')?'hidden':''});
+  mobile.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{toggle.classList.remove('open');mobile.classList.remove('open');document.body.style.overflow=''})});
 </script>
-
 </body>
 </html>

@@ -1,510 +1,1159 @@
 <!DOCTYPE html>
-<html lang="en" style="background:#080A0F;">
+<html lang="en" style="background:#080A0F;background-color:#080A0F;">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#080A0F">
-<meta name="description" content="Kairos - AI, analytics and machine learning for banks in Mozambique. From data infrastructure to regulatory reporting.">
-<title>Kairos - Raw Data. Real Decisions.</title>
+<title>KAIROS — Brand Identity System v4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --obsidian:#080A0F;--navy:#0B1120;--midnight:#111827;
-  --slate:#1E2A3A;--steel:#2D3F55;--silver:#8A9BB0;--white:#F0F4F8;
-  --gold:#C9A84C;--gold-l:#E8C97A;--gold-d:#8A6B2A;
-  --teal:#2A9D8F;--teal-d:#1A6B63;
-  --fd:'Cormorant Garamond',Georgia,serif;
-  --fb:'Outfit',system-ui,sans-serif;
-  --fm:'Space Mono','Courier New',monospace;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;background:#080A0F !important;}
-body{background:#080A0F !important;color:#F0F4F8;font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:#080A0F}
-::-webkit-scrollbar-thumb{background:#8A6B2A}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:72px;background:rgba(8,10,15,.95);border-bottom:1px solid rgba(201,168,76,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);gap:20px}
-.nav-logo{font-family:var(--fd);font-size:20px;font-weight:300;color:#F0F4F8;text-decoration:none;letter-spacing:.1em;flex-shrink:0}
-.nav-logo span{color:#C9A84C}
-.nav-links{display:flex;gap:40px;list-style:none;align-items:center}
-.nav-links a{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#8A9BB0;text-decoration:none;transition:color .2s;white-space:nowrap}
-.nav-links a:hover{color:#C9A84C}
-.nav-cta{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C9A84C;border:1px solid #8A6B2A;padding:10px 22px;text-decoration:none;transition:all .25s;white-space:nowrap;flex-shrink:0}
-.nav-cta:hover{background:#C9A84C;color:#080A0F}
-.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
-.nav-toggle span{display:block;width:22px;height:1px;background:#8A9BB0;transition:all .3s}
-.nav-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.nav-toggle.open span:nth-child(2){opacity:0}
-.nav-toggle.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-.nav-mobile{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;z-index:190;background:rgba(8,10,15,.98);flex-direction:column;align-items:center;justify-content:center;gap:40px}
-.nav-mobile.open{display:flex}
-.nav-mobile a{font-family:var(--fm);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#8A9BB0;text-decoration:none;transition:color .2s}
-.nav-mobile a:hover{color:#C9A84C}
-.nav-mobile .m-cta{color:#C9A84C;border:1px solid #8A6B2A;padding:14px 36px;margin-top:8px}
-.hr{width:calc(100% - 112px);height:1px;margin:0 56px;background:linear-gradient(to right,transparent,#1E2A3A,transparent)}
-.sec{padding:112px 56px;position:relative;z-index:1}
-.sec-label{font-family:var(--fm);font-size:9px;letter-spacing:.5em;text-transform:uppercase;color:#C9A84C;display:flex;align-items:center;gap:14px;margin-bottom:20px}
-.sec-label::before{content:'';width:24px;height:1px;background:#C9A84C}
-.sec-title{font-family:var(--fd);font-size:clamp(32px,5vw,64px);font-weight:300;color:#F0F4F8;line-height:1.05;margin-bottom:20px}
-.sec-sub{font-size:16px;color:#8A9BB0;line-height:1.85;max-width:560px}
-.btn-gold{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;font-weight:700;background:#C9A84C;color:#080A0F;padding:15px 36px;text-decoration:none;transition:all .25s;display:inline-block}
-.btn-gold:hover{background:#E8C97A;transform:translateY(-2px)}
-.btn-ghost{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#8A9BB0;border:1px solid #1E2A3A;padding:15px 36px;text-decoration:none;transition:all .25s;display:inline-block}
-.btn-ghost:hover{border-color:#8A9BB0;color:#F0F4F8}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 56px 80px;position:relative;overflow:hidden}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.025) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 80% 70% at 60% 40%,black 10%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 60% 40%,black 10%,transparent 100%)}
-.hero-glow{position:absolute;width:800px;height:600px;background:radial-gradient(ellipse,rgba(201,168,76,.05) 0%,transparent 65%);top:-100px;right:-80px;pointer-events:none}
-.hero-inner{position:relative;z-index:2;max-width:1100px}
-.hero-eyebrow{font-family:var(--fm);font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:#C9A84C;display:flex;align-items:center;gap:14px;margin-bottom:36px;opacity:0;animation:fu .8s .15s forwards}
-.hero-eyebrow::before{content:'';width:32px;height:1px;background:#C9A84C}
-.hero-name{font-family:var(--fd);font-size:clamp(72px,14vw,210px);font-weight:300;line-height:.85;letter-spacing:-.02em;opacity:0;animation:fu .9s .3s forwards}
-.hero-name .k{color:#C9A84C}
-.hero-taglines{margin-top:48px;opacity:0;animation:fu .8s .5s forwards}
-.tl1{font-family:var(--fb);font-weight:600;font-size:clamp(20px,3.4vw,52px);letter-spacing:.06em;text-transform:uppercase;color:#F0F4F8;line-height:1;display:block}
-.tl2{font-family:var(--fb);font-weight:600;font-size:clamp(20px,3.4vw,52px);letter-spacing:.06em;text-transform:uppercase;color:#C9A84C;line-height:1;display:block;margin-top:4px}
-.tl3{font-family:var(--fd);font-style:italic;font-weight:300;font-size:clamp(15px,1.8vw,24px);color:#8A9BB0;letter-spacing:.06em;display:block;margin-top:18px}
-.hero-desc{max-width:520px;font-size:16px;color:#8A9BB0;line-height:1.9;margin-top:44px;opacity:0;animation:fu .8s .68s forwards}
-.hero-desc strong{color:#F0F4F8;font-weight:500}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:52px;opacity:0;animation:fu .8s .84s forwards}
-.hero-anchors{display:flex;gap:0;margin-top:80px;border-top:1px solid rgba(201,168,76,.12);padding-top:40px;opacity:0;animation:fu .8s 1s forwards;flex-wrap:wrap}
-.hero-anchor{padding-right:48px;margin-right:48px;border-right:1px solid #1E2A3A}
-.hero-anchor:last-child{border-right:none;padding-right:0;margin-right:0}
-.anchor-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:#8A6B2A;margin-bottom:8px}
-.anchor-val{font-family:var(--fd);font-size:clamp(14px,1.6vw,19px);font-weight:300;color:#F0F4F8}
-@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-.journey-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:64px}
-.journey-flow{display:flex;flex-direction:column;gap:1px}
-.journey-step{display:grid;grid-template-columns:44px 1fr;background:#1E2A3A}
-.journey-step-num{background:#0B1120;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:#8A6B2A;border-right:1px solid #1E2A3A;min-height:52px}
-.journey-step-body{background:#111827;padding:16px 24px;display:flex;align-items:center;gap:16px;transition:background .25s}
-.journey-step-body:hover{background:rgba(30,42,58,.6)}
-.journey-step-name{font-family:var(--fd);font-size:18px;font-weight:300;color:#F0F4F8;flex:1}
-.journey-step-prod{font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--jp,#8A6B2A);border:1px solid var(--jp,#8A6B2A);padding:3px 10px;flex-shrink:0}
-.journey-arrow{text-align:center;padding:6px 0;font-family:var(--fm);font-size:10px;color:#1E2A3A}
-.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1E2A3A;border:1px solid #1E2A3A}
-.prod-card{background:#111827;padding:44px 36px;position:relative;overflow:hidden;transition:background .3s;text-decoration:none;display:block;color:inherit}
-.prod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--pc,#8A6B2A);transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.prod-card:hover{background:rgba(30,42,58,.5)}
-.prod-card:hover::before{transform:scaleX(1)}
-.prod-card.lit{background:rgba(201,168,76,.04)}
-.prod-card.lit::before{transform:scaleX(1)}
-.prod-card.vteal{background:rgba(42,157,143,.03)}
-.prod-card.vteal::before{background:var(--teal)}
-.prod-step{font-family:var(--fm);font-size:8px;letter-spacing:.35em;text-transform:uppercase;color:var(--pc,#8A6B2A);margin-bottom:20px}
-.prod-ico{width:44px;height:44px;margin-bottom:24px}
-.prod-name{font-family:var(--fd);font-size:26px;font-weight:300;color:#F0F4F8;margin-bottom:6px}
-.prod-name em{font-style:italic;color:var(--pc,#C9A84C)}
-.prod-line{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--pc,#8A6B2A);margin-bottom:16px;opacity:.7}
-.prod-desc{font-size:13px;color:#8A9BB0;line-height:1.85;margin-bottom:20px}
-.prod-tags{display:flex;flex-wrap:wrap;gap:7px}
-.prod-tag{font-family:var(--fm);font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:#8A9BB0;border:1px solid #1E2A3A;padding:4px 10px}
-.prod-tag.gold{color:#C9A84C;border-color:#8A6B2A}
-.prod-tag.teal{color:#2A9D8F;border-color:#1A6B63}
-.lex-strip{background:#0B1120;border:1px solid rgba(201,168,76,.15);border-top:none;padding:48px 52px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
-.lex-strip-title{font-family:var(--fd);font-size:clamp(22px,3vw,36px);font-weight:300;color:#F0F4F8;line-height:1.1}
-.lex-strip-title em{font-style:italic;color:#C9A84C}
-.lex-strip-desc{font-size:14px;color:#8A9BB0;line-height:1.85;max-width:400px}
-.lex-strip-cta{display:flex;flex-direction:column;gap:12px;flex-shrink:0}
-.ml-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
-.ml-card{background:#111827;padding:56px 48px;position:relative;overflow:hidden}
-.ml-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--mc,#C9A84C)}
-.ml-tag{font-family:var(--fm);font-size:8px;letter-spacing:.45em;text-transform:uppercase;color:var(--mc,#C9A84C);margin-bottom:20px}
-.ml-title{font-family:var(--fd);font-size:clamp(26px,3.5vw,40px);font-weight:300;color:#F0F4F8;line-height:1.1;margin-bottom:16px}
-.ml-desc{font-size:14px;color:#8A9BB0;line-height:1.9;margin-bottom:28px}
-.ml-items{display:flex;flex-direction:column;gap:10px}
-.ml-item{font-size:13px;color:#8A9BB0;padding-left:18px;position:relative;line-height:1.6}
-.ml-item::before{content:'→';position:absolute;left:0;color:var(--mc,#8A6B2A);font-size:11px}
-.ml-approach{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;border-top:none;margin-top:2px}
-.ml-approach-cell{background:#111827;padding:32px 28px}
-.ml-approach-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:#8A6B2A;margin-bottom:14px}
-.ml-approach-desc{font-size:13px;color:#8A9BB0;line-height:1.8}
-.reg-split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
-.reg-card{background:#0B1120;padding:56px 48px;position:relative;overflow:hidden}
-.reg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--rc,#C9A84C)}
-.reg-tag{font-family:var(--fm);font-size:8px;letter-spacing:.45em;text-transform:uppercase;color:var(--rc,#C9A84C);margin-bottom:16px}
-.reg-title{font-family:var(--fd);font-size:clamp(26px,3.5vw,44px);font-weight:300;color:#F0F4F8;line-height:1.05;margin-bottom:8px}
-.reg-subtitle{font-family:var(--fm);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#2D3F55;margin-bottom:24px}
-.reg-desc{font-size:14px;color:#8A9BB0;line-height:1.9;margin-bottom:28px}
-.reg-items{display:flex;flex-direction:column;gap:10px}
-.reg-item{font-size:13px;color:#8A9BB0;padding-left:18px;position:relative;line-height:1.6}
-.reg-item::before{content:'→';position:absolute;left:0;color:var(--rc,#8A6B2A);font-size:11px}
-.flow-wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A;margin-top:64px}
-.flow-cell{background:#111827;padding:48px 36px;position:relative}
-.flow-cell::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,#8A6B2A,transparent)}
-.flow-num{font-family:var(--fd);font-size:80px;font-weight:300;color:rgba(201,168,76,.07);line-height:1;margin-bottom:16px}
-.flow-title{font-family:var(--fd);font-size:22px;font-weight:300;color:#F0F4F8;margin-bottom:12px}
-.flow-desc{font-size:14px;color:#8A9BB0;line-height:1.85}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:start}
-.about-body p{font-size:16px;color:#8A9BB0;line-height:1.9;margin-bottom:20px}
-.about-body p strong{color:#F0F4F8;font-weight:500}
-.about-body p em{color:#C9A84C;font-style:italic}
-.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E2A3A;border:1px solid #1E2A3A}
-.about-stat{background:#111827;padding:40px 32px}
-.about-stat-val{font-family:var(--fd);font-size:clamp(36px,4vw,52px);font-weight:300;color:#C9A84C;line-height:1;margin-bottom:10px}
-.about-stat-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#8A9BB0}
-.origin-box{margin-top:2px;padding:32px;background:#111827;border:1px solid #1E2A3A}
-.origin-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:10px}
-.origin-val{font-family:var(--fd);font-size:22px;font-weight:300;color:#F0F4F8}
-.origin-sub{font-family:var(--fm);font-size:9px;color:#2D3F55;letter-spacing:.2em;margin-top:6px}
-.contact-wrap{text-align:center;max-width:640px;margin:0 auto}
-.contact-title{font-family:var(--fd);font-size:clamp(44px,8vw,96px);font-weight:300;color:#F0F4F8;line-height:.9;margin-bottom:28px}
-.contact-title em{font-style:italic;color:#C9A84C}
-.contact-sub{font-size:16px;color:#8A9BB0;line-height:1.9;margin-bottom:52px}
-.contact-email{display:block;font-family:var(--fd);font-size:clamp(18px,2.5vw,28px);font-weight:300;color:#C9A84C;text-decoration:none;border-bottom:1px solid #8A6B2A;padding-bottom:6px;transition:color .2s;width:fit-content;margin:0 auto 16px}
-.contact-email:hover{color:#E8C97A}
-.contact-loc{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#2D3F55;display:block;margin-top:14px}
-.demo-box{margin-top:56px;padding:44px;background:#0B1120;border:1px solid rgba(201,168,76,.15);text-align:left;position:relative}
-.demo-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,#C9A84C,transparent)}
-.demo-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:20px}
-.demo-items{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
-.demo-item{font-size:13px;color:#8A9BB0;padding-left:18px;position:relative;line-height:1.7}
-.demo-item::before{content:'✓';position:absolute;left:0;color:#2ECC71;font-size:11px}
-footer{background:#080A0F;border-top:1px solid #1E2A3A;padding:40px 56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
-.ft-logo{font-family:var(--fd);font-size:18px;font-weight:300;color:#F0F4F8;letter-spacing:.1em}
-.ft-logo span{color:#C9A84C}
-.ft-links{display:flex;gap:32px;flex-wrap:wrap}
-.ft-links a{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#2D3F55;text-decoration:none;transition:color .2s}
-.ft-links a:hover{color:#8A9BB0}
-.ft-copy{font-family:var(--fm);font-size:9px;letter-spacing:.15em;color:#1E2A3A}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-.reveal.on{opacity:1;transform:none}
-@media(max-width:1024px){.journey-intro{grid-template-columns:1fr;gap:48px}.prod-grid{grid-template-columns:1fr 1fr}.ml-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr;gap:48px}.ml-approach{grid-template-columns:1fr}}
-@media(max-width:960px){nav{padding:0 24px}.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.sec{padding:80px 24px}.hero{padding:120px 24px 72px}.hr{width:calc(100% - 48px);margin:0 24px}.prod-grid{grid-template-columns:1fr}.reg-split{grid-template-columns:1fr}.flow-wrap{grid-template-columns:1fr}.demo-items{grid-template-columns:1fr}.lex-strip{flex-direction:column}.lex-strip-cta{flex-direction:row}footer{flex-direction:column;padding:32px 24px;text-align:center}.ft-links{justify-content:center}}
-@media(max-width:600px){.about-stats{grid-template-columns:1fr 1fr}.hero-anchors{flex-wrap:wrap;gap:20px}.hero-anchor{padding-right:20px;margin-right:20px}}
+  :root {
+    --obsidian: #080A0F;
+    --deep-navy: #0B1120;
+    --midnight: #111827;
+    --slate: #1E2A3A;
+    --steel: #2D3F55;
+    --silver: #8A9BB0;
+    --mist: #C4CDD8;
+    --white: #F0F4F8;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: #8A6B2A;
+    --accent: #4A90C4;
+    --teal: #2A9D8F;
+    --teal-dim: #1A6B63;
+    --green: #2ECC71;
+    --red: #E74C3C;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    background: #080A0F !important;
+    background-color: #080A0F !important;
+  }
+
+  body {
+    background: #080A0F !important;
+    background-color: #080A0F !important;
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  section {
+    padding: 100px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold-dim), transparent);
+    max-width: 200px;
+  }
+
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--slate), transparent);
+    margin: 0 60px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 60px;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(74,144,196,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      linear-gradient(135deg, var(--obsidian) 0%, var(--deep-navy) 100%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(80px, 18vw, 260px);
+    font-weight: 300;
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 1s 0.5s forwards;
+  }
+
+  .hero-name .k-accent { color: var(--gold); }
+
+  .hero-tagline-primary {
+    margin-top: 52px;
+    opacity: 0;
+    animation: fadeUp 1s 0.7s forwards;
+  }
+
+  .tagline-line {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: clamp(24px, 4.5vw, 64px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .tagline-line-1 { color: var(--white); }
+  .tagline-line-2 { color: var(--gold); margin-top: 6px; }
+
+  .hero-tagline-philosophical {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(15px, 1.8vw, 24px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--silver);
+    margin-top: 24px;
+    letter-spacing: 0.08em;
+    opacity: 0;
+    animation: fadeUp 1s 0.88s forwards;
+  }
+
+  .hero-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    color: var(--steel);
+    text-transform: uppercase;
+    margin-top: 56px;
+    opacity: 0;
+    animation: fadeUp 1s 1s forwards;
+  }
+
+  .hero-domain {
+    position: absolute;
+    bottom: 60px;
+    right: 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+    z-index: 2;
+  }
+
+  /* ─── TAGLINE SYSTEM ─── */
+  .tagline-system { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+
+  .tagline-role-card {
+    padding: 64px 56px;
+    border: 1px solid var(--slate);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tagline-role-card.primary-card { border-color: var(--gold-dim); background: rgba(201,168,76,0.03); }
+
+  .tagline-role-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .primary-card::before { background: linear-gradient(to right, var(--gold-dim), var(--gold)); }
+  .philosophical-card::before { background: linear-gradient(to right, var(--slate), var(--silver)); }
+
+  .tagline-role-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .primary-card .tagline-role-label { color: var(--gold); }
+  .philosophical-card .tagline-role-label { color: var(--silver); }
+
+  .tagline-primary-display { display: flex; flex-direction: column; gap: 4px; }
+
+  .tagline-word-raw,
+  .tagline-word-data {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 68px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .tagline-separator {
+    width: 40px;
+    height: 1px;
+    background: var(--gold-dim);
+    margin: 16px 0;
+  }
+
+  .tagline-word-real,
+  .tagline-word-decisions {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 68px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .tagline-role-philosophical-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 56px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--white);
+  }
+
+  .tagline-role-desc {
+    font-size: 14px;
+    color: var(--silver);
+    margin-top: 32px;
+    line-height: 1.8;
+    max-width: 420px;
+  }
+
+  .tagline-usage { margin-top: 32px; display: flex; flex-direction: column; gap: 8px; }
+
+  .usage-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--steel);
+    text-transform: uppercase;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .usage-item::before { content: '·'; position: absolute; left: 0; color: var(--gold-dim); }
+
+  /* ─── LOGO ─── */
+  .logo-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+
+  .logo-panel {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    position: relative;
+  }
+
+  .logo-panel.dark { background: var(--obsidian); border: 1px solid var(--slate); }
+  .logo-panel.navy { background: var(--deep-navy); border: 1px solid var(--slate); }
+  .logo-panel.gold-bg { background: var(--gold); }
+  .logo-panel.white-bg { background: var(--white); }
+
+  .logo-mark { display: flex; align-items: center; }
+  .logo-k { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; line-height: 1; }
+  .logo-wordmark { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; letter-spacing: 0.15em; line-height: 1; }
+
+  .logo-tagline-primary-small {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-top: 16px;
+  }
+
+  .logo-tagline-phil-small {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  .logo-panel.dark .logo-k, .logo-panel.navy .logo-k { color: var(--gold); }
+  .logo-panel.dark .logo-wordmark, .logo-panel.navy .logo-wordmark { color: var(--white); }
+  .logo-panel.dark .logo-tagline-primary-small, .logo-panel.navy .logo-tagline-primary-small { color: var(--silver); }
+  .logo-panel.dark .logo-tagline-phil-small, .logo-panel.navy .logo-tagline-phil-small { color: var(--silver); }
+  .logo-panel.gold-bg .logo-k, .logo-panel.gold-bg .logo-wordmark { color: var(--obsidian); }
+  .logo-panel.gold-bg .logo-tagline-primary-small, .logo-panel.gold-bg .logo-tagline-phil-small { color: rgba(8,10,15,0.6); }
+  .logo-panel.white-bg .logo-k { color: var(--gold-dim); }
+  .logo-panel.white-bg .logo-wordmark { color: var(--obsidian); }
+  .logo-panel.white-bg .logo-tagline-primary-small, .logo-panel.white-bg .logo-tagline-phil-small { color: var(--steel); }
+
+  .panel-label { position: absolute; bottom: 20px; right: 24px; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; opacity: 0.4; text-transform: uppercase; }
+
+  /* ─── SYMBOLS ─── */
+  .symbol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .symbol-card { padding: 60px 40px; border: 1px solid var(--slate); display: flex; flex-direction: column; align-items: center; gap: 24px; transition: all 0.4s ease; }
+  .symbol-card:hover { border-color: var(--gold-dim); background: rgba(201,168,76,0.02); }
+  .symbol-svg { width: 80px; height: 80px; }
+  .symbol-name { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; }
+  .symbol-desc { font-size: 13px; color: var(--silver); text-align: center; line-height: 1.7; }
+
+  /* ─── COLORS ─── */
+  .color-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; margin-bottom: 2px; }
+  .color-swatch { height: 120px; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; transition: transform 0.3s ease; cursor: default; }
+  .color-swatch:hover { transform: translateY(-4px); }
+  .swatch-name { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; }
+  .swatch-hex { font-family: 'Space Mono', monospace; font-size: 10px; opacity: 0.7; }
+
+  /* ─── TYPOGRAPHY ─── */
+  .type-showcase { display: flex; flex-direction: column; gap: 60px; }
+  .type-specimen { border-left: 1px solid var(--slate); padding-left: 40px; }
+  .type-meta { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: 20px; }
+
+  .type-primary-raw {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: clamp(36px, 6vw, 88px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .type-primary-real {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: clamp(36px, 6vw, 88px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+
+  .type-display { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 7vw, 100px); font-weight: 300; line-height: 1; letter-spacing: -0.01em; }
+  .type-display-italic { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 88px); font-weight: 300; font-style: italic; line-height: 1; color: var(--gold); }
+  .type-body-demo { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 300; color: var(--silver); line-height: 1.8; max-width: 600px; }
+  .type-mono-demo { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--gold); letter-spacing: 0.2em; line-height: 2; }
+
+  /* ─── PRODUCTS ─── */
+  .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+
+  .product-card {
+    padding: 48px 40px;
+    border: 1px solid var(--slate);
+    position: relative;
+    transition: all 0.4s ease;
+    overflow: hidden;
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold-dim), var(--gold));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .product-card:hover::before { transform: scaleX(1); }
+  .product-card:hover { border-color: var(--steel); background: rgba(201,168,76,0.02); }
+  .product-card.featured { border-color: var(--gold-dim); background: rgba(201,168,76,0.03); }
+  .product-card.featured::before { transform: scaleX(1); }
+  .product-card.kyc-card { border-color: var(--teal-dim); background: rgba(42,157,143,0.03); }
+  .product-card.kyc-card::before { background: linear-gradient(to right, var(--teal-dim), var(--teal)); transform: scaleX(1); }
+  .product-card.kyc-card:hover { background: rgba(42,157,143,0.05); }
+
+  .featured-badge { position: absolute; top: 20px; right: 20px; font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.3em; color: var(--gold); border: 1px solid var(--gold-dim); padding: 4px 10px; text-transform: uppercase; }
+  .new-badge { position: absolute; top: 20px; right: 20px; font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.3em; color: var(--teal); border: 1px solid var(--teal-dim); padding: 4px 10px; text-transform: uppercase; }
+
+  .product-icon { width: 48px; height: 48px; margin-bottom: 28px; }
+  .product-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; margin-bottom: 4px; }
+  .product-sub { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: 20px; }
+  .product-sub.teal-sub { color: var(--teal-dim); }
+  .product-desc { font-size: 14px; color: var(--silver); line-height: 1.8; }
+  .product-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .tag { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--silver); border: 1px solid var(--slate); padding: 5px 12px; text-transform: uppercase; }
+  .tag.gold-tag { color: var(--gold); border-color: var(--gold-dim); }
+  .tag.teal-tag { color: var(--teal); border-color: var(--teal-dim); }
+
+  .regulatory-detail { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--slate); }
+  .reg-title { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: 14px; }
+  .reg-items { display: flex; flex-direction: column; gap: 10px; }
+  .reg-item { font-size: 13px; color: var(--silver); padding-left: 16px; position: relative; line-height: 1.6; }
+  .reg-item::before { content: '→'; position: absolute; left: 0; color: var(--gold-dim); font-size: 11px; }
+  .reg-item.teal-item::before { color: var(--teal-dim); }
+
+  .kyc-detail { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--teal-dim); }
+  .kyc-title { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: var(--teal-dim); text-transform: uppercase; margin-bottom: 14px; }
+
+  .capability-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+
+  .capability-pill { display: flex; align-items: center; gap: 10px; padding: 10px 18px; border: 1px solid var(--teal-dim); background: rgba(42,157,143,0.05); transition: all 0.3s ease; cursor: default; }
+  .capability-pill:hover { background: rgba(42,157,143,0.1); border-color: var(--teal); }
+  .capability-icon { font-size: 14px; }
+  .capability-text { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--teal); text-transform: uppercase; }
+
+  /* ─── VOICE ─── */
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .voice-card { padding: 48px; border: 1px solid var(--slate); }
+  .voice-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 32px; margin-bottom: 24px; }
+  .voice-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .voice-list li { font-size: 14px; color: var(--silver); padding-left: 20px; position: relative; }
+  .voice-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold-dim); font-family: 'Space Mono', monospace; }
+
+  /* ─── POSITIONING ─── */
+  .positioning-block { border: 1px solid var(--slate); padding: 80px; text-align: center; position: relative; overflow: hidden; }
+  .positioning-block::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,168,76,0.04) 0%, transparent 70%); }
+  .positioning-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3.5vw, 48px); font-weight: 300; font-style: italic; line-height: 1.5; position: relative; z-index: 1; }
+  .positioning-text em { color: var(--gold); font-style: normal; }
+  .positioning-tagline-insert { font-family: 'Outfit', sans-serif; font-weight: 600; font-style: normal; font-size: clamp(16px, 2.5vw, 32px); letter-spacing: 0.08em; text-transform: uppercase; display: block; margin: 20px 0; color: var(--white); }
+  .positioning-tagline-insert .gold { color: var(--gold); }
+
+  /* ─── DIGITAL ─── */
+  .browser-mockup { border: 1px solid var(--slate); border-radius: 8px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
+  .browser-bar { background: var(--slate); padding: 14px 20px; display: flex; align-items: center; gap: 16px; }
+  .browser-dots { display: flex; gap: 6px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-red { background: #FF5F57; }
+  .dot-yellow { background: #FEBC2E; }
+  .dot-green { background: #28C840; }
+  .browser-url { flex: 1; background: var(--midnight); border-radius: 4px; padding: 6px 16px; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--silver); letter-spacing: 0.05em; }
+
+  .browser-content { background: var(--deep-navy); padding: 70px 60px; min-height: 360px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+  .browser-content::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(74,144,196,0.05) 0%, transparent 70%); }
+
+  .browser-primary-line1 { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: clamp(24px, 5vw, 64px); letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); position: relative; z-index: 1; line-height: 1; }
+  .browser-primary-line2 { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: clamp(24px, 5vw, 64px); letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); position: relative; z-index: 1; line-height: 1; margin-top: 4px; }
+  .browser-phil { font-family: 'Cormorant Garamond', serif; font-size: clamp(14px, 2vw, 26px); font-weight: 300; font-style: italic; color: var(--silver); margin-top: 16px; position: relative; z-index: 1; }
+  .browser-sub { font-size: 14px; color: var(--silver); margin-top: 24px; position: relative; z-index: 1; max-width: 480px; line-height: 1.8; }
+  .browser-cta { margin-top: 36px; display: inline-block; border: 1px solid var(--gold-dim); color: var(--gold); font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; padding: 14px 28px; position: relative; z-index: 1; width: fit-content; transition: all 0.3s ease; cursor: pointer; }
+  .browser-cta:hover { background: var(--gold); color: var(--obsidian); }
+
+  /* ─── STATIONERY ─── */
+  .stationery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .card-mockup { aspect-ratio: 1.75; position: relative; border-radius: 4px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.6); }
+  .card-front { width: 100%; height: 100%; background: linear-gradient(135deg, var(--deep-navy) 0%, var(--obsidian) 100%); border: 1px solid var(--slate); padding: 40px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .card-front::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%); }
+  .card-logo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; letter-spacing: 0.1em; }
+  .card-logo span { color: var(--gold); }
+  .card-tagline-primary { font-family: 'Outfit', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; margin-top: 6px; }
+  .card-tagline-primary .gold { color: var(--gold); }
+  .card-name { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 400; }
+  .card-title { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: var(--gold-dim); text-transform: uppercase; }
+  .card-contact { font-size: 11px; color: var(--silver); margin-top: 12px; line-height: 1.8; }
+
+  /* ─── RULES ─── */
+  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .rule-card { padding: 48px; border: 1px solid var(--slate); }
+  .rule-card.do { border-top: 2px solid var(--green); }
+  .rule-card.dont { border-top: 2px solid var(--red); }
+  .rule-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 28px; }
+  .rule-card.do .rule-label { color: var(--green); }
+  .rule-card.dont .rule-label { color: var(--red); }
+  .rule-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .rule-list li { font-size: 14px; color: var(--silver); padding-left: 20px; position: relative; line-height: 1.6; }
+  .rule-card.do .rule-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-size: 12px; }
+  .rule-card.dont .rule-list li::before { content: '✗'; position: absolute; left: 0; color: var(--red); font-size: 12px; }
+
+  /* ─── FOOTER ─── */
+  .brand-footer { border-top: 1px solid var(--slate); padding: 60px; display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; letter-spacing: 0.1em; }
+  .footer-logo span { color: var(--gold); }
+  .footer-taglines { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+  .footer-tag-line1 { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); }
+  .footer-tag-line2 { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .footer-tag-phil { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-style: italic; color: var(--silver); margin-top: 4px; }
+  .footer-meta { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--steel); letter-spacing: 0.2em; text-align: right; line-height: 2; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .animate-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--obsidian); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dim); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    section { padding: 80px 40px; }
+    .divider { margin: 0 40px; }
+    .tagline-system { grid-template-columns: 1fr; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .rules-grid { grid-template-columns: 1fr; }
+    .symbol-grid { grid-template-columns: 1fr 1fr; }
+    .color-row { grid-template-columns: repeat(3, 1fr); }
+    .brand-footer { flex-direction: column; gap: 40px; text-align: center; }
+    .footer-meta { text-align: center; }
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 60px 24px; }
+    .divider { margin: 0 24px; }
+    .hero { padding: 0 24px; }
+    .hero-domain { right: 24px; bottom: 40px; }
+    .logo-showcase { grid-template-columns: 1fr; }
+    .product-grid { grid-template-columns: 1fr; }
+    .stationery-grid { grid-template-columns: 1fr; }
+    .symbol-grid { grid-template-columns: 1fr; }
+    .color-row { grid-template-columns: repeat(2, 1fr); }
+    .kyc-detail > div { grid-template-columns: 1fr !important; }
+    .tagline-role-card { padding: 40px 32px; }
+    .positioning-block { padding: 48px 32px; }
+    .browser-content { padding: 48px 32px; }
+    .card-front { padding: 28px; }
+    .card-name { font-size: 14px; }
+    .brand-footer { padding: 40px 24px; }
+  }
 </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo"><span>K</span>AIROS</a>
-  <ul class="nav-links">
-    <li><a href="#products">Products</a></li>
-    <li><a href="#ml">Machine Learning</a></li>
-    <li><a href="#regulators">Regulators</a></li>
-    <li><a href="kairos_lex.html">Kairos Lex</a></li>
-    <li><a href="#about">About</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Book a Demo</a>
-  <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
-</nav>
-<div class="nav-mobile" id="navMobile">
-  <a href="#products">Products</a>
-  <a href="#ml">Machine Learning</a>
-  <a href="#regulators">Regulators</a>
-  <a href="kairos_lex.html">Kairos Lex</a>
-  <a href="#about">About</a>
-  <a href="#contact" class="m-cta">Book a Demo</a>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Brand Identity System · Version 4 · 2025</div>
+    <div class="hero-name"><span class="k-accent">K</span>AIROS</div>
+    <div class="hero-tagline-primary">
+      <span class="tagline-line tagline-line-1">Raw Data.</span>
+      <span class="tagline-line tagline-line-2">Real Decisions.</span>
+    </div>
+    <div class="hero-tagline-philosophical">Clarity from complexity.</div>
+    <div class="hero-sub">Advanced Analytics & AI · Banking · Energy · KYC · Regulatory Intelligence</div>
+  </div>
+  <div class="hero-domain">kairos.co.mz</div>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div class="hero-eyebrow">AI &middot; Analytics &middot; Machine Learning &middot; Mozambique</div>
-    <h1 class="hero-name"><span class="k">K</span>AIROS</h1>
-    <div class="hero-taglines">
-      <span class="tl1">Raw Data.</span>
-      <span class="tl2">Real Decisions.</span>
-      <span class="tl3">Clarity from complexity.</span>
-    </div>
-    <p class="hero-desc">
-      Kairos is the AI and analytics platform built for <strong>banks in Mozambique</strong>.
-      We build the data infrastructure that makes intelligence possible, the machine learning
-      models that turn data into foresight, and the compliance tools that turn regulatory
-      obligations into automated outputs.
-    </p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-gold">Book a Demo</a>
-      <a href="#products" class="btn-ghost">Our Products</a>
-    </div>
-    <div class="hero-anchors">
-      <div class="hero-anchor"><div class="anchor-lbl">Market</div><div class="anchor-val">Banking &middot; Mozambique</div></div>
-      <div class="hero-anchor"><div class="anchor-lbl">Regulators</div><div class="anchor-val">Central Bank &middot; GIFIM</div></div>
-      <div class="hero-anchor"><div class="anchor-lbl">Products</div><div class="anchor-val">7</div></div>
-      <div class="hero-anchor"><div class="anchor-lbl">Founded</div><div class="anchor-val">Maputo, 2025</div></div>
-    </div>
-  </div>
-</section>
+<div class="divider"></div>
 
-<div class="hr"></div>
-
-<!-- PRODUCTS -->
-<section class="sec reveal" id="products">
-  <div class="journey-intro">
+<!-- ═══════════ BRAND ESSENCE ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">01 — Brand Essence</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
     <div>
-      <div class="sec-label">Products</div>
-      <h2 class="sec-title">From raw data<br>to the regulator.</h2>
-      <p class="sec-sub" style="margin-top:4px">Seven products, one connected journey. We start by building the data foundation your bank needs, then add intelligence layer by layer &mdash; until the final output is a compliant report filed with the regulator, automatically.</p>
+      <h2 style="font-size:clamp(40px,6vw,88px); line-height:1; margin-bottom:40px;">
+        What <em style="color:var(--gold); font-style:italic;">Kairos</em> means.
+      </h2>
+      <p style="font-size:16px; color:var(--silver); line-height:1.9;">
+        In Ancient Greek, <em>Kairos</em> (καιρός) is the decisive moment —
+        the instant when clarity cuts through complexity and
+        the right action becomes undeniable.<br><br>
+        Raw data is everywhere. Real decisions are rare.
+        The difference is intelligence — precise, trusted,
+        and built for the industries where decisions have consequences.<br><br>
+        That is what Kairos delivers.
+      </p>
     </div>
-    <div>
-      <div class="journey-flow">
-        <div class="journey-step" style="--jp:#8A9BB0"><div class="journey-step-num">01</div><div class="journey-step-body"><div class="journey-step-name">Data Infrastructure</div><div class="journey-step-prod" style="--jp:#8A9BB0">Kairos Core</div></div></div>
-        <div class="journey-arrow">&darr;</div>
-        <div class="journey-step" style="--jp:#E74C3C"><div class="journey-step-num">02</div><div class="journey-step-body"><div class="journey-step-name">Credit &amp; Risk Models</div><div class="journey-step-prod" style="--jp:#E74C3C">Kairos Risk</div></div></div>
-        <div class="journey-arrow">&darr;</div>
-        <div class="journey-step" style="--jp:#F39C12"><div class="journey-step-num">03</div><div class="journey-step-body"><div class="journey-step-name">Model Monitoring</div><div class="journey-step-prod" style="--jp:#F39C12">Kairos Vigil</div></div></div>
-        <div class="journey-arrow">&darr;</div>
-        <div class="journey-step" style="--jp:#8A6B2A"><div class="journey-step-num">04</div><div class="journey-step-body"><div class="journey-step-name">Knowledge &amp; Intelligence</div><div class="journey-step-prod" style="--jp:#8A6B2A">Kairos Gnosis</div></div></div>
-        <div class="journey-arrow">&darr;</div>
-        <div class="journey-step" style="--jp:#2A9D8F"><div class="journey-step-num">05</div><div class="journey-step-body"><div class="journey-step-name">KYC &amp; Data Quality</div><div class="journey-step-prod" style="--jp:#2A9D8F">Kairos Veritas</div></div></div>
-        <div class="journey-arrow">&darr;</div>
-        <div class="journey-step" style="--jp:#C9A84C"><div class="journey-step-num">06</div><div class="journey-step-body"><div class="journey-step-name">Regulatory Reporting</div><div class="journey-step-prod" style="--jp:#C9A84C">Kairos Lex</div></div></div>
+    <div style="display:flex; flex-direction:column; gap:2px;">
+      <div style="padding:28px 32px; border:1px solid var(--slate); cursor:default;">
+        <div style="font-family:'Space Mono',monospace; font-size:10px; color:var(--gold-dim); letter-spacing:0.3em; margin-bottom:12px;">01</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:24px; margin-bottom:8px;">Precision</div>
+        <div style="font-size:13px; color:var(--silver); line-height:1.7;">Every model exact. Every output verified. Every report compliant.</div>
       </div>
-    </div>
-  </div>
-
-  <div class="prod-grid">
-    <a href="#" class="prod-card reveal" style="--pc:#8A9BB0">
-      <div class="prod-step">01 &middot; Data Infrastructure</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><rect x="3" y="3" width="38" height="38" stroke="#8A9BB0" stroke-width=".6" opacity=".3"/><circle cx="22" cy="22" r="7" stroke="#8A9BB0" stroke-width="1.2"/><line x1="22" y1="3" x2="22" y2="15" stroke="#8A9BB0" stroke-width="1"/><line x1="22" y1="29" x2="22" y2="41" stroke="#8A9BB0" stroke-width="1"/><line x1="3" y1="22" x2="15" y2="22" stroke="#8A9BB0" stroke-width="1"/><line x1="29" y1="22" x2="41" y2="22" stroke="#8A9BB0" stroke-width="1"/><circle cx="22" cy="22" r="2" fill="#8A9BB0"/></svg>
-      <div class="prod-name">Kairos <em style="color:#8A9BB0">Core</em></div>
-      <div class="prod-line">Data Warehouse &amp; Pipelines</div>
-      <p class="prod-desc">We build the data warehouse your bank needs &mdash; organised, reliable, and connected directly to your core banking system. The foundation everything else runs on. Without clean, structured data, no analysis is trustworthy and no report is reliable.</p>
-      <div class="prod-tags"><span class="prod-tag">Data Warehouse</span><span class="prod-tag">Pipelines</span><span class="prod-tag">T24 &middot; Finacle</span><span class="prod-tag">ETL</span></div>
-    </a>
-    <a href="#" class="prod-card reveal" style="--pc:#E74C3C">
-      <div class="prod-step">02 &middot; Credit &amp; Risk</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><path d="M6 38 L14 22 L22 30 L30 14 L38 6" stroke="#E74C3C" stroke-width="1.4" stroke-linecap="round"/><circle cx="6" cy="38" r="2" fill="#E74C3C"/><circle cx="38" cy="6" r="2" fill="#E74C3C"/><rect x="2" y="2" width="40" height="40" stroke="#E74C3C" stroke-width=".4" opacity=".2"/></svg>
-      <div class="prod-name">Kairos <em style="color:#E74C3C">Risk</em></div>
-      <div class="prod-line">Credit Scoring &amp; Risk Analytics</div>
-      <p class="prod-desc">Machine learning models that predict credit deterioration, score new borrowers, and calculate capital adequacy &mdash; calibrated to the Mozambican credit environment. Know what your portfolio will look like before it does.</p>
-      <div class="prod-tags"><span class="prod-tag">Credit Scoring</span><span class="prod-tag">Pre-NPL</span><span class="prod-tag">Basel III</span><span class="prod-tag">IFRS 9</span></div>
-    </a>
-    <a href="#" class="prod-card reveal" style="--pc:#F39C12">
-      <div class="prod-step">03 &middot; Monitoring</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="17" stroke="#F39C12" stroke-width=".6" opacity=".3"/><circle cx="22" cy="22" r="9" stroke="#F39C12" stroke-width="1.2"/><circle cx="22" cy="22" r="2" fill="#F39C12"/><line x1="22" y1="5" x2="22" y2="13" stroke="#F39C12" stroke-width="1"/><line x1="5" y1="22" x2="13" y2="22" stroke="#F39C12" stroke-width="1" opacity=".5"/><line x1="31" y1="22" x2="39" y2="22" stroke="#F39C12" stroke-width="1" opacity=".5"/></svg>
-      <div class="prod-name">Kairos <em style="color:#F39C12">Vigil</em></div>
-      <div class="prod-line">Model Performance Monitoring</div>
-      <p class="prod-desc">Machine learning models degrade over time as conditions change. Vigil watches every model in production, detects when accuracy starts to drift from reality, and alerts your team before bad predictions reach a real decision.</p>
-      <div class="prod-tags"><span class="prod-tag">Model Drift</span><span class="prod-tag">Performance</span><span class="prod-tag">Alerts</span><span class="prod-tag">24/7</span></div>
-    </a>
-    <a href="#" class="prod-card reveal" style="--pc:#8A6B2A">
-      <div class="prod-step">04 &middot; Knowledge &amp; AI</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><circle cx="10" cy="22" r="5" stroke="#8A6B2A" stroke-width="1.2"/><circle cx="34" cy="10" r="5" stroke="#8A6B2A" stroke-width="1.2"/><circle cx="34" cy="34" r="5" stroke="#8A6B2A" stroke-width="1.2"/><line x1="15" y1="19" x2="29" y2="13" stroke="#8A6B2A" stroke-width=".9" opacity=".6"/><line x1="15" y1="25" x2="29" y2="31" stroke="#8A6B2A" stroke-width=".9" opacity=".6"/><circle cx="10" cy="22" r="1.8" fill="#8A6B2A"/></svg>
-      <div class="prod-name">Kairos <em style="color:#C9A84C">Gnosis</em></div>
-      <div class="prod-line">Knowledge Graphs &amp; Generative AI</div>
-      <p class="prod-desc">Connects your data into a knowledge graph and uses generative AI to produce narrative summaries, decision briefs, and board-ready reports &mdash; in plain language, automatically, from the numbers your systems already hold.</p>
-      <div class="prod-tags"><span class="prod-tag">Knowledge Graph</span><span class="prod-tag">AI Narratives</span><span class="prod-tag">Reports</span></div>
-    </a>
-    <a href="#" class="prod-card vteal reveal" style="--pc:#2A9D8F">
-      <div class="prod-step">05 &middot; KYC &amp; Data Quality</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="17" stroke="#2A9D8F" stroke-width=".8" opacity=".3"/><path d="M14 22 C14 17.6 17.6 14 22 14 C26.4 14 30 17.6 30 22" stroke="#2A9D8F" stroke-width="1.4" stroke-linecap="round"/><path d="M11 22 C11 15.4 16 10 22 10" stroke="#2A9D8F" stroke-width=".9" opacity=".5" stroke-linecap="round"/><circle cx="22" cy="22" r="2" fill="#2A9D8F"/><path d="M9 28 L13 32 L21 24" stroke="#2A9D8F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div class="prod-name">Kairos <em style="color:#2A9D8F">Veritas</em></div>
-      <div class="prod-line">KYC &middot; Identity Verification &middot; Data Quality</div>
-      <p class="prod-desc">End-to-end KYC and data quality platform. Document scanning, identity verification, deduplication, and quality campaigns &mdash; fully aligned with Central Bank KYC directives. Clean data in. Verified customers out.</p>
-      <div class="prod-tags"><span class="prod-tag teal">KYC</span><span class="prod-tag teal">OCR</span><span class="prod-tag teal">Identity</span><span class="prod-tag teal">Deduplication</span></div>
-    </a>
-    <a href="kairos_lex.html" class="prod-card lit reveal" style="--pc:#C9A84C">
-      <div class="prod-step">06 &middot; Flagship &middot; Regulatory</div>
-      <svg class="prod-ico" viewBox="0 0 44 44" fill="none"><path d="M22 3 L40 11 L40 27 C40 36 32 42 22 44 C12 42 4 36 4 27 L4 11 Z" stroke="#C9A84C" stroke-width="1.4" fill="rgba(201,168,76,.05)"/><line x1="14" y1="18" x2="30" y2="18" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/><line x1="14" y1="24" x2="30" y2="24" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/><line x1="14" y1="30" x2="24" y2="30" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/><circle cx="22" cy="12" r="1.8" fill="#C9A84C"/></svg>
-      <div class="prod-name">Kairos <em>Lex</em></div>
-      <div class="prod-line">Regulatory Reporting Engine &middot; GIFIM &middot; Central Bank</div>
-      <p class="prod-desc">The final step. Lex takes everything the platform produces and turns it into compliant regulatory reports &mdash; STR, CTR, IFT, EFT for GIFIM and prudential reports for the Central Bank. Automatically. Every day. No manual work.</p>
-      <div class="prod-tags"><span class="prod-tag gold">GIFIM</span><span class="prod-tag gold">STR &middot; CTR</span><span class="prod-tag gold">IFT &middot; EFT</span><span class="prod-tag gold">Central Bank</span></div>
-    </a>
-  </div>
-
-  <div class="lex-strip">
-    <div>
-      <div style="font-family:var(--fm);font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:#C9A84C;margin-bottom:12px">Flagship Product</div>
-      <div class="lex-strip-title">Kairos <em>Lex</em> automates<br>every GIFIM report.</div>
-    </div>
-    <div class="lex-strip-desc">STR, CTR, IFT and EFT &mdash; generated from your core banking data every day, with no manual work. Including detection of customers structuring transactions to stay below reporting thresholds.</div>
-    <div class="lex-strip-cta">
-      <a href="kairos_lex.html" class="btn-gold">See Kairos Lex &rarr;</a>
-      <a href="#contact" class="btn-ghost">Book a Demo</a>
-    </div>
-  </div>
-</section>
-
-<div class="hr"></div>
-
-<!-- MACHINE LEARNING -->
-<section class="sec reveal" id="ml" style="background:#0B1120">
-  <div class="sec-label">Machine Learning</div>
-  <h2 class="sec-title">We build the models<br>your bank needs.</h2>
-  <p class="sec-sub">Beyond our products, Kairos specialises in building bespoke machine learning models for banks. Every model is built on your data, calibrated to your portfolio, and validated before it goes anywhere near a decision.</p>
-  <div class="ml-grid">
-    <div class="ml-card reveal" style="--mc:#C9A84C">
-      <div class="ml-tag">Credit &amp; Risk Models</div>
-      <div class="ml-title">Predicting risk<br>before it arrives</div>
-      <p class="ml-desc">We build credit scoring models, probability-of-default models, and early-warning systems using your historical lending data. The result is a model that knows your borrowers &mdash; not a generic scorecard built for a different market.</p>
-      <div class="ml-items">
-        <div class="ml-item" style="padding-left:18px;position:relative">Credit scoring for retail and corporate borrowers</div>
-        <div class="ml-item" style="padding-left:18px;position:relative">Probability of default and loss-given-default models</div>
-        <div class="ml-item" style="padding-left:18px;position:relative">Early warning systems &mdash; identifying deteriorating accounts weeks in advance</div>
-        <div class="ml-item" style="padding-left:18px;position:relative">Loan provisioning models aligned with international accounting standards</div>
-        <div class="ml-item" style="padding-left:18px;position:relative">Portfolio stress testing under macroeconomic scenarios</div>
+      <div style="padding:28px 32px; border:1px solid var(--slate); cursor:default;">
+        <div style="font-family:'Space Mono',monospace; font-size:10px; color:var(--gold-dim); letter-spacing:0.3em; margin-bottom:12px;">02</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:24px; margin-bottom:8px;">Trust</div>
+        <div style="font-size:13px; color:var(--silver); line-height:1.7;">Built for institutions where trust is not optional — it is the product.</div>
       </div>
-    </div>
-    <div class="ml-card reveal" style="--mc:#2A9D8F">
-      <div class="ml-tag">Detection &amp; Classification Models</div>
-      <div class="ml-title">Finding what<br>rules cannot</div>
-      <p class="ml-desc">Some patterns are too subtle for a rulebook and too complex for a spreadsheet. We build models that detect anomalies, classify behaviour, and surface the cases that need a human decision &mdash; while filtering the noise that does not.</p>
-      <div class="ml-items">
-        <div class="ml-item" style="padding-left:18px;position:relative">Transaction anomaly detection &mdash; behaviour outside a customer's normal pattern</div>
-        <div class="ml-item" style="padding-left:18px;position:relative">Customer segmentation by risk profile or product behaviour</div>
-        <div class="ml-item" style="padding-left:18px;position:relative">Fraud detection trained on your own transaction history</div>
-        <div class="ml-item" style="padding-left:18px;position:relative">Document classification for incoming KYC material</div>
-        <div class="ml-item" style="padding-left:18px;position:relative">Network analysis &mdash; identifying connected entities and relationship risk</div>
+      <div style="padding:28px 32px; border:1px solid var(--slate); cursor:default;">
+        <div style="font-family:'Space Mono',monospace; font-size:10px; color:var(--gold-dim); letter-spacing:0.3em; margin-bottom:12px;">03</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:24px; margin-bottom:8px;">Realness</div>
+        <div style="font-size:13px; color:var(--silver); line-height:1.7;">Raw data in. Real decisions out. No noise between insight and action.</div>
       </div>
-    </div>
-  </div>
-  <div class="ml-approach">
-    <div class="ml-approach-cell reveal">
-      <div class="ml-approach-lbl">Built on your data</div>
-      <div class="ml-approach-desc">Every model is trained on your bank's own historical data &mdash; not imported from a different market or a generic dataset. The model learns your portfolio, your customers, and your specific risk environment.</div>
-    </div>
-    <div class="ml-approach-cell reveal">
-      <div class="ml-approach-lbl">Validated before deployment</div>
-      <div class="ml-approach-desc">No model goes into production without rigorous out-of-sample testing, performance benchmarking, and documentation your risk committee can review and sign off on. We do not ship black boxes.</div>
-    </div>
-    <div class="ml-approach-cell reveal">
-      <div class="ml-approach-lbl">Monitored in production</div>
-      <div class="ml-approach-desc">Kairos Vigil watches every model we deploy. When accuracy drifts &mdash; because the market shifts or customer behaviour changes &mdash; your team is alerted before the model starts producing unreliable outputs.</div>
-    </div>
-  </div>
-</section>
-
-<div class="hr"></div>
-
-<!-- REGULATORS -->
-<section class="sec reveal" id="regulators">
-  <div class="sec-label">Regulatory Framework</div>
-  <h2 class="sec-title">Two regulators.<br>Every report covered.</h2>
-  <p class="sec-sub">Kairos is built around the two authorities that govern compliance for every bank in Mozambique. We know their requirements, their formats, and their deadlines.</p>
-  <div class="reg-split">
-    <div class="reg-card reveal" style="--rc:#C9A84C">
-      <div class="reg-tag">Prudential Supervision &middot; Compliance Reporting</div>
-      <div class="reg-title">Central Bank of<br>Mozambique</div>
-      <div class="reg-subtitle">Banco de Mo&ccedil;ambique &middot; BdM</div>
-      <p class="reg-desc">The Central Bank sets the framework every commercial bank must operate within &mdash; capital requirements, liquidity standards, loan classification, and periodic prudential reporting. Kairos generates all required reports directly from your data, on schedule, every time.</p>
-      <div class="reg-items">
-        <div class="reg-item">Capital adequacy ratio under Basel III &mdash; reported monthly</div>
-        <div class="reg-item">Liquidity coverage ratio &mdash; monitored daily, reported on demand</div>
-        <div class="reg-item">Non-performing loan ratio and provision coverage analysis</div>
-        <div class="reg-item">Loan stage classification under international accounting standards</div>
-        <div class="reg-item">KYC compliance &mdash; identity verification aligned with Central Bank directives</div>
-      </div>
-    </div>
-    <div class="reg-card reveal" style="--rc:#2A9D8F">
-      <div class="reg-tag">AML/CFT Reporting &middot; Financial Intelligence</div>
-      <div class="reg-title">GIFIM</div>
-      <div class="reg-subtitle">Gabinete de Informa&ccedil;&atilde;o Financeira de Mo&ccedil;ambique</div>
-      <p class="reg-desc">GIFIM is Mozambique's Financial Intelligence Unit, responsible for receiving financial intelligence from all banks to combat money laundering and terrorist financing. Every bank must file four types of reports. Kairos Lex generates all four automatically &mdash; including structured transaction detection.</p>
-      <div class="reg-items">
-        <div class="reg-item">Suspicious Transaction Reports &mdash; any amount, flagged by seven detection rules</div>
-        <div class="reg-item">Cash Transaction Reports &mdash; single transactions from 250,000 MZN</div>
-        <div class="reg-item">International Fund Transfers &mdash; from 750,000 MZN per transfer</div>
-        <div class="reg-item">Electronic Fund Transfers &mdash; from 750,000 MZN per transfer</div>
-        <div class="reg-item">Cumulative structuring detection &mdash; across daily, weekly, and monthly windows</div>
+      <div style="padding:28px 32px; border:1px solid var(--slate); cursor:default;">
+        <div style="font-family:'Space Mono',monospace; font-size:10px; color:var(--gold-dim); letter-spacing:0.3em; margin-bottom:12px;">04</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:24px; margin-bottom:8px;">Depth</div>
+        <div style="font-size:13px; color:var(--silver); line-height:1.7;">Built by risk modelers and data scientists who know the industries they serve.</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="hr"></div>
+<div class="divider"></div>
 
-<!-- HOW IT WORKS -->
-<section class="sec reveal" style="background:#0B1120">
-  <div class="sec-label">How It Works</div>
-  <h2 class="sec-title">From your system<br>to the regulator.</h2>
-  <p class="sec-sub">Kairos connects to your existing environment and handles the full journey &mdash; from reading raw data to delivering finished, compliant outputs.</p>
-  <div class="flow-wrap">
-    <div class="flow-cell reveal">
-      <div class="flow-num">01</div>
-      <div class="flow-title">We connect to your system</div>
-      <p class="flow-desc">Kairos connects directly to your core banking platform &mdash; whether that is Temenos T24, Finacle, or any other system your institution runs on. No changes to your operations, no files to send manually, no extra work for your IT team.</p>
-    </div>
-    <div class="flow-cell reveal">
-      <div class="flow-num">02</div>
-      <div class="flow-title">We process and analyse</div>
-      <p class="flow-desc">Every day, Kairos reads the previous day's data, runs the relevant models, applies regulatory rules, and surfaces anything that requires attention. Your team sees results and clear next actions &mdash; not raw numbers to interpret.</p>
-    </div>
-    <div class="flow-cell reveal">
-      <div class="flow-num">03</div>
-      <div class="flow-title">We deliver what's required</div>
-      <p class="flow-desc">GIFIM reports ready to submit. Central Bank reports formatted and on schedule. Risk alerts in your dashboard. KYC gaps identified and prioritised. Everything your institution needs to operate with confidence.</p>
-    </div>
-  </div>
-</section>
-
-<div class="hr"></div>
-
-<!-- ABOUT -->
-<section class="sec reveal" id="about">
-  <div class="about-grid">
-    <div>
-      <div class="sec-label">About Kairos</div>
-      <h2 class="sec-title">Built here.<br>For here.</h2>
-      <div class="about-body" style="margin-top:32px">
-        <p><strong>Kairos</strong> is a Mozambican AI and analytics company, founded by professionals with direct experience in banking, risk management, and data in Mozambique.</p>
-        <p>The name comes from the Greek <em>kair&oacute;s</em> &mdash; the decisive moment. Not just any moment, but the right one. That is what we deliver: the right intelligence, at the right moment, to make the right call.</p>
-        <p>We do not build generic tools and adapt them for Mozambique. We build specifically for the institutions and regulators that operate here &mdash; with a deep understanding of what the Central Bank requires, how GIFIM works, and what banks in this market actually need from their data.</p>
+<!-- ═══════════ TAGLINE SYSTEM ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">02 — Dual Tagline System</div>
+  <div class="tagline-system">
+    <div class="tagline-role-card primary-card">
+      <div class="tagline-role-label">Primary · Direct · Action · Campaign</div>
+      <div class="tagline-primary-display">
+        <div class="tagline-word-raw">Raw Data.</div>
+        <div class="tagline-separator"></div>
+        <div class="tagline-word-real">Real Decisions.</div>
+      </div>
+      <div class="tagline-role-desc">
+        The commanding, action-forward voice of Kairos. Uppercase, bold, split
+        across two lines — white into gold. Used everywhere the brand needs
+        to announce itself with force, directness, and authority.
+        The full stop after each line gives it weight and finality.
+      </div>
+      <div class="tagline-usage">
+        <div class="usage-item">Website hero & landing pages</div>
+        <div class="usage-item">Pitch decks & investor materials</div>
+        <div class="usage-item">Digital & outdoor advertising</div>
+        <div class="usage-item">Product launch campaigns</div>
+        <div class="usage-item">Conference & event branding</div>
       </div>
     </div>
-    <div>
-      <div class="about-stats">
-        <div class="about-stat reveal"><div class="about-stat-val">19+</div><div class="about-stat-lbl">Banks in Mozambique</div></div>
-        <div class="about-stat reveal"><div class="about-stat-val">2</div><div class="about-stat-lbl">Regulators served</div></div>
-        <div class="about-stat reveal"><div class="about-stat-val">7</div><div class="about-stat-lbl">Products in the platform</div></div>
-        <div class="about-stat reveal"><div class="about-stat-val">0</div><div class="about-stat-lbl">Manual steps to file a CTR</div></div>
+    <div class="tagline-role-card philosophical-card">
+      <div class="tagline-role-label">Philosophical · Depth · Premium · Trust</div>
+      <div class="tagline-role-philosophical-text">Clarity from complexity.</div>
+      <div class="tagline-role-desc">
+        The considered, elegant voice of Kairos. Italic, refined, and thoughtful.
+        Used in premium print, client proposals, regulatory documents, and
+        anywhere the brand needs to communicate depth, intelligence, and trust.
+        It is the brand's soul — the primary tagline is its voice.
       </div>
-      <div class="origin-box reveal">
-        <div class="origin-lbl">Registered in</div>
-        <div class="origin-val">Maputo, Mozambique</div>
-        <div class="origin-sub">kairos.co.mz &middot; 2025</div>
+      <div class="tagline-usage">
+        <div class="usage-item">Business cards & stationery</div>
+        <div class="usage-item">Client proposals & reports</div>
+        <div class="usage-item">Premium print materials</div>
+        <div class="usage-item">Regulatory submissions cover pages</div>
+        <div class="usage-item">Brand film, editorial & thought leadership</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="hr"></div>
+<div class="divider"></div>
 
-<!-- CONTACT -->
-<section class="sec reveal" id="contact" style="background:#0B1120">
-  <div class="contact-wrap">
-    <div class="sec-label" style="justify-content:center">Let's Talk</div>
-    <h2 class="contact-title">Let's<br><em>work</em><br>together.</h2>
-    <p class="contact-sub">Whether you need to automate compliance reporting, build a credit scoring model, or make your customer data trustworthy &mdash; we would like to understand your situation and show you what Kairos can do.</p>
-    <a href="mailto:info@kairos.co.mz" class="contact-email">info@kairos.co.mz</a>
-    <span class="contact-loc">Maputo &middot; Mozambique &middot; kairos.co.mz</span>
-    <div class="demo-box reveal">
-      <div class="demo-lbl">What happens in a 30-minute demo</div>
-      <div class="demo-items">
-        <div class="demo-item">We show Kairos Lex generating a live GIFIM report from real banking data</div>
-        <div class="demo-item">We walk through how your core banking system would connect</div>
-        <div class="demo-item">We demonstrate the compliance dashboard your team would use daily</div>
-        <div class="demo-item">You ask questions specific to your institution &mdash; we answer directly</div>
-      </div>
-      <a href="mailto:info@kairos.co.mz?subject=Demo Request%20%E2%80%94%20Kairos&body=Hello,%0D%0A%0D%0AI'd like to schedule a demo of Kairos.%0D%0A%0D%0AInstitution:%0D%0AName:%0D%0APreferred time:%0D%0A" class="btn-gold">Request a Demo &rarr;</a>
+<!-- ═══════════ LOGO ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">03 — Logo System</div>
+  <div class="logo-showcase">
+    <div class="logo-panel dark">
+      <div class="logo-mark"><div class="logo-k">K</div><div class="logo-wordmark">AIROS</div></div>
+      <div class="logo-tagline-primary-small">Raw Data. Real Decisions.</div>
+      <div class="panel-label" style="color:var(--silver)">Primary · Dark</div>
+    </div>
+    <div class="logo-panel navy">
+      <div class="logo-mark"><div class="logo-k">K</div><div class="logo-wordmark">AIROS</div></div>
+      <div class="logo-tagline-phil-small">Clarity from complexity.</div>
+      <div class="panel-label" style="color:var(--silver)">Philosophical · Navy</div>
+    </div>
+    <div class="logo-panel gold-bg">
+      <div class="logo-mark"><div class="logo-k">K</div><div class="logo-wordmark">AIROS</div></div>
+      <div class="logo-tagline-primary-small">Raw Data. Real Decisions.</div>
+      <div class="panel-label" style="color:rgba(8,10,15,0.5)">Primary · Gold</div>
+    </div>
+    <div class="logo-panel white-bg">
+      <div class="logo-mark"><div class="logo-k">K</div><div class="logo-wordmark">AIROS</div></div>
+      <div class="logo-tagline-phil-small">Clarity from complexity.</div>
+      <div class="panel-label" style="color:var(--steel)">Philosophical · White</div>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="ft-logo"><span>K</span>AIROS</div>
-  <div class="ft-links">
-    <a href="#products">Products</a>
-    <a href="#ml">Machine Learning</a>
-    <a href="#regulators">Regulators</a>
-    <a href="kairos_lex.html">Kairos Lex</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+<div class="divider"></div>
+
+<!-- ═══════════ SYMBOLS ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">04 — Symbol Concepts</div>
+  <div class="symbol-grid">
+    <div class="symbol-card">
+      <svg class="symbol-svg" viewBox="0 0 80 80" fill="none">
+        <circle cx="40" cy="40" r="36" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+        <circle cx="40" cy="40" r="24" stroke="#C9A84C" stroke-width="0.5" opacity="0.5"/>
+        <circle cx="40" cy="40" r="12" stroke="#C9A84C" stroke-width="0.5" opacity="0.7"/>
+        <circle cx="40" cy="40" r="4" fill="#C9A84C"/>
+        <line x1="40" y1="4" x2="40" y2="76" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+        <line x1="4" y1="40" x2="76" y2="40" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+        <line x1="14" y1="14" x2="66" y2="66" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+        <line x1="66" y1="14" x2="14" y2="66" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+      </svg>
+      <div class="symbol-name">Convergence</div>
+      <div class="symbol-desc">Raw data converging into one decisive point of clarity</div>
+    </div>
+    <div class="symbol-card">
+      <svg class="symbol-svg" viewBox="0 0 80 80" fill="none">
+        <line x1="20" y1="10" x2="20" y2="70" stroke="#C9A84C" stroke-width="2"/>
+        <line x1="20" y1="40" x2="60" y2="10" stroke="#C9A84C" stroke-width="2"/>
+        <line x1="20" y1="40" x2="60" y2="70" stroke="#C9A84C" stroke-width="2"/>
+        <circle cx="20" cy="40" r="3" fill="#C9A84C"/>
+        <circle cx="60" cy="10" r="2" fill="#C9A84C" opacity="0.5"/>
+        <circle cx="60" cy="70" r="2" fill="#C9A84C" opacity="0.5"/>
+      </svg>
+      <div class="symbol-name">K Monogram</div>
+      <div class="symbol-desc">The pivot point where intelligence originates and diverges</div>
+    </div>
+    <div class="symbol-card">
+      <svg class="symbol-svg" viewBox="0 0 80 80" fill="none">
+        <path d="M15 10 L65 10 L40 40 L65 70 L15 70 L40 40 Z" stroke="#C9A84C" stroke-width="1" fill="rgba(201,168,76,0.05)"/>
+        <line x1="15" y1="10" x2="65" y2="10" stroke="#C9A84C" stroke-width="1.5"/>
+        <line x1="15" y1="70" x2="65" y2="70" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="40" cy="40" r="3" fill="#C9A84C"/>
+      </svg>
+      <div class="symbol-name">Kairos Moment</div>
+      <div class="symbol-desc">Raw data above — real decision below — the decisive instant</div>
+    </div>
   </div>
-  <div class="ft-copy">&copy; 2025 Kairos Lda &middot; Maputo, Mozambique &middot; kairos.co.mz</div>
-</footer>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ COLORS ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">05 — Color System</div>
+  <div class="color-row">
+    <div class="color-swatch" style="background:#080A0F;"><div class="swatch-name" style="color:#8A9BB0">Obsidian</div><div class="swatch-hex" style="color:#8A9BB0">#080A0F</div></div>
+    <div class="color-swatch" style="background:#0B1120;"><div class="swatch-name" style="color:#8A9BB0">Deep Navy</div><div class="swatch-hex" style="color:#8A9BB0">#0B1120</div></div>
+    <div class="color-swatch" style="background:#111827;"><div class="swatch-name" style="color:#8A9BB0">Midnight</div><div class="swatch-hex" style="color:#8A9BB0">#111827</div></div>
+    <div class="color-swatch" style="background:#1E2A3A;"><div class="swatch-name" style="color:#C4CDD8">Slate</div><div class="swatch-hex" style="color:#C4CDD8">#1E2A3A</div></div>
+    <div class="color-swatch" style="background:#2D3F55;"><div class="swatch-name" style="color:#C4CDD8">Steel</div><div class="swatch-hex" style="color:#C4CDD8">#2D3F55</div></div>
+    <div class="color-swatch" style="background:#8A9BB0;"><div class="swatch-name" style="color:#080A0F">Silver</div><div class="swatch-hex" style="color:#080A0F">#8A9BB0</div></div>
+  </div>
+  <div class="color-row">
+    <div class="color-swatch" style="background:#C9A84C;"><div class="swatch-name" style="color:#080A0F">Gold · Primary</div><div class="swatch-hex" style="color:#080A0F">#C9A84C</div></div>
+    <div class="color-swatch" style="background:#E8C97A;"><div class="swatch-name" style="color:#080A0F">Gold Light</div><div class="swatch-hex" style="color:#080A0F">#E8C97A</div></div>
+    <div class="color-swatch" style="background:#8A6B2A;"><div class="swatch-name" style="color:#F0F4F8">Gold Dim</div><div class="swatch-hex" style="color:#F0F4F8">#8A6B2A</div></div>
+    <div class="color-swatch" style="background:#2A9D8F;"><div class="swatch-name" style="color:#080A0F">Teal · KYC</div><div class="swatch-hex" style="color:#080A0F">#2A9D8F</div></div>
+    <div class="color-swatch" style="background:#4A90C4;"><div class="swatch-name" style="color:#080A0F">Accent Blue</div><div class="swatch-hex" style="color:#080A0F">#4A90C4</div></div>
+    <div class="color-swatch" style="background:#F0F4F8;"><div class="swatch-name" style="color:#080A0F">Cloud</div><div class="swatch-hex" style="color:#080A0F">#F0F4F8</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ TYPOGRAPHY ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">06 — Typography</div>
+  <div class="type-showcase">
+    <div class="type-specimen">
+      <div class="type-meta">Primary Tagline · Outfit · Weight 600 · Uppercase · Two Lines</div>
+      <div class="type-primary-raw">Raw Data.</div>
+      <div class="type-primary-real">Real Decisions.</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta">Philosophical Tagline · Cormorant Garamond · Italic · Weight 300</div>
+      <div class="type-display-italic">Clarity from complexity.</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta">Display · Cormorant Garamond · Weight 300</div>
+      <div class="type-display">Intelligence<br>that acts.</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta">Body · Outfit · Weight 300</div>
+      <div class="type-body-demo">
+        Kairos delivers advanced analytics and artificial intelligence to banking,
+        energy, and financial institutions. From credit risk models to KYC data
+        quality and Central Bank regulatory reports — raw data in, real decisions out.
+      </div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta">Monospace · Space Mono · Labels, Data & UI</div>
+      <div class="type-mono-demo">
+        RISK.SCORE → 0.0042 &nbsp;·&nbsp; KYC.STATUS → VERIFIED<br>
+        AML.FLAG → CLEAR &nbsp;·&nbsp; DATA.QUALITY → 98.7%<br>
+        GIFIM.REPORT → SUBMITTED &nbsp;·&nbsp; kairos.co.mz
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ PRODUCTS ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">07 — Product Architecture</div>
+  <div class="product-grid">
+
+    <div class="product-card">
+      <svg class="product-icon" viewBox="0 0 48 48" fill="none">
+        <rect x="4" y="4" width="40" height="40" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+        <circle cx="24" cy="24" r="8" stroke="#C9A84C" stroke-width="1.5"/>
+        <line x1="24" y1="4" x2="24" y2="16" stroke="#C9A84C" stroke-width="1"/>
+        <line x1="24" y1="32" x2="24" y2="44" stroke="#C9A84C" stroke-width="1"/>
+        <line x1="4" y1="24" x2="16" y2="24" stroke="#C9A84C" stroke-width="1"/>
+        <line x1="32" y1="24" x2="44" y2="24" stroke="#C9A84C" stroke-width="1"/>
+        <circle cx="24" cy="24" r="2" fill="#C9A84C"/>
+      </svg>
+      <div class="product-name">Kairos Core</div>
+      <div class="product-sub">Data Infrastructure</div>
+      <div class="product-desc">The foundational engine. Pipelines, lakes, and real-time ingestion for enterprise-scale analytics.</div>
+      <div class="product-tags"><span class="tag">ETL</span><span class="tag">Data Lake</span><span class="tag">Pipelines</span><span class="tag">Real-time</span></div>
+    </div>
+
+    <div class="product-card">
+      <svg class="product-icon" viewBox="0 0 48 48" fill="none">
+        <path d="M8 40 L16 24 L24 32 L32 16 L40 8" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="8" cy="40" r="2" fill="#C9A84C"/>
+        <circle cx="40" cy="8" r="2" fill="#C9A84C"/>
+        <rect x="2" y="2" width="44" height="44" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+      </svg>
+      <div class="product-name">Kairos Risk</div>
+      <div class="product-sub">Risk & Credit Analytics</div>
+      <div class="product-desc">Credit scoring, market risk models, and Basel-compliant frameworks for financial institutions.</div>
+      <div class="product-tags"><span class="tag">Credit</span><span class="tag">Basel III</span><span class="tag">VaR</span><span class="tag">Stress Test</span></div>
+    </div>
+
+    <div class="product-card">
+      <svg class="product-icon" viewBox="0 0 48 48" fill="none">
+        <polygon points="24,4 44,44 4,44" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.05)"/>
+        <line x1="24" y1="18" x2="24" y2="32" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="24" cy="36" r="1.5" fill="#C9A84C"/>
+      </svg>
+      <div class="product-name">Kairos Vigil</div>
+      <div class="product-sub">Monitoring & Alerts</div>
+      <div class="product-desc">Always-on model monitoring, anomaly detection, and drift alerts for mission-critical AI systems.</div>
+      <div class="product-tags"><span class="tag">MLOps</span><span class="tag">Drift</span><span class="tag">Anomaly</span><span class="tag">24/7</span></div>
+    </div>
+
+    <div class="product-card">
+      <svg class="product-icon" viewBox="0 0 48 48" fill="none">
+        <path d="M24 4 C12 4 4 12 4 24 C4 36 12 44 24 44 C36 44 44 36 44 24" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M32 4 L44 4 L44 16" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="24" y1="24" x2="44" y2="4" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+      </svg>
+      <div class="product-name">Kairos Pulse</div>
+      <div class="product-sub">Energy & Commodities</div>
+      <div class="product-desc">Demand forecasting, price prediction, and operational intelligence for oil, gas, and renewable energy.</div>
+      <div class="product-tags"><span class="tag">Forecast</span><span class="tag">Commodities</span><span class="tag">Renewables</span><span class="tag">IoT</span></div>
+    </div>
+
+    <div class="product-card">
+      <svg class="product-icon" viewBox="0 0 48 48" fill="none">
+        <circle cx="12" cy="24" r="6" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="36" cy="12" r="6" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="36" cy="36" r="6" stroke="#C9A84C" stroke-width="1.5"/>
+        <line x1="18" y1="21" x2="30" y2="15" stroke="#C9A84C" stroke-width="1" opacity="0.6"/>
+        <line x1="18" y1="27" x2="30" y2="33" stroke="#C9A84C" stroke-width="1" opacity="0.6"/>
+        <circle cx="12" cy="24" r="2" fill="#C9A84C"/>
+      </svg>
+      <div class="product-name">Kairos Gnosis</div>
+      <div class="product-sub">Knowledge Graph & GenAI</div>
+      <div class="product-desc">Generative AI, knowledge graphs, and decision briefs. From raw data to boardroom-ready intelligence.</div>
+      <div class="product-tags"><span class="tag">GenAI</span><span class="tag">Graph</span><span class="tag">LLM</span><span class="tag">Reports</span></div>
+    </div>
+
+    <div class="product-card featured">
+      <div class="featured-badge">Flagship</div>
+      <svg class="product-icon" viewBox="0 0 48 48" fill="none">
+        <path d="M24 4 L42 12 L42 28 C42 38 34 44 24 46 C14 44 6 38 6 28 L6 12 Z" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.06)"/>
+        <line x1="16" y1="20" x2="32" y2="20" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="16" y1="26" x2="32" y2="26" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="16" y1="32" x2="26" y2="32" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="24" cy="13" r="2" fill="#C9A84C"/>
+      </svg>
+      <div class="product-name">Kairos Lex</div>
+      <div class="product-sub">Regulatory Intelligence · Central Bank & FIU</div>
+      <div class="product-desc">Automated generation of regulatory reports for Central Banks, FIUs, and supervisory authorities. Submission-ready, compliant, on schedule.</div>
+      <div class="product-tags">
+        <span class="tag gold-tag">Banco de Moçambique</span>
+        <span class="tag gold-tag">GIFIM</span>
+        <span class="tag gold-tag">FIU</span>
+        <span class="tag gold-tag">AML/CFT</span>
+        <span class="tag gold-tag">Basel III</span>
+        <span class="tag">STR</span><span class="tag">CTR</span><span class="tag">IFRS</span>
+      </div>
+    </div>
+
+    <!-- VERITAS — KYC & DATA QUALITY -->
+    <div class="product-card kyc-card" style="grid-column: span 3;">
+      <div class="new-badge">KYC & Data Quality</div>
+      <svg class="product-icon" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="18" stroke="#2A9D8F" stroke-width="1" opacity="0.3"/>
+        <path d="M16 24 C16 19.6 19.6 16 24 16 C28.4 16 32 19.6 32 24" stroke="#2A9D8F" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M13 24 C13 18 18 13 24 13 C30 13 35 18 35 24 C35 28 33 31 30 33" stroke="#2A9D8F" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+        <path d="M19 24 C19 21.2 21.2 19 24 19 C26.8 19 29 21.2 29 24 C29 26 28 27.5 26.5 28.5" stroke="#2A9D8F" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="24" cy="24" r="2" fill="#2A9D8F"/>
+        <path d="M10 30 L14 34 L22 26" stroke="#2A9D8F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="product-name">Kairos Veritas</div>
+      <div class="product-sub teal-sub">KYC · Data Quality · Identity Intelligence</div>
+      <div class="product-desc" style="max-width:860px;">
+        End-to-end KYC and data quality platform. Veritas ensures the data your institution relies on
+        is clean, complete, verified, and continuously improving. From OCR document scanning and
+        identity verification to quality campaigns, monitoring dashboards, and remediation workflows —
+        raw data in, real identity out.
+      </div>
+      <div class="capability-row">
+        <div class="capability-pill"><span class="capability-icon">📄</span><span class="capability-text">OCR Document Scanning</span></div>
+        <div class="capability-pill"><span class="capability-icon">🪪</span><span class="capability-text">Identity Verification</span></div>
+        <div class="capability-pill"><span class="capability-icon">📊</span><span class="capability-text">Data Quality Monitoring</span></div>
+        <div class="capability-pill"><span class="capability-icon">🎯</span><span class="capability-text">Quality Campaigns</span></div>
+        <div class="capability-pill"><span class="capability-icon">🔁</span><span class="capability-text">Remediation Workflows</span></div>
+        <div class="capability-pill"><span class="capability-icon">📈</span><span class="capability-text">Quality Scorecards</span></div>
+        <div class="capability-pill"><span class="capability-icon">🔍</span><span class="capability-text">Duplicate Detection</span></div>
+        <div class="capability-pill"><span class="capability-icon">⚡</span><span class="capability-text">Real-time Alerts</span></div>
+      </div>
+      <div class="kyc-detail">
+        <div class="kyc-title">Core Capabilities</div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:8px;">
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--white); margin-bottom:16px;">KYC & Identity</div>
+            <div class="reg-items">
+              <div class="reg-item teal-item"><strong style="color:var(--white)">OCR Document Processing</strong> — Automatic extraction from IDs, passports, contracts, utility documents</div>
+              <div class="reg-item teal-item"><strong style="color:var(--white)">Identity Verification</strong> — Real-time validation against registries, watchlists, sanctions databases</div>
+              <div class="reg-item teal-item"><strong style="color:var(--white)">Biometric Matching</strong> — Face-to-document verification and liveness detection</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--white); margin-bottom:16px;">Data Quality</div>
+            <div class="reg-items">
+              <div class="reg-item teal-item"><strong style="color:var(--white)">Continuous Monitoring</strong> — Profiling of completeness, accuracy, consistency, and timeliness</div>
+              <div class="reg-item teal-item"><strong style="color:var(--white)">Quality Campaigns</strong> — Structured initiatives to improve customer, account, and transaction data</div>
+              <div class="reg-item teal-item"><strong style="color:var(--white)">Scorecards & Dashboards</strong> — Executive and operational views of data health</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--white); margin-bottom:16px;">Action & Control</div>
+            <div class="reg-items">
+              <div class="reg-item teal-item"><strong style="color:var(--white)">Remediation Workflows</strong> — Automated and manual workflows to fix and enrich deficient records</div>
+              <div class="reg-item teal-item"><strong style="color:var(--white)">Deduplication</strong> — AI-powered matching to identify and merge duplicate customer records</div>
+              <div class="reg-item teal-item"><strong style="color:var(--white)">Full Audit Trail</strong> — Every data change traced — who, when, and why</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-tags" style="margin-top:32px;">
+        <span class="tag teal-tag">KYC</span>
+        <span class="tag teal-tag">AML Screening</span>
+        <span class="tag teal-tag">OCR</span>
+        <span class="tag teal-tag">Data Quality</span>
+        <span class="tag teal-tag">Identity Verification</span>
+        <span class="tag teal-tag">Campaigns</span>
+        <span class="tag">Completeness</span>
+        <span class="tag">Accuracy</span>
+        <span class="tag">Deduplication</span>
+        <span class="tag">Remediation</span>
+        <span class="tag">Scorecards</span>
+        <span class="tag">Audit Trail</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ VOICE ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">08 — Brand Voice</div>
+  <div class="voice-grid">
+    <div class="voice-card">
+      <h3>We speak with...</h3>
+      <ul class="voice-list">
+        <li>Quiet confidence — we know what we know</li>
+        <li>Precision — every word earns its place</li>
+        <li>Directness — raw data, real decisions, no fluff</li>
+        <li>Gravitas — we work in serious, regulated industries</li>
+        <li>Authority — backed by science and evidence</li>
+        <li>Accountability — we stand behind every number</li>
+      </ul>
+    </div>
+    <div class="voice-card">
+      <h3>We never sound...</h3>
+      <ul class="voice-list">
+        <li>Excited or breathless — no hype, no buzzwords</li>
+        <li>Vague — no "synergy", "solutions", "next-gen"</li>
+        <li>Arrogant — confidence without condescension</li>
+        <li>Overly technical in marketing — accessible always</li>
+        <li>Rushed — precision takes the time it takes</li>
+        <li>Corporate and hollow — every word must mean something</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ POSITIONING ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">09 — Positioning Statement</div>
+  <div class="positioning-block">
+    <div class="positioning-text">
+      For <em>banks, energy companies, and regulators</em><br>
+      navigating complexity, risk, and compliance pressure —<br>
+      <em>Kairos</em> is the AI and analytics partner<br>
+      that turns raw data into real decisions.<br><br>
+      <span class="positioning-tagline-insert">Raw Data. <span class="gold">Real Decisions.</span></span>
+      From <em>credit risk and KYC</em> to <em>Central Bank submissions</em><br>
+      and <em>energy forecasting</em> — built by those<br>
+      who understand the industries they serve.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ DIGITAL ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">10 — Digital Presence</div>
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dots">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+      </div>
+      <div class="browser-url">kairos.co.mz</div>
+    </div>
+    <div class="browser-content">
+      <div class="browser-primary-line1">Raw Data.</div>
+      <div class="browser-primary-line2">Real Decisions.</div>
+      <div class="browser-phil">Clarity from complexity.</div>
+      <div class="browser-sub">Advanced AI & Analytics for Banking, Energy, KYC, and Regulatory Intelligence across Africa and beyond.</div>
+      <div class="browser-cta">Explore Kairos →</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ STATIONERY ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">11 — Stationery</div>
+  <div class="stationery-grid">
+    <div class="card-mockup">
+      <div class="card-front">
+        <div>
+          <div class="card-logo"><span>K</span>AIROS</div>
+          <div class="card-tagline-primary">Raw Data. <span class="gold">Real Decisions.</span></div>
+        </div>
+        <div>
+          <div class="card-name">Rodrigues Munguambe</div>
+          <div class="card-title">Founder & Chief AI Officer</div>
+          <div class="card-contact">rodrigues.munguambe@kairos.co.mz<br>kairos.co.mz<br>Maputo, Mozambique</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-mockup">
+      <div class="card-front" style="background:linear-gradient(135deg,#C9A84C 0%,#8A6B2A 100%);border-color:#C9A84C;">
+        <div class="card-logo" style="color:var(--obsidian)"><span style="color:var(--obsidian)">K</span>AIROS</div>
+        <div style="position:absolute;bottom:40px;right:40px;text-align:right;">
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.3em;color:rgba(8,10,15,0.5);text-transform:uppercase;margin-bottom:8px;">Analytics & AI · KYC · Regulatory</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--obsidian)">Clarity from complexity.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ RULES ═══════════ -->
+<section class="animate-in">
+  <div class="section-label">12 — Brand Rules</div>
+  <div class="rules-grid">
+    <div class="rule-card do">
+      <div class="rule-label">Always Do</div>
+      <ul class="rule-list">
+        <li>Use <em>"Raw Data. Real Decisions."</em> as the primary action tagline everywhere</li>
+        <li>Split the primary tagline over two lines — white line, then gold line</li>
+        <li>Use <em>"Clarity from complexity."</em> for premium and philosophical contexts</li>
+        <li>Reserve Teal exclusively for Kairos Veritas — never mix with Gold</li>
+        <li>Use Cormorant Garamond for all display and headline text</li>
+        <li>Show the domain as kairos.co.mz in all local materials</li>
+        <li>Keep Obsidian as the master background always</li>
+      </ul>
+    </div>
+    <div class="rule-card dont">
+      <div class="rule-label">Never Do</div>
+      <ul class="rule-list">
+        <li>Never run the primary tagline on a single line — it must break after "Raw Data."</li>
+        <li>Never swap the colors — white always leads, gold always closes</li>
+        <li>Never add "Lda" to any visual brand asset — legal documents only</li>
+        <li>Never use Teal outside of Kairos Veritas product contexts</li>
+        <li>Never use buzzwords: "synergy", "disruptive", "innovative"</li>
+        <li>Never use bold weight in body text — weight 300 only</li>
+        <li>Never write "KAIROS LDA" in any marketing material</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div class="brand-footer">
+  <div class="footer-logo"><span>K</span>AIROS</div>
+  <div class="footer-taglines">
+    <div class="footer-tag-line1">Raw Data.</div>
+    <div class="footer-tag-line2">Real Decisions.</div>
+    <div class="footer-tag-phil">Clarity from complexity.</div>
+  </div>
+  <div class="footer-meta">
+    Brand Identity System · Version 4.0<br>
+    kairos.co.mz · Maputo, Mozambique<br>
+    AI · Analytics · KYC · Regulatory · 2025
+  </div>
+</div>
 
 <script>
-  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.08});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  const toggle=document.getElementById('navToggle');
-  const mobile=document.getElementById('navMobile');
-  toggle.addEventListener('click',()=>{toggle.classList.toggle('open');mobile.classList.toggle('open');document.body.style.overflow=mobile.classList.contains('open')?'hidden':''});
-  mobile.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{toggle.classList.remove('open');mobile.classList.remove('open');document.body.style.overflow=''})});
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
